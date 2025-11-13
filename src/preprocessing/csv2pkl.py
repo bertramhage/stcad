@@ -222,9 +222,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Convert CSV AIS data to PKL format.")
     parser.add_argument("--input_dir", type=str, default="data/files/", help="Directory containing input CSV files.")
     parser.add_argument("--output_dir", type=str, default="data/pickle_files", help="Directory to save output PKL files.")
-    parser.add_argument("--test", action='store_true', help="Run in test mode with limited data.")
+    parser.add_argument("--run_name", type=str, default=None, help="Name of the logging run.")
     args = parser.parse_args()
-    logger = CustomLogger(project_name="Computational-Tools", run_name="csv2pkl_conversion", use_wandb=True)
+    logger = CustomLogger(project_name="Computational-Tools", group_name="csv2pkl_conversion", run_name=args.run_name, use_wandb=True)
     csv2pkl(input_dir=args.input_dir,
             output_dir=args.output_dir,
             logger=logger)
