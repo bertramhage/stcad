@@ -91,7 +91,7 @@ def csv2pkl(lon_min=LON_MIN, lon_max=LON_MAX,
                                 "Heading": pl.Int64,
                                 "Ship type": pl.Utf8
                             })
-            total_messages = lf.select(pl.count()).collect()[0,0]
+            total_messages = lf.select(pl.len()).collect()[0,0]
             messages_processed += total_messages
             results[csv_filename]["total_messages"] = total_messages
 
@@ -196,7 +196,7 @@ def csv2pkl(lon_min=LON_MIN, lon_max=LON_MAX,
             files_processed += 1
     
         except Exception as e:
-            logger.warning(f"Error processing file {csv_filename}", exception=e)
+            logger.warning(f"Error processing file {csv_filename}: {e}")
             
         logger.log_metrics({
             "messages_processed": messages_processed,
@@ -224,7 +224,7 @@ if __name__ == "__main__":
     parser.add_argument("--output_dir", type=str, default="data/pickle_files", help="Directory to save output PKL files.")
     parser.add_argument("--test", action='store_true', help="Run in test mode with limited data.")
     args = parser.parse_args()
-    logger = CustomLogger(project_name="Computational-Tools", run_name="csv2pkl_conversion", use_wandb=False)
+    logger = CustomLogger(project_name="Computational-Tools", run_name="csv2pkl_conversion", use_wandb=True)
     csv2pkl(input_dir=args.input_dir,
             output_dir=args.output_dir,
             logger=logger)

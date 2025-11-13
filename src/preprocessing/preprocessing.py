@@ -107,6 +107,8 @@ def preprocess_mmsi_track(track_data: np.ndarray) -> dict:
         if sampling_track is not None:
             Vs[count] = sampling_track
             count += 1
+    
+    del voyages  # Free memory
             
     preprocessing_results["num_voyages_after_sampling"] = len(Vs)
     preprocessing_results["num_sampling_errors"] = error_count
@@ -114,8 +116,8 @@ def preprocess_mmsi_track(track_data: np.ndarray) -> dict:
     ## RE-SPLITTING
     Data = dict()
     count = 0
-    for k in list(voyages.keys()): 
-        v = voyages[k]
+    for k in list(Vs.keys()): 
+        v = Vs[k]
         # Split AIS track into small tracks whose duration <= 1 day
         idx = np.arange(0, len(v), 12*DURATION_MAX)[1:]
         tmp = np.split(v,idx)
@@ -124,8 +126,6 @@ def preprocess_mmsi_track(track_data: np.ndarray) -> dict:
             if len(subtrack) >= 12*4:
                 Data[count] = subtrack
                 count += 1
-                
-    del voyages  # Free memory
                 
     ## REMOVING LOW SPEED TRACKS
     for k in list(Data.keys()):
