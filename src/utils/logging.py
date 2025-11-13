@@ -47,9 +47,10 @@ class CustomLogger:
         artifact(artifact, name, type): Log an artifact to WandB.
         add_tags(tags): Add tags to the WandB run.
     """
-    def __init__(self, project_name, group=None, run_name=None):
+    def __init__(self, project_name, group=None, run_name=None, use_wandb=True):
         
         try:
+            assert use_wandb # Will raise if False
             self.run = wandb.init(project=project_name, group=group, name=run_name)
             self.using_wandb = True
         except:

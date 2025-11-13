@@ -126,7 +126,7 @@ def csv2pkl(lon_min=LON_MIN, lon_max=LON_MAX,
                     (pl.col("COG") >= 0) & (pl.col("COG") <= 360) &
                     (pl.col("Timestamp") >= t_min) & (pl.col("Timestamp") <= t_max)
                 )
-                .select( # Select only the 9 columns needed for the track
+                .select( # Select only the 9 columns needed for the track + ship type
                     pl.col("Latitude"),        # 0
                     pl.col("Longitude"),        # 1
                     pl.col("SOG"),        # 2
@@ -169,7 +169,7 @@ def csv2pkl(lon_min=LON_MIN, lon_max=LON_MAX,
             with open(os.path.join(vessel_type_dir, vt_output_filename), "wb") as f:
                 pickle.dump(VesselTypes, f)
                 
-            df = lf.collect()
+            df = lf.drop("Ship type").collect() # Ship type column no longer needed
             results[csv_filename]["filtered_messages"] = df.height
             
             # Build tracks
@@ -183,7 +183,7 @@ def csv2pkl(lon_min=LON_MIN, lon_max=LON_MAX,
             Vs = {} # Final dictionary
             for mmsi, track_list in logger.tqdm(Vs_list.items(), desc="Sorting and converting to NumPy..."):
                 track_list.sort(key=lambda x: x[TIMESTAMP])
-                Vs[mmsi] = np.array(track_list)
+                Vs[mmsi] = np.array(track_list, dtype=np.float64)
 
             del Vs_list # Free memory
             
@@ -217,12 +217,6 @@ def csv2pkl(lon_min=LON_MIN, lon_max=LON_MAX,
         "total_messages": total_messages,
         "total_filtered_messages": total_filtered
     })
-    
-    logger.artifact( # Log summary artifact
-        artifact=pickle.dumps(results),
-        name="csv2pkl_summary.pkl",
-        type="summary"
-    )
         
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Convert CSV AIS data to PKL format.")
@@ -230,7 +224,7 @@ if __name__ == "__main__":
     parser.add_argument("--output_dir", type=str, default="data/pickle_files", help="Directory to save output PKL files.")
     parser.add_argument("--test", action='store_true', help="Run in test mode with limited data.")
     args = parser.parse_args()
-    logger = CustomLogger(project_name="Computational-Tools", run_name="csv2pkl_conversion")
+    logger = CustomLogger(project_name="Computational-Tools", run_name="csv2pkl_conversion", use_wandb=False)
     csv2pkl(input_dir=args.input_dir,
             output_dir=args.output_dir,
             logger=logger)
