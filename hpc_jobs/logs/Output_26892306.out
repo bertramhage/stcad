@@ -1,0 +1,73 @@
+Downloading: http://aisdata.ais.dk/2024/aisdk-2024-05-01.zip
+Downloading: http://aisdata.ais.dk/2024/aisdk-2024-05-02.zip
+Downloading: http://aisdata.ais.dk/2024/aisdk-2024-05-03.zip
+
+All files downloaded successfully.
+End of download process.
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 26892306: <download_ais_test> in cluster <dcc> Done
+
+Job <download_ais_test> was submitted from host <gbarlogin1> by user <s224918> in cluster <dcc> at Tue Nov 11 20:18:22 2025
+Job was executed on host(s) <4*n-62-31-8>, in queue <hpc>, as user <s224918> in cluster <dcc> at Tue Nov 11 20:18:23 2025
+</zhome/ea/6/187439> was used as the home directory.
+</zhome/ea/6/187439/computational-tools-project> was used as the working directory.
+Started at Tue Nov 11 20:18:23 2025
+Terminated at Tue Nov 11 20:21:01 2025
+Results reported at Tue Nov 11 20:21:01 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+
+#BSUB -J download_ais_test
+
+#BSUB -q hpc
+
+#BSUB -n 4
+
+#BSUB -R "rusage[mem=4GB]"
+
+#BSUB -W 0:05
+
+#BSUB -o hpc_jobs/logs/Output_%J.out
+#BSUB -e hpc_jobs/logs/Output_%J.err
+
+cd ~/computational-tools-project
+
+. .venv/bin/activate
+
+module swap python3/3.11.9
+
+python src/preprocessing/download.py --from_date 2024-05-01 \
+	--to_date 2024-05-03 \
+	--destination_path /dtu/blackhole/10/178320/ais_2024_test
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   83.86 sec.
+    Max Memory :                                 727 MB
+    Average Memory :                             608.25 MB
+    Total Requested Memory :                     16384.00 MB
+    Delta Memory :                               15657.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   252 sec.
+    Turnaround time :                            159 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <hpc_jobs/logs/Output_26892306.err> for stderr output of this job.
+

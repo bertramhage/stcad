@@ -1,0 +1,37 @@
+Traceback (most recent call last):
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/download.py", line 7, in <module>
+    from src.utils.logging import CustomLogger
+ModuleNotFoundError: No module named 'src'
+wandb: Currently logged in as: bertram-hage (bertram-hage-danmarks-tekniske-universitet-dtu) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.23.0
+wandb: Run data is saved locally in /zhome/ea/6/187439/computational-tools-project/wandb/run-20251113_193540-bzvmgbl4
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run test_prec_pipeline
+wandb: ⭐️ View project at https://wandb.ai/bertram-hage-danmarks-tekniske-universitet-dtu/Computational-Tools
+wandb: 🚀 View run at https://wandb.ai/bertram-hage-danmarks-tekniske-universitet-dtu/Computational-Tools/runs/bzvmgbl4
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/csv2pkl.py", line 228, in <module>
+    csv2pkl(input_dir=args.input_dir,
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/csv2pkl.py", line 55, in csv2pkl
+    l_csv_filename = [filename for filename in os.listdir(input_dir) if filename.endswith('.csv')]
+                                               ^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/dtu/blackhole/10/178320/prec_test'
+wandb: Currently logged in as: bertram-hage (bertram-hage-danmarks-tekniske-universitet-dtu) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: setting up run f3g9x5f0
+wandb: Tracking run with wandb version 0.23.0
+wandb: Run data is saved locally in /zhome/ea/6/187439/computational-tools-project/wandb/run-20251113_193545-f3g9x5f0
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run test_prec_pipeline
+wandb: ⭐️ View project at https://wandb.ai/bertram-hage-danmarks-tekniske-universitet-dtu/Computational-Tools
+wandb: 🚀 View run at https://wandb.ai/bertram-hage-danmarks-tekniske-universitet-dtu/Computational-Tools/runs/f3g9x5f0
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 178, in <module>
+    map_and_shuffle(input_dir=args.input_dir, temp_dir=temp_dir, logger=logger)
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 17, in map_and_shuffle
+    input_files = [os.path.join(input_dir, f) for f in os.listdir(input_dir) if f.endswith(".pkl")]
+                                                       ^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/dtu/blackhole/10/178320/prec_test/pickle/'
