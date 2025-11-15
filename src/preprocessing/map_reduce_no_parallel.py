@@ -1,7 +1,6 @@
 import os
 from time import time
 import joblib
-from multiprocessing import Pool, cpu_count
 import numpy as np
 from argparse import ArgumentParser
 from collections import defaultdict
@@ -88,11 +87,9 @@ def process_single_mmsi(mmsi_info):
     
 def reduce(final_dir: str,
            temp_dir: str,
-           n_workers: int = None,
-           chunk_size: int = 10,
            logger: CustomLogger = None):
     """
-    Preprocess vessel trajectories by MMSI in parallel.
+    Preprocess vessel trajectories by MMSI.
     """
     os.makedirs(final_dir, exist_ok=True)
     
@@ -102,7 +99,7 @@ def reduce(final_dir: str,
     
     logger.info(f"Starting reduce phase on {len(mmsi_folders)} MMSI folders")
     
-    # Prepare list of (mmsi, path, output_dir) tuples for parallel processing
+    # Prepare list of (mmsi, path, output_dir) tuples for processing
     mmsi_tasks = []
     for mmsi in mmsi_folders:
         mmsi_dir_path = os.path.join(temp_dir, mmsi)
@@ -111,28 +108,28 @@ def reduce(final_dir: str,
     
     results = defaultdict(int) # To count preprocessing statistics
     
-    # Process in parallel using imap_unordered to avoid accumulating results in memory
+    # Process sequentially
     t0 = time()
     e0 = 0
     logging_interval = 1000
-    with Pool(processes=n_workers, maxtasksperchild=max(1,1000//chunk_size)) as pool:
-        for i, result in enumerate(pool.imap_unordered(process_single_mmsi, mmsi_tasks, chunksize=chunk_size), 1):
-            if "error" in result:
-                logger.warning(result["error"])
-                results[f"error_code_{result['error_code']}"] += 1
-            else:
-                for key, value in result.items():
-                    results[key] += value
-            if i % logging_interval == 0:
-                elapsed = time() - t0
-                errors = sum([results[f"error_code_{code}"] for code in range(3)]) - e0
-                logger.log_metrics({
-                    'reduce_avg_time': elapsed / float(i),
-                    'errors': errors,
-                    'pct_done': i / len(mmsi_tasks) * 100
-                    }, step=i//logging_interval)
-                t0 = time()
-                e0 = errors
+    for i, task in enumerate(mmsi_tasks, 1):
+        result = process_single_mmsi(task)
+        if "error" in result:
+            logger.warning(result["error"])
+            results[f"error_code_{result['error_code']}"] += 1
+        else:
+            for key, value in result.items():
+                results[key] += value
+        if i % logging_interval == 0:
+            elapsed = time() - t0
+            errors = sum([results[f"error_code_{code}"] for code in range(3)]) - e0
+            logger.log_metrics({
+                'reduce_avg_time': elapsed / float(i),
+                'errors': errors,
+                'pct_done': i / len(mmsi_tasks) * 100
+                }, step=i//logging_interval)
+            t0 = time()
+            e0 = errors
     
     logger.log_summary(results)
         
@@ -165,20 +162,18 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     temp_dir = os.path.join(args.output_dir, 'temp_map_reduce')
-    num_workers = cpu_count() - 1
     
     logger = CustomLogger(project_name='Computational-Tools', group='map_reduce_preprocessing', run_name=args.run_name, use_wandb=True)
     logger.log_config({
         "input_dir": args.input_dir,
         "output_dir": args.output_dir,
         "temp_dir": temp_dir,
-        "num_workers": num_workers
     })
     
-    map_and_shuffle(input_dir=args.input_dir, temp_dir=temp_dir, logger=logger)
+    #map_and_shuffle(input_dir=args.input_dir, temp_dir=temp_dir, logger=logger)
     
-    # Reduce in parallel
-    reduce(final_dir=args.output_dir, temp_dir=temp_dir, n_workers=num_workers, logger=logger)
+    # Reduce 
+    reduce(final_dir=args.output_dir, temp_dir=temp_dir, logger=logger)
     
     combine_vessel_types(input_dir=args.input_dir, final_dir=args.output_dir, logger=logger)
     
