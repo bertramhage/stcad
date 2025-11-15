@@ -47,7 +47,7 @@ def process_single_mmsi(mmsi_info):
     segment_files = [f for f in os.listdir(mmsi_dir_path) if f.endswith(".pkl") and not f.startswith("vessel_types_")]
     if not segment_files:
         return {"error": f"No segment files found for MMSI {mmsi}",
-                "error_code": 0}, None # TODO: Remove None
+                "error_code": 0}
     for seg_file in segment_files:
             segment_path = os.path.join(mmsi_dir_path, seg_file)
             track_segment = joblib.load(segment_path)
@@ -62,7 +62,7 @@ def process_single_mmsi(mmsi_info):
         gc.collect()
     except ValueError as e:
         return {"error": f"Error concatenating segments for MMSI {mmsi}: {str(e)}",
-                "error_code": 1}, None # TODO: Remove None
+                "error_code": 1}
 
     # Run processing for single MMSI's track
     try:
@@ -72,7 +72,7 @@ def process_single_mmsi(mmsi_info):
         gc.collect()
     except Exception as e:
         return {"error": f"Error processing track for MMSI {mmsi}: {str(e)}",
-                "error_code": 2}, None # TODO: Remove None
+                "error_code": 2}
     
     # Save final result
     if processed_data:
