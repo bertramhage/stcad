@@ -1,0 +1,63 @@
+Test job 2 running successfully
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 26962009: <csv2pkl_2024> in cluster <dcc> Done
+
+Job <csv2pkl_2024> was submitted from host <n-62-31-23> by user <s224918> in cluster <dcc> at Thu Nov 13 17:16:18 2025
+Job was executed on host(s) <n-62-31-2>, in queue <hpc>, as user <s224918> in cluster <dcc> at Thu Nov 13 17:16:18 2025
+</zhome/ea/6/187439> was used as the home directory.
+</zhome/ea/6/187439/computational-tools-project> was used as the working directory.
+Started at Thu Nov 13 17:16:18 2025
+Terminated at Thu Nov 13 17:16:19 2025
+Results reported at Thu Nov 13 17:16:19 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+
+#BSUB -J csv2pkl_2024
+
+#BSUB -q hpc
+
+#BSUB -n 1
+
+#BSUB -R "rusage[mem=4GB]"
+
+#BSUB -W 00:05
+
+#BSUB -o hpc_jobs/logs/Output_%J.out
+#BSUB -e hpc_jobs/logs/Output_%J.err
+
+cd ~/computational-tools-project
+
+. .venv/bin/activate
+
+python -c "print('Test job 2 running successfully')"
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   0.55 sec.
+    Max Memory :                                 -
+    Average Memory :                             -
+    Total Requested Memory :                     4096.00 MB
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              -
+    Max Threads :                                -
+    Run time :                                   61 sec.
+    Turnaround time :                            1 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <hpc_jobs/logs/Output_26962009.err> for stderr output of this job.
+

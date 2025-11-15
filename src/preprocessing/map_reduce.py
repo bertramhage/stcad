@@ -23,8 +23,6 @@ def map_and_shuffle(input_dir: str, temp_dir: str, logger: CustomLogger):
             
         for mmsi, track_segment in data_dict.items():
             
-            track_segment = track_segment[:,:9] # Keep only the first 9 columns
-            
             # Create a directory for this specific MMSI
             mmsi_dir = os.path.join(temp_dir, str(mmsi))
             os.makedirs(mmsi_dir, exist_ok=True)
@@ -167,7 +165,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     temp_dir = os.path.join(args.output_dir, 'temp_map_reduce')
-    num_workers = cpu_count()
+    num_workers = cpu_count() - 1
     
     logger = CustomLogger(project_name='Computational-Tools', group='map_reduce_preprocessing', run_name=args.run_name, use_wandb=True)
     logger.log_config({

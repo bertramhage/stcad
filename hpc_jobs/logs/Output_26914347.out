@@ -1,0 +1,7 @@
+2025-11-12 18:40:32,524 - INFO - Found 366 CSV files in /dtu/blackhole/10/178320/ais_2024/.
+2025-11-13 07:11:30,710 - INFO - Conversion completed.
+2025-11-13 07:11:30,718 - INFO - Total messages processed: 6887578891
+2025-11-13 07:11:30,718 - INFO - Total messages after filtering: 5383009610
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mcsv2pkl_conversion[0m at: [34m[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251112_184030-pxxli0ym/logs[0m

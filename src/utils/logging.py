@@ -69,13 +69,21 @@ class CustomLogger:
         handler.setFormatter(formatter)
         self.logger.addHandler(handler)
         
+        # Force unbuffered output
+        if hasattr(sys.stdout, 'reconfigure'):
+            sys.stdout.reconfigure(line_buffering=True)
+        if hasattr(sys.stderr, 'reconfigure'):
+            sys.stderr.reconfigure(line_buffering=True)
+        
     def info(self, message: str):
         """Log an info message to the terminal and WandB."""
         self.logger.info(message)
+        sys.stdout.flush()  # Force flush
         
     def warning(self, message: str):
         """Log a warning message to the terminal and WandB."""
         self.logger.warning(message)
+        sys.stdout.flush()  # Force flush
         
     def error(self, message: str, exception: Exception = None):
         """Log an error message with traceback to the terminal and WandB."""
@@ -83,11 +91,13 @@ class CustomLogger:
             tb_str = "".join(traceback.format_exception(type(exception), exception, exception.__traceback__))
             self.logger.error(f"{message}\n{tb_str}")
             self.run.alert(title="Error", text=f"{message}\n\n{tb_str}") if self.using_wandb else None
+            sys.stdout.flush()  # Force flush
             raise exception
         else:
             tb_str = traceback.format_exc()
             self.logger.error(f"{message}\n{tb_str}")
             self.run.alert(title="Error", text=f"{message}\n\n{tb_str}") if self.using_wandb else None
+            sys.stdout.flush()  # Force flush
             raise Exception(message)
         
     def log_metrics(self, metrics: dict, step: int = None):

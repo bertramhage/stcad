@@ -224,7 +224,7 @@ if __name__ == "__main__":
     parser.add_argument("--output_dir", type=str, default="data/pickle_files", help="Directory to save output PKL files.")
     parser.add_argument("--run_name", type=str, default=None, help="Name of the logging run.")
     args = parser.parse_args()
-    logger = CustomLogger(project_name="Computational-Tools", group_name="csv2pkl_conversion", run_name=args.run_name, use_wandb=True)
+    logger = CustomLogger(project_name="Computational-Tools", group="csv2pkl_conversion", run_name=args.run_name, use_wandb=True)
     csv2pkl(input_dir=args.input_dir,
             output_dir=args.output_dir,
             logger=logger)
