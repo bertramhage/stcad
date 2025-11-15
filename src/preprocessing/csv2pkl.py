@@ -45,6 +45,24 @@ SHIP_TYPE_MAP = {
     "Not party to conflict": 59,
     }
 
+NAV_STT_MAP = {
+    "Under way using engine": 0,
+    "At anchor": 1,
+    "Not under command": 2,
+    "Restricted maneuverability": 3,
+    "Constrained by her draught": 4,
+    "Moored": 5,
+    "Aground": 6,
+    "Engaged in fishing": 7,
+    "Under way sailing": 8,
+    "Reserved for future amendment [HSC]": 9,
+    "Reserved for future amendment [WIG]": 10,
+    "Power-driven vessel towing astern": 11,
+    "Power-driven vessel pushing ahead or towing alongside": 12,
+    "Reserved for future use": 13,
+    "Unknown value": 15
+    }
+
 def csv2pkl(lon_min=LON_MIN, lon_max=LON_MAX,
             lat_min=LAT_MIN, lat_max=LAT_MAX,
             sog_max=SOG_MAX,
