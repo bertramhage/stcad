@@ -1,0 +1,77 @@
+Process SpawnPoolWorker-2:
+Traceback (most recent call last):
+  File "/appl9/python/3.11.9/lib/python3.11/multiprocessing/pool.py", line 856, in next
+Traceback (most recent call last):
+  File "/appl9/python/3.11.9/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    item = self._items.popleft()
+           ^^^^^^^^^^^^^^^^^^^^^
+IndexError: pop from an empty deque
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 118, in reduce
+    self.run()
+  File "/appl9/python/3.11.9/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.11.9/lib/python3.11/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.11.9/lib/python3.11/multiprocessing/pool.py", line 48, in mapstar
+    for i, result in enumerate(pool.imap_unordered(process_single_mmsi, mmsi_tasks, chunksize=chunk_size), 1):
+  File "/appl9/python/3.11.9/lib/python3.11/multiprocessing/pool.py", line 451, in <genexpr>
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 68, in process_single_mmsi
+    return (item for chunk in result for item in chunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.11.9/lib/python3.11/multiprocessing/pool.py", line 861, in next
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 78, in preprocess_mmsi_track
+    self._cond.wait(timeout)
+  File "/appl9/python/3.11.9/lib/python3.11/threading.py", line 327, in wait
+    waiter.acquire()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 187, in <module>
+    o_report, o_calcul = utils.detectOutlier(track, speed_max = SPEED_MAX)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 142, in detectOutlier
+    reduce(final_dir=args.output_dir, temp_dir=temp_dir, n_workers=num_workers, logger=logger)
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 117, in reduce
+    with mp.Pool(processes=n_workers, maxtasksperchild=max(1,1000//chunk_size)) as pool:
+  File "/appl9/python/3.11.9/lib/python3.11/multiprocessing/pool.py", line 739, in __exit__
+    self.terminate()
+  File "/appl9/python/3.11.9/lib/python3.11/multiprocessing/pool.py", line 657, in terminate
+    o_calcul = trackOutlier(A)
+               ^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line -1, in trackOutlier
+    self._terminate()
+  File "/appl9/python/3.11.9/lib/python3.11/multiprocessing/util.py", line 227, in __call__
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/appl9/python/3.11.9/lib/python3.11/multiprocessing/spawn.py", line 122, in spawn_main
+    res = self._callback(*self._args, **self._kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.11.9/lib/python3.11/multiprocessing/pool.py", line 690, in _terminate_pool
+    change_notifier.put(None)
+  File "/appl9/python/3.11.9/lib/python3.11/multiprocessing/queues.py", line 371, in put
+    obj = _ForkingPickler.dumps(obj)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.11.9/lib/python3.11/multiprocessing/reduction.py", line 51, in dumps
+    cls(buf, protocol).dump(obj)
+    ^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.11.9/lib/python3.11/multiprocessing/reduction.py", line 39, in __init__
+    super().__init__(*args)
+    ^^^^^^^
+KeyboardInterrupt

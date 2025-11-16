@@ -1,0 +1,67 @@
+2025-11-15 15:59:20,168 - INFO - Output directory for final results: /dtu/blackhole/10/178320/preprocessed_2024/final/
+2025-11-15 15:59:20,180 - INFO - Starting reduce phase on 38026 MMSI folders
+Memory usage before processing MMSI 219000873: 146.48 MB
+Loading segments for MMSI 219000873 from /dtu/blackhole/10/178320/preprocessed_2024/final/temp_map_reduce/219000873
+Found 366 segment files for MMSI 219000873
+Full track shape for MMSI 219000873: (2673818, 9)
+Memory usage after loading segments for MMSI 219000873: 515.65 MB
+Processing full track for MMSI 219000873
+Memory usage after filtering: 698.50 MB
+Memory usage after splitting: 698.65 MB
+Memory usage after short voyage filter: 698.65 MB
+Memory usage after outlier removal: 699.50 MB
+Memory usage after sampling: 521.71 MB
+Memory usage after final processing: 521.71 MB
+Memory usage after processing MMSI 219000873: 330.62 MB
+Completed 1/38026 MMSIs.
+Memory usage before processing MMSI 219016683: 330.62 MB
+Loading segments for MMSI 219016683 from /dtu/blackhole/10/178320/preprocessed_2024/final/temp_map_reduce/219016683
+Found 366 segment files for MMSI 219016683
+Full track shape for MMSI 219016683: (5940993, 9)
+Memory usage after loading segments for MMSI 219016683: 1147.99 MB
+Processing full track for MMSI 219016683
+Memory usage after filtering: 1555.86 MB
+Memory usage after splitting: 1555.86 MB
+Memory usage after short voyage filter: 1555.86 MB
+Memory usage after outlier removal: 1556.73 MB
+Memory usage after sampling: 1148.79 MB
+Memory usage after final processing: 1148.79 MB
+Memory usage after processing MMSI 219016683: 740.86 MB
+Completed 2/38026 MMSIs.
+Memory usage before processing MMSI 219000615: 740.86 MB
+Loading segments for MMSI 219000615 from /dtu/blackhole/10/178320/preprocessed_2024/final/temp_map_reduce/219000615
+Found 353 segment files for MMSI 219000615
+Full track shape for MMSI 219000615: (8083228, 9)
+Memory usage after loading segments for MMSI 219000615: 1439.88 MB
+Processing full track for MMSI 219000615
+Memory usage after filtering: 1855.80 MB
+Memory usage after splitting: 1855.80 MB
+Memory usage after short voyage filter: 1855.80 MB
+Memory usage after outlier removal: 1855.86 MB
+Memory usage after sampling: 1300.83 MB
+Memory usage after final processing: 1300.83 MB
+Memory usage after processing MMSI 219000615: 745.80 MB
+Completed 3/38026 MMSIs.
+Memory usage before processing MMSI 219017664: 745.80 MB
+Loading segments for MMSI 219017664 from /dtu/blackhole/10/178320/preprocessed_2024/final/temp_map_reduce/219017664
+Found 366 segment files for MMSI 219017664
+Full track shape for MMSI 219017664: (8387967, 9)
+Memory usage after loading segments for MMSI 219017664: 1412.61 MB
+Processing full track for MMSI 219017664
+Memory usage after filtering: 1894.73 MB
+Memory usage after splitting: 1894.73 MB
+Memory usage after short voyage filter: 1894.73 MB
+Memory usage after outlier removal: 1894.73 MB
+Memory usage after sampling: 1318.78 MB
+Memory usage after final processing: 1318.78 MB
+Memory usage after processing MMSI 219017664: 742.82 MB
+Completed 4/38026 MMSIs.
+Memory usage before processing MMSI 219002686: 742.82 MB
+Loading segments for MMSI 219002686 from /dtu/blackhole/10/178320/preprocessed_2024/final/temp_map_reduce/219002686
+Found 363 segment files for MMSI 219002686
+Full track shape for MMSI 219002686: (4786464, 9)
+Memory usage after loading segments for MMSI 219002686: 1071.48 MB
+Processing full track for MMSI 219002686
+Memory usage after filtering: 1400.07 MB
+Memory usage after splitting: 1400.07 MB
+Memory usage after short voyage filter: 1400.07 MB

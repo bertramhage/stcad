@@ -103,6 +103,8 @@ class CustomLogger:
     def log_metrics(self, metrics: dict, step: int = None):
         """Log a dictionary of metrics to WandB."""
         if not self.using_wandb:
+            for key, value in metrics.items():
+                self.logger.info(f"Metric - {key}: {value}")
             return # Silently return
         
         if step is not None:
@@ -113,6 +115,8 @@ class CustomLogger:
     def log_config(self, config: dict):
         """Log configuration parameters to WandB."""
         if not self.using_wandb:
+            for key, value in config.items():
+                self.logger.info(f"Config - {key}: {value}")
             return # Silently return
         
         self.run.config.update(config)
@@ -147,6 +151,9 @@ class CustomLogger:
     def log_summary(self, summary: dict):
         """Log a summary dictionary to WandB."""
         if not self.using_wandb:
+            for key, value in summary.items():
+                self.logger.info(f"Summary - {key}: {value}")
+            
             return # Silently return
         
         for key, value in summary.items():

@@ -1,0 +1,1025 @@
+wandb: Currently logged in as: bertram-hage (bertram-hage-danmarks-tekniske-universitet-dtu) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: setting up run ro23l0uy
+wandb: Tracking run with wandb version 0.23.0
+wandb: Run data is saved locally in /zhome/ea/6/187439/computational-tools-project/wandb/run-20251115_132514-ro23l0uy
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run pipeline_2024_map_reduce
+wandb: ⭐️ View project at https://wandb.ai/bertram-hage-danmarks-tekniske-universitet-dtu/Computational-Tools
+wandb: 🚀 View run at https://wandb.ai/bertram-hage-danmarks-tekniske-universitet-dtu/Computational-Tools/runs/ro23l0uy
+Traceback (most recent call last):
+  File "/appl9/python/3.11.9/lib/python3.11/multiprocessing/pool.py", line 856, in next
+    item = self._items.popleft()
+           ^^^^^^^^^^^^^^^^^^^^^
+IndexError: pop from an empty deque
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/appl9/python/3.11.9/lib/python3.11/threading.py", line 327, in wait
+    waiter.acquire()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 189, in <module>
+    reduce(final_dir=args.output_dir, temp_dir=temp_dir, n_workers=num_workers, logger=logger)
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 119, in reduce
+    for i, result in enumerate(pool.imap_unordered(process_single_mmsi, mmsi_tasks, chunksize=chunk_size), 1):
+  File "/appl9/python/3.11.9/lib/python3.11/multiprocessing/pool.py", line 451, in <genexpr>
+    return (item for chunk in result for item in chunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.11.9/lib/python3.11/multiprocessing/pool.py", line 861, in next
+    self._cond.wait(timeout)
+  File "/appl9/python/3.11.9/lib/python3.11/threading.py", line 336, in wait
+    self._acquire_restore(saved_state)
+  File "/appl9/python/3.11.9/lib/python3.11/threading.py", line 284, in _acquire_restore
+    self._lock.acquire()           # Ignore saved state
+    ^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+Exception ignored in atexit callback: <function _start_and_connect_service.<locals>.teardown_atexit at 0x7fc551935260>socket.send() raised exception.
+
+socket.send() raised exception.
+Traceback (most recent call last):
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_connection.py", line 61, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_connection.py", line 236, in teardown
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    self._asyncer.run(publish_teardown_and_close)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 136, in run
+socket.send() raised exception.
+socket.send() raised exception.
+    socket.send() raised exception.
+socket.send() raised exception.
+return future.result()
+   socket.send() raised exception.
+socket.send() raised exception.
+        ^^^^^^^^^^^^^^^
+socket.send() raised exception.
+  File "/appl9/python/3.11.9/lib/python3.11/concurrent/futures/_base.py", line 456, in result
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    return self.__get_result()
+           ^^^^^^^^^socket.send() raised exception.
+socket.send() raised exception.
+^^socket.send() raised exception.
+socket.send() raised exception.
+^^socket.send() raised exception.
+socket.send() raised exception.
+^^socket.send() raised exception.
+socket.send() raised exception.
+^^socket.send() raised exception.
+socket.send() raised exception.
+^^socket.send() raised exception.
+socket.send() raised exception.
+
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/appl9/python/3.11.9/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    raise self._exception
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    socket.send() raised exception.
+socket.send() raised exception.
+await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._writer.drain()
+socket.send() raised exception.
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+    raise excsocket.send() raised exception.
+socket.send() raised exception.
+
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+    await fn()
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._send_server_request(request)
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    socket.send() raised exception.
+socket.send() raised exception.
+await self._writer.drain()
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    socket.send() raised exception.
+socket.send() raised exception.
+raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 219, in _wrap
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    socket.send() raised exception.
+socket.send() raised exception.
+return await fn()
+socket.send() raised exception.
+socket.send() raised exception.
+ socket.send() raised exception.
+socket.send() raised exception.
+    socket.send() raised exception.
+socket.send() raised exception.
+ socket.send() raised exception.
+socket.send() raised exception.
+ socket.send() raised exception.
+socket.send() raised exception.
+ socket.send() raised exception.
+socket.send() raised exception.
+ socket.send() raised exception.
+socket.send() raised exception.
+  socket.send() raised exception.
+socket.send() raised exception.
+^socket.send() raised exception.
+socket.send() raised exception.
+^socket.send() raised exception.
+socket.send() raised exception.
+^socket.send() raised exception.
+socket.send() raised exception.
+^socket.send() raised exception.
+socket.send() raised exception.
+^socket.send() raised exception.
+socket.send() raised exception.
+^socket.send() raised exception.
+socket.send() raised exception.
+^^socket.send() raised exception.
+socket.send() raised exception.
+^socket.send() raised exception.
+socket.send() raised exception.
+^socket.send() raised exception.
+socket.send() raised exception.
+
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_connection.py", line 227, in publish_teardown_and_close
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._client.publish(
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._send_server_request(request)socket.send() raised exception.
+
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    socket.send() raised exception.
+socket.send() raised exception.
+await self._writer.drain()
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    socket.send() raised exception.
+socket.send() raised exception.
+raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+    await self._send_server_request(request)
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    socket.send() raised exception.
+socket.send() raised exception.
+await self._writer.drain()
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    raise excsocket.send() raised exception.
+socket.send() raised exception.
+
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+    await fn()
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    socket.send() raised exception.
+socket.send() raised exception.
+await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._writer.drain()
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise excsocket.send() raised exception.
+socket.send() raised exception.
+
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+    await fn()
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    socket.send() raised exception.
+socket.send() raised exception.
+await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise excsocket.send() raised exception.
+socket.send() raised exception.
+
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._send_server_request(request)
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    socket.send() raised exception.
+socket.send() raised exception.
+await self._writer.drain()
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    socket.send() raised exception.
+socket.send() raised exception.
+raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._send_server_request(request)
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise excsocket.send() raised exception.
+socket.send() raised exception.
+
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    socket.send() raised exception.
+socket.send() raised exception.
+await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._writer.drain()
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise excsocket.send() raised exception.
+socket.send() raised exception.
+
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise excsocket.send() raised exception.
+socket.send() raised exception.
+
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+    await fn()
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+    await self._send_server_request(request)
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+    await self._writer.drain()
+socket.send() raised exception.
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+    await fn()
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    socket.send() raised exception.
+socket.send() raised exception.
+await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    socket.send() raised exception.
+await self._writer.drain()
+socket.send() raised exception.
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+    await self._send_server_request(request)
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+    await self._writer.drain()
+socket.send() raised exception.
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+    await self._send_server_request(request)
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+    await self._writer.drain()
+socket.send() raised exception.
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()socket.send() raised exception.
+socket.send() raised exception.
+
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._send_server_request(request)
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+    await self._writer.drain()
+socket.send() raised exception.
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+    await self._send_server_request(request)
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+    await self._writer.drain()
+socket.send() raised exception.
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+    raise exc
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+    await fn()
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+    await self._send_server_request(request)
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    socket.send() raised exception.
+socket.send() raised exception.
+raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    socket.send() raised exception.
+raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+    await fn()
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+    await self._send_server_request(request)
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+socket.send() raised exception.
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+    await self._send_server_request(request)
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+    await self._writer.drain()
+socket.send() raised exception.
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    socket.send() raised exception.
+socket.send() raised exception.
+await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+    await self._send_server_request(request)
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+    await self._writer.drain()
+socket.send() raised exception.
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+    await fn()
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+    await self._send_server_request(request)
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._writer.drain()
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()socket.send() raised exception.
+socket.send() raised exception.
+
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+    await self._writer.drain()
+socket.send() raised exception.
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+    await self._send_server_request(request)
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+socket.send() raised exception.
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+    socket.send() raised exception.
+socket.send() raised exception.
+raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._send_server_request(request)
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+    await fn()
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    socket.send() raised exception.
+socket.send() raised exception.
+await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    socket.send() raised exception.
+socket.send() raised exception.
+await self._writer.drain()
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+    await self._send_server_request(request)
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+    await self._send_server_request(request)
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    socket.send() raised exception.
+socket.send() raised exception.
+await self._writer.drain()
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    socket.send() raised exception.
+socket.send() raised exception.
+await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._send_server_request(request)
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+socket.send() raised exception.
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+    await self._send_server_request(request)
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    socket.send() raised exception.
+socket.send() raised exception.
+await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    socket.send() raised exception.
+socket.send() raised exception.
+await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    socket.send() raised exception.
+socket.send() raised exception.
+await self._writer.drain()
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+    socket.send() raised exception.
+socket.send() raised exception.
+raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.11/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+socket.send() raised exception.
+socket.send() raised exception.
+  File "/appl9/python/3.11.9/lib/python3.11/asyncio/selector_events.py", line 1061, in write
+socket.send() raised exception.
+socket.send() raised exception.
+    n = self._sock.send(data)
+     socket.send() raised exception.
+socket.send() raised exception.
+   ^^^^^^socket.send() raised exception.
+socket.send() raised exception.
+^^^^^^^^^socket.send() raised exception.
+socket.send() raised exception.
+^^^^^^
+socket.send() raised exception.
+socket.send() raised exception.
+BrokenPipeError: [Errno 32] Broken pipe
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.

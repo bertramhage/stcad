@@ -1,0 +1,16 @@
+2025-11-15 17:33:15,305 - INFO - Output directory for final results: /dtu/blackhole/10/178320/preprocessed_2024/final/
+2025-11-15 17:33:15,324 - INFO - Starting reduce phase on 38026 MMSI folders
+Memory usage before processing MMSI 219000873: 146.25 MB
+Loading segments for MMSI 219000873 from /dtu/blackhole/10/178320/preprocessed_2024/final/temp_map_reduce/219000873
+Found 366 segment files for MMSI 219000873
+Full track shape for MMSI 219000873: (2673818, 9)
+Memory usage after loading segments for MMSI 219000873: 515.39 MB
+Processing full track for MMSI 219000873
+Memory usage after processing MMSI 219000873: 335.86 MB
+Completed 1/38026 MMSIs.
+Memory usage before processing MMSI 219016683: 335.86 MB
+Loading segments for MMSI 219016683 from /dtu/blackhole/10/178320/preprocessed_2024/final/temp_map_reduce/219016683
+Found 366 segment files for MMSI 219016683
+Full track shape for MMSI 219016683: (5940993, 9)
+Memory usage after loading segments for MMSI 219016683: 972.14 MB
+Processing full track for MMSI 219016683

@@ -161,11 +161,15 @@ if __name__ == "__main__":
     parser = ArgumentParser(description="Map-Reduce preprocessing of vessel trajectory data.")
     parser.add_argument('--input_dir', type=str, required=True, help='Directory with chunked input files.')
     parser.add_argument('--output_dir', type=str, required=True, help='Directory to store the final preprocessed files.')
+    parser.add_argument('--num_workers', type=int, default=None, help='Number of parallel workers to use.')
     parser.add_argument('--run_name', type=str, default=None, help='Name of the logging run.')
     args = parser.parse_args()
     
     temp_dir = os.path.join(args.output_dir, 'temp_map_reduce')
-    num_workers = cpu_count() - 1
+    if not args.num_workers:
+        num_workers = cpu_count() - 1
+    else:
+        num_workers = args.num_workers
     
     logger = CustomLogger(project_name='Computational-Tools', group='map_reduce_preprocessing', run_name=args.run_name, use_wandb=True)
     logger.log_config({

@@ -1,0 +1,30 @@
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/appl9/python/3.11.9/lib/python3.11/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.11.9/lib/python3.11/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 35, in process_single_mmsi
+    segment_files = [f for f in os.listdir(mmsi_dir_path) if f.endswith(".pkl") and not f.startswith("vessel_types_")]
+                                ^^
+NameError: name 'os' is not defined
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 187, in <module>
+    reduce(final_dir=args.output_dir, temp_dir=temp_dir, n_workers=num_workers, logger=logger)
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 107, in reduce
+    for i, result in enumerate(pool.imap_unordered(process_single_mmsi, mmsi_tasks, chunksize=chunk_size), 1):
+  File "/appl9/python/3.11.9/lib/python3.11/multiprocessing/pool.py", line 451, in <genexpr>
+    return (item for chunk in result for item in chunk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.11.9/lib/python3.11/multiprocessing/pool.py", line 873, in next
+    raise value
+NameError: name 'os' is not defined
