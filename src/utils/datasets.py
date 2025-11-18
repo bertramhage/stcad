@@ -12,7 +12,6 @@ class AISDataset(Dataset):
     """
     def __init__(self, 
                  data_dir,
-                 device=torch.device("cpu"),
                  file_extension=".pkl"):
         """
         Args
@@ -21,7 +20,6 @@ class AISDataset(Dataset):
             file_extension: file extension to look for
         """    
             
-        self.device = device
         self.data_dir = data_dir
         
         # Build list of filenames
