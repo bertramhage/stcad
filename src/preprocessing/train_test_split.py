@@ -20,7 +20,7 @@ def train_test_split_tracks(data_dir, val_size=0.2, test_size=0.2, random_state=
     
     """
     
-    all_files = [f for f in os.listdir(data_dir) if f.endswith('.pkl')]
+    all_files = [f for f in os.listdir(data_dir) if f.endswith('.pkl') and (not f == 'vessel_types.pkl')]
     
     if not all_files:
         print("No data files found in the specified directory.")

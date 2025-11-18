@@ -7,6 +7,8 @@ import logging
 import sys
 import traceback
 
+from transformers import TrainerCallback
+
 def running_on_hpc():
     hpc_env_vars = [
         "SLURM_JOB_ID",     # SLURM scheduler
@@ -165,3 +167,14 @@ class TqdmToNull:
         pass # Ignore the output
     def flush(self):
         pass
+
+class CustomLoggingCallback(TrainerCallback):
+    """ A callback to pipe Trainer logs into CustomLogger."""
+    def __init__(self, logger):
+        self.logger = logger
+
+    def on_log(self, args, state, control, logs=None, **kwargs):
+        if logs:
+            # Log metrics to WandB via CustomLogger
+            # state.global_step provides the current training step
+            self.logger.log_metrics(logs, step=state.global_step)
