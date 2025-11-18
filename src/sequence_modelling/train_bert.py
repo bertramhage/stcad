@@ -39,20 +39,19 @@ if __name__ == "__main__":
     train_dataset = AISDatasetBERT(os.path.join(args.data_dir, 'train'), max_seq_len=config.max_position_embeddings)
     eval_dataset = AISDatasetBERT(os.path.join(args.data_dir, 'val'), max_seq_len=config.max_position_embeddings)
     
+    logger.info(f"Train dataset size: {len(train_dataset)}")
+    logger.info(f"Eval dataset size: {len(eval_dataset)}")
+    
     data_collator = DataCollator(mask_prob=0.15)
     
     logger.info(f"Total model parameters: {sum(p.numel() for p in model.parameters()) / 1e6:.2f}M")
-    
-    steps_per_epoch = len(train_dataset) // args.batch_size
-    eval_steps = max(1, steps_per_epoch // 5) # Evaluate 5 times per epoch
     
     training_args = get_training_args(
         output_dir=args.output_dir,
         num_train_epochs=args.num_epochs,
         per_device_train_batch_size=args.batch_size,
         per_device_eval_batch_size=args.batch_size,
-        eval_steps=eval_steps,
-        eval_strategy="steps",
+        eval_strategy="epoch",
         save_strategy="epoch",
     )
     
