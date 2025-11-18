@@ -169,12 +169,18 @@ class TqdmToNull:
         pass
 
 class CustomLoggingCallback(TrainerCallback):
-    """ A callback to pipe Trainer logs into CustomLogger."""
+    """ A callback to pipe transformers' Trainer logs into CustomLogger."""
     def __init__(self, logger):
         self.logger = logger
 
     def on_log(self, args, state, control, logs=None, **kwargs):
         if logs:
-            # Log metrics to WandB via CustomLogger
-            # state.global_step provides the current training step
-            self.logger.log_metrics(logs, step=state.global_step)
+            _logs = dict()
+            for key, value in logs.items():
+                if key.startswith("eval_"):
+                    _logs["eval/" + key[5:]] = value
+                elif key == 'epoch':
+                    pass # skip logging epoch
+                else:
+                    _logs["train/" + key] = value
+            self.logger.log_metrics(_logs, step=state.global_step)

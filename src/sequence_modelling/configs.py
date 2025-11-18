@@ -13,7 +13,7 @@ def get_training_args(**kargs):
         "logging_steps": 10,
         "fp16": True,
         "dataloader_num_workers": 4,
-        "load_best_model_at_end": True,
+        "load_best_model_at_end": False,
         "metric_for_best_model": "eval_loss",
         "greater_is_better": False,
         "report_to": "none"

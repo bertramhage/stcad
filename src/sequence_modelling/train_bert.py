@@ -6,7 +6,6 @@ import warnings
 from argparse import ArgumentParser
 from transformers import Trainer
 
-from src.sequence_modelling.helpers import CustomLoggingCallback
 from src.sequence_modelling.configs import get_training_args, get_bert_config
 from src.sequence_modelling.models import AISBERT, AISDatasetBERT, DataCollator
 from src.utils.logging import CustomLogger, CustomLoggingCallback
@@ -15,7 +14,7 @@ warnings.filterwarnings("ignore", message=".*pin_memory.*")
 
 if __name__ == "__main__":
     parser = ArgumentParser("Train Trajectory BERT Model")
-    parser.add_argument("--data_dir", type=str, default="./data/ais/processed/", help="Directory containing training and validation data")
+    parser.add_argument("--data_dir", type=str, required=True, help="Directory containing training and validation data")
     parser.add_argument("--output_dir", type=str, default="./data/models/trajectory_bert_model", help="Directory to save the trained model")
     parser.add_argument("--run_name", type=str, default="tiny-bert-pretrain", help="Run name for logging")
     parser.add_argument("--num_epochs", type=int, default=5, help="Number of training epochs")
@@ -28,11 +27,11 @@ if __name__ == "__main__":
     # Set up model, datasets, and trainer
     logger.info("Setting up configurations...")
     config = get_bert_config(
-        'hidden_size'=256,
-        'num_hidden_layers'=4,
-        'num_attention_heads'=4,
-        'hidden_dropout_prob'=0.1,
-        'attention_probs_dropout_prob'=0.1,
+        hidden_size=256,
+        num_hidden_layers=4,
+        num_attention_heads=4,
+        hidden_dropout_prob=0.1,
+        attention_probs_dropout_prob=0.1,
     )
     
     model = AISBERT(config)
@@ -48,13 +47,13 @@ if __name__ == "__main__":
     eval_steps = max(1, steps_per_epoch // 5) # Evaluate 5 times per epoch
     
     training_args = get_training_args(
-        "output_dir"=args.output_dir,
-        "num_train_epochs"=args.num_epochs,
-        "per_device_train_batch_size"=args.batch_size,
-        "per_device_eval_batch_size"=args.batch_size,
-        "eval_steps"=eval_steps,
-        "eval_strategy"="steps",
-        "save_strategy"="epoch",
+        output_dir=args.output_dir,
+        num_train_epochs=args.num_epochs,
+        per_device_train_batch_size=args.batch_size,
+        per_device_eval_batch_size=args.batch_size,
+        eval_steps=eval_steps,
+        eval_strategy="steps",
+        save_strategy="epoch",
     )
     
     logger.log_config({f"training/{key}": value for key, value in training_args.to_dict().items()})
@@ -72,8 +71,5 @@ if __name__ == "__main__":
     # Start training
     logger.info("Starting MTM training...")
     trainer.train()
-    logger.info("MTM training complete.")
     
-    # Save the final model
-    trainer.save_model(os.path.join(args.output_dir, "final_model"))
-    logger.info(f"Model saved to {args.output_dir}/final_model")
+    logger.info("MTM training complete.")
