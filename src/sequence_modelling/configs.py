@@ -9,6 +9,7 @@ def get_training_args(**kargs):
         "per_device_eval_batch_size": 512,
         "gradient_accumulation_steps": 4,
         "logging_strategy": "steps",
+        "logging_steps": 10,
         "eval_strategy": "steps",
         "eval_steps": 50, # Roughly every 100,000 samples
         "save_strategy": "epoch",
