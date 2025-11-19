@@ -51,8 +51,6 @@ if __name__ == "__main__":
         num_train_epochs=args.num_epochs,
         per_device_train_batch_size=args.batch_size,
         per_device_eval_batch_size=args.batch_size,
-        eval_strategy="epoch",
-        save_strategy="epoch",
     )
     
     logger.log_config({f"training/{key}": value for key, value in training_args.to_dict().items()})
