@@ -6,3 +6,4 @@ __pycache__/
 locals
 wandb
 data/
+models/saved_models/

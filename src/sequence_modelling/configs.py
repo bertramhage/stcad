@@ -1,8 +1,10 @@
-from transformers import BertConfig, BertPreTrainedModel, BertModel, TrainingArguments, Trainer
+# Contains default configurations
+
+from transformers import BertConfig, TrainingArguments
 
 def get_training_args(**kargs):
     training_args = {
-        "output_dir": "./data/models/trajectory_bert_model",
+        "output_dir": "./models/saved_models/trajectory_bert_model",
         "overwrite_output_dir": True,
         "num_train_epochs": 5,
         "per_device_train_batch_size": 512,

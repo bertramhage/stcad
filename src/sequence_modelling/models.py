@@ -107,6 +107,7 @@ class AISDatasetBERT(AISDataset):
     def __init__(self, data_dir: str, max_seq_len: int):
         super().__init__(data_dir)
         self.max_seq_len = max_seq_len
+        self.cls_sep = True # Whether to add CLS and SEP tokens
         
         # Special feature vectors for CLS and SEP tokens
         cls_vector = [-1.0, -1.0, -1.0, -1.0]
@@ -116,29 +117,69 @@ class AISDatasetBERT(AISDataset):
 
     def __getitem__(self, idx) -> torch.Tensor:
         """ Returns a trajectory tensor with [CLS] and [SEP] tokens added."""
-        traj, _,_,_ = super().__getitem__(idx)
+        seq, seqlen, mmsi, time_start = super().__getitem__(idx)
         
         # Truncate if longer than max_seq_len
-        if len(traj) > self.max_seq_len - 2:
-            traj = traj[:self.max_seq_len - 2]
+        if len(seq) > self.max_seq_len - 2:
+            seq = seq[:self.max_seq_len - 2]
         
         # Add [CLS] at the beginning and [SEP] at the end
-        full_traj = torch.cat(
-            [self.cls_tensor.unsqueeze(0), traj, self.sep_tensor.unsqueeze(0)], 
-            dim=0
-        )
+        if self.cls_sep:
+            full_traj = torch.cat(
+                [self.cls_tensor.unsqueeze(0), seq, self.sep_tensor.unsqueeze(0)], 
+                dim=0
+            )
+        else:
+            full_traj = seq
         
-        return full_traj
+        return full_traj, seqlen, mmsi, time_start
+    
+    def remove_cls_sep(self) -> torch.Tensor:
+        """ Remove [CLS] and [SEP] tokens trajectories"""
+        self.cls_sep = False
 
 class DataCollator:
     """For handling padding and masking for the MTM task.
     Similar to transformers DataCollatorForLanguageModeling"""
-    def __init__(self, mask_prob=0.15):
+    def __init__(self, mask_prob=0.15, is_inference=False):
         self.mask_prob = mask_prob
         self.pad_vector_tensor = torch.tensor([0.0, 0.0, 0.0, 0.0], dtype=torch.float32)
         # [PAD] token is [0.0, 0.0, 0.0, 0.0]
+        self.is_inference = is_inference
 
     def __call__(self, batch: list[torch.Tensor]) -> dict[str, torch.Tensor]:
+        
+        if isinstance(batch[0], tuple):
+            seqlen = [item[1] for item in batch]
+            mmsi = [item[2] for item in batch]
+            time_start = [item[3] for item in batch]
+            batch = [item[0] for item in batch]
+        else:
+            seqlen, mmsi, time_start = None, None, None
+        
+        if self.is_inference: # Only padding is needed, no masking
+            max_len = max(traj.shape[0] for traj in batch)
+            
+            padded_features = torch.full(
+                (len(batch), max_len, 4), 
+                fill_value=0.0,
+                dtype=torch.float32
+            )
+            attention_mask = torch.zeros((len(batch), max_len), dtype=torch.long)
+            
+            for i, traj in enumerate(batch):
+                seq_len = traj.shape[0]
+                padded_features[i, :seq_len] = traj
+                attention_mask[i, :seq_len] = 1
+
+            output = {
+                "input_features": padded_features,
+                "attention_mask": attention_mask,
+            }
+            for key, value in zip(["seqlen", "mmsi", "time_start"], [seqlen, mmsi, time_start]):
+                if value is not None:
+                    output[key] = value
+            return output
         
         # Pad all trajectories to the same length
         max_len = max(traj.shape[0] for traj in batch)
