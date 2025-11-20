@@ -25,7 +25,8 @@ class AISDataset(Dataset):
         # Build list of filenames
         self.file_list = [
             f for f in os.listdir(data_dir) 
-            if f.endswith(file_extension)
+            if f.endswith(file_extension) and 
+            (not f == 'vessel_types.pkl')
         ]
         self.file_list.sort()
 

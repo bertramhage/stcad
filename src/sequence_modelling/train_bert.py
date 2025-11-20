@@ -68,5 +68,4 @@ if __name__ == "__main__":
     # Start training
     logger.info("Starting MTM training...")
     trainer.train()
-    
     logger.info("MTM training complete.")

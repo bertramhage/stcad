@@ -1,14 +1,21 @@
 import os
 import random
 import argparse
+import shutil
 
-def move_to_dir(filename, src_dir, dest_dir):
+def move_to_dir(filename, src_dir, dest_dir, copy=False):
     """ Moves a file from src_dir to dest_dir. """
+    if copy:
+        src_path = os.path.join(src_dir, filename)
+        dest_path = os.path.join(dest_dir, filename)
+        shutil.copy2(src_path, dest_path)
+        return
+    
     src_path = os.path.join(src_dir, filename)
     dest_path = os.path.join(dest_dir, filename)
     os.rename(src_path, dest_path)
 
-def train_test_split_tracks(data_dir, val_size=0.2, test_size=0.2, random_state=42):
+def train_test_split_tracks(data_dir, val_size=0, test_size=0, random_state=42, copy=False):
     """
     Splits the dataset into training, validation, and test sets. Saves into tree subdirectories: train, val, test.
     
@@ -17,6 +24,7 @@ def train_test_split_tracks(data_dir, val_size=0.2, test_size=0.2, random_state=
     - val_size: Proportion of the dataset to include in the validation set.
     - test_size: Proportion of the dataset to include in the test set.
     - random_state: Seed used by the random number generator.
+    - copy: If True, files are copied instead of moved.
     
     """
     
@@ -27,8 +35,8 @@ def train_test_split_tracks(data_dir, val_size=0.2, test_size=0.2, random_state=
         return
     
     os.makedirs(os.path.join(data_dir, 'train'), exist_ok=True)
-    os.makedirs(os.path.join(data_dir, 'val'), exist_ok=True)
-    os.makedirs(os.path.join(data_dir, 'test'), exist_ok=True)
+    os.makedirs(os.path.join(data_dir, 'val'), exist_ok=True) if val_size > 0 else None
+    os.makedirs(os.path.join(data_dir, 'test'), exist_ok=True) if test_size > 0 else None
     
     total_n = len(all_files)
     test_n = int(total_n * test_size)
@@ -44,12 +52,12 @@ def train_test_split_tracks(data_dir, val_size=0.2, test_size=0.2, random_state=
         running_count = 0
         while running_count < partition_size and unassigned_files:
             file = unassigned_files.pop(random.randint(0, len(unassigned_files)-1))
-            move_to_dir(file, data_dir, os.path.join(data_dir, partition))
+            move_to_dir(file, data_dir, os.path.join(data_dir, partition), copy=copy)
             running_count += 1
             mmsi = file.split('_')[0]
             additional_files_to_add = [f for f in unassigned_files if f.startswith(mmsi+'_')]
             for af in additional_files_to_add:
-                move_to_dir(af, data_dir, os.path.join(data_dir, partition))
+                move_to_dir(af, data_dir, os.path.join(data_dir, partition), copy=copy)
                 running_count += 1
                 unassigned_files.remove(af)
         
@@ -59,6 +67,7 @@ if __name__ == "__main__":
     parser.add_argument("--val_size", type=float, default=0.1, help="Proportion of data for validation set.")
     parser.add_argument("--test_size", type=float, default=0.1, help="Proportion of data for test set.")
     parser.add_argument("--random_state", type=int, default=42, help="Random seed for reproducibility.")
+    parser.add_argument("--copy", action='store_true', help="If set, files will be copied instead of moved.")
     
     args = parser.parse_args()
     
