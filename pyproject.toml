@@ -21,6 +21,10 @@ dependencies = [
     "tqdm>=4.67.1",
     "transformers[torch]>=4.57.1",
     "wandb>=0.23.0",
+    "contextily>=1.5.0",
+    "hdbscan>=0.8.33",
+    "pandas>=2.2.2",
+    "folium>=0.17.1",
 ]
 
 [build-system]
