@@ -45,6 +45,7 @@ def process_single_mmsi(mmsi_info):
     # Load all segments for this MMSI
     all_segments = []
     segment_files = [f for f in os.listdir(mmsi_dir_path) if f.endswith(".pkl") and not f.startswith("vessel_types_")]
+    segment_files.sort() # Ensure chronological order
     if not segment_files:
         return {"error": f"No segment files found for MMSI {mmsi}",
                 "error_code": 0}
