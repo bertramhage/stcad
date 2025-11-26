@@ -25,6 +25,7 @@ dependencies = [
     "hdbscan>=0.8.33",
     "pandas>=2.2.2",
     "folium>=0.17.1",
+    "plotly>=6.5.0",
 ]
 
 [build-system]

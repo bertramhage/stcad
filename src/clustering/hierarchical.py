@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from src.clustering.utils import davies_bouldin_index
 from src.utils.logging import CustomLogger
 import matplotlib.colors as mcolors
+from src.clustering.interactive_plot import plot_interactive_dendrogram
 import os
 
 class AgglomerativeClustering:
@@ -449,7 +450,7 @@ class CURE:
 if __name__ == "__main__":
     parser = ArgumentParser("CURE Hierarchical Clustering for Large Datasets. Build and save entire tree.")
     parser.add_argument("--data_path", type=str, required=True, help="Path to the dataset (embeddings).")
-    parser.add_argument("--output_path", type=str, required=True, help="Path to save the linkage matrix (npz file).")
+    parser.add_argument("--output_path", type=str, required=True, help="Path to save the CURE model and plots.")
     parser.add_argument("--sample_size", type=int, default=1000, help="Number of points to sample for clustering.")
     parser.add_argument("--n_representatives", type=int, default=20, help="Number of representatives per cluster.")
     parser.add_argument("--compression", type=float, default=0.2, help="Compression factor towards centroid (alpha).")
@@ -480,8 +481,13 @@ if __name__ == "__main__":
     logger.info("Saving dendrogram plot...")
     dendrogram_path = os.path.join(args.output_path, "dendrogram.png")
     cure.plot_dendrogram(save_path=dendrogram_path, p=args.dendrogram_p)
-    
     logger.artifact(dendrogram_path, "dendrogram", "image")
+    
+    # Interactive dendrogram
+    logger.info("Saving interactive dendrogram plot...")
+    interactive_dendrogram_path = os.path.join(args.output_path, "interactive_dendrogram.html")
+    plot_interactive_dendrogram(cure, save_path=interactive_dendrogram_path, p=args.dendrogram_p)
+    logger.artifact(interactive_dendrogram_path, "interactive_dendrogram", "html")
     
     scores = []
     for n_clusters in [2, 5, 10, 20]:
