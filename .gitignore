@@ -7,3 +7,4 @@ locals
 wandb
 data/
 models/saved_models/
+.DS_Store

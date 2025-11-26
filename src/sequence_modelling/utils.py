@@ -7,8 +7,9 @@ from src.preprocessing.train_test_split import train_test_split_tracks
 from src.sequence_modelling.configs import get_training_args, get_bert_config
 from src.sequence_modelling.models import AISBERT, DataCollator
 from src.utils.datasets import AISDataset
+from tqdm import tqdm
 
-def get_embeddings(data: AISDataset, model: AISBERT, l2_normalize: bool = False):
+def get_embeddings(data: AISDataset, model: AISBERT, l2_normalize: bool = False, batch_size: int = 32, verbose: int = 0) -> tuple[np.ndarray, list]:
     
     if torch.cuda.is_available():
         device = torch.device("cuda")
@@ -22,13 +23,21 @@ def get_embeddings(data: AISDataset, model: AISBERT, l2_normalize: bool = False)
     data_collator = DataCollator(is_inference=True)
     dataloader = DataLoader(data, batch_size=32, shuffle=False, collate_fn=data_collator)
 
-    all_cls_vectors = []
+    num_samples = len(data)
+    hidden_dim = model.config.hidden_size
+    all_cls_vectors = np.zeros((num_samples, hidden_dim), dtype=np.float32) # Preallocate array
+    
     all_mmsi = [] # To keep track of which vector belongs to which MMSI
+    all_start_times = []
+    start_idx = 0
+    if verbose > 0:
+        dataloader = tqdm(dataloader, total=len(dataloader), desc="Computing Embeddings")
     with torch.no_grad(): # No gradient computation
         for batch in dataloader: # Batch is size 32
             input_features = batch["input_features"].to(device) # Shape (batch_size, seq_len, feature_dim)
             attention_mask = batch["attention_mask"].to(device)
             mmsis = batch["mmsi"] # List of MMSIs in the batch
+            start_times = batch["time_start"] # List of start times in the batch
             
             # This is the output from the model
             outputs = model(
@@ -43,13 +52,17 @@ def get_embeddings(data: AISDataset, model: AISBERT, l2_normalize: bool = False)
             last_hidden_state = outputs.hidden_states[-1]
             cls_token_vector = last_hidden_state[:, 0, :]
             
-            all_cls_vectors.append(cls_token_vector)
+            batch_size = cls_token_vector.size(0)
+            end_idx = start_idx + batch_size
+            all_cls_vectors[start_idx:end_idx] = cls_token_vector.cpu().numpy()
+            
             all_mmsi.extend(mmsis)
+            all_start_times.extend(start_times)
+            start_idx = end_idx
 
-    all_cls_vectors = torch.cat(all_cls_vectors, dim=0).cpu().numpy() # Unpack batches, shape (num_samples, hidden_dim)
     if l2_normalize:
         all_cls_vectors = l2_normalize_embeddings(all_cls_vectors)
-    return all_cls_vectors, all_mmsi
+    return all_cls_vectors, all_mmsi, all_start_times
 
 def l2_normalize_embeddings(embeddings: np.ndarray) -> np.ndarray:
     """L2 normalizes the embeddings along each row (sample)."""
