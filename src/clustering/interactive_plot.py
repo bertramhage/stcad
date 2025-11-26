@@ -1,64 +1,88 @@
 import plotly.graph_objects as go
 import matplotlib.pyplot as plt
-import matplotlib.colors as mcolors # Re-using this for color generation
+import matplotlib.colors as mcolors
 from scipy.cluster.hierarchy import dendrogram
+import numpy as np
 
 def plot_interactive_dendrogram(fitted_model, save_path="dendrogram.html", color_by_size=True, **kwargs):
     """
-    Creates an interactive HTML dendrogram using Plotly.
+    Creates an interactive HTML dendrogram using Plotly, handling Ghost Merges (Noise).
     """
-    if fitted_model.agg_.linkage_matrix_ is None:
+    if fitted_model.agg_ is None or fitted_model.agg_.linkage_matrix_ is None:
         print("Error: Model is not fit yet.")
         return
 
-    # --- 1. Setup Color Logic (Same as before) ---
+    linkage_matrix = fitted_model.agg_.linkage_matrix_
+    n_samples = len(linkage_matrix) + 1
+
+    # --- 1. Determine Ghost Threshold ---
+    # If we pruned points, the max distance is likely the ghost distance.
+    # We set the threshold just below the max to catch those artificial merges.
+    distances = linkage_matrix[:, 2]
+    max_dist = np.max(distances)
+    
+    # Check if pruning actually happened
+    has_pruned = len(getattr(fitted_model.agg_, 'pruned_indices_', [])) > 0
+    ghost_threshold = max_dist * 0.99 if has_pruned else np.inf
+
+    # --- 2. Setup Color Logic ---
     link_color_func = None
     if color_by_size:
-        n_samples = len(fitted_model.agg_.linkage_matrix_) + 1
         cluster_sizes = {i: 1 for i in range(n_samples)}
-        for i, row in enumerate(fitted_model.agg_.linkage_matrix_):
+        for i, row in enumerate(linkage_matrix):
             cluster_sizes[n_samples + i] = int(row[3])
 
         cmap = plt.get_cmap('viridis')
         norm = mcolors.LogNorm(vmin=1, vmax=n_samples)
 
         def size_color_func(k):
+            # A. Check for Ghost Merge (Noise)
+            # Linkage rows are indexed 0 to N-2.
+            # Cluster IDs for merges are N to 2N-2.
+            if k >= n_samples:
+                idx = k - n_samples
+                # If this link's distance is super high, it's a ghost merge -> Gray
+                if linkage_matrix[idx, 2] >= ghost_threshold:
+                    return '#d3d3d3' # Light Gray
+
+            # B. Standard Size Coloring
             return mcolors.to_hex(cmap(norm(cluster_sizes.get(k, 1))))
         
         link_color_func = size_color_func
 
-    # --- 2. Get Dendrogram Data from Scipy (no_plot=True) ---
-    # This calculates the X and Y coordinates for us
+    # --- 3. Get Dendrogram Data ---
     dendro_data = dendrogram(
-        fitted_model.agg_.linkage_matrix_,
+        linkage_matrix,
         link_color_func=link_color_func,
-        no_plot=True, # <--- Key: Don't draw, just give me data
+        no_plot=True, 
         **kwargs
     )
 
-    # --- 3. Build Plotly Figure ---
+    # --- 4. Build Plotly Figure ---
     fig = go.Figure()
 
-    # The dendrogram returns lists of coordinates for the 'U' shapes
-    # icoord = x-coords, dcoord = y-coords
-    # color_list = color for each link
-    
     for i, (xs, ys) in enumerate(zip(dendro_data['icoord'], dendro_data['dcoord'])):
         color = dendro_data['color_list'][i]
         
-        # Plotly logic: drawn generic shapes for the tree
+        # Add hover text to show if it is noise
+        # Note: We can infer if it's noise by the color we just assigned
+        hover_txt = f"Distance: {max(ys):.3f}"
+        if color == '#d3d3d3':
+             hover_txt += "<br>Status: PRUNED NOISE"
+
         fig.add_trace(go.Scatter(
             x=xs,
             y=ys,
             mode='lines',
             line=dict(color=color, width=2),
-            hoverinfo='y', # Show distance on hover
+            text=hover_txt,
+            hoverinfo='text',
             showlegend=False
         ))
 
-    # --- 4. Styling ---
+    # --- 5. Styling ---
     fig.update_layout(
-        title="Interactive Dendrogram",
+        title="Interactive Dendrogram (Gray = Pruned Noise)",
         xaxis_title="Sample Index",
         yaxis_title="Distance",
         width=1000,
@@ -67,7 +91,7 @@ def plot_interactive_dendrogram(fitted_model, save_path="dendrogram.html", color
         plot_bgcolor='white'
     )
     
-    # Add a dummy marker for the Colorbar (Plotly hack)
+    # Add Colorbar (Dummy trace)
     if color_by_size:
         fig.add_trace(go.Scatter(
             x=[None], y=[None],
@@ -84,6 +108,5 @@ def plot_interactive_dendrogram(fitted_model, save_path="dendrogram.html", color
             showlegend=False
         ))
 
-    # --- 5. Save ---
     print(f"Saving interactive plot to {save_path}...")
     fig.write_html(save_path)

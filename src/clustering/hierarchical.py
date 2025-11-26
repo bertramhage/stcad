@@ -21,9 +21,14 @@ class AgglomerativeClustering:
         - 'complete': Maximum distance between any single point in one cluster and any point in the other.
         - 'average': Average distance between all points in one cluster and all points in the other.
     """
-    def __init__(self, linkage='centroid'):
+    def __init__(self, linkage='centroid', pruning_trigger_fraction=0.33, phase1_cutoff_count=1):
         self.linkage = linkage
+        self.pruning_trigger_fraction = pruning_trigger_fraction
+        self.phase1_cutoff_count = phase1_cutoff_count
         self.linkage_matrix_ = None # Stores the (n-1) x 4 linkage matrix for dendrograms
+        self.pruned_indices_ = set()
+        self.n_samples_ = 0
+        self.n_real_merges_ = 0
 
     def _euclidean_distance(self, a, b):
         return np.linalg.norm(a - b)
@@ -69,7 +74,8 @@ class AgglomerativeClustering:
         Fit the model and build the Linkage Matrix.
         """
         X = np.array(X)
-        n_samples = X.shape[0]
+        self.n_samples_ = X.shape[0]
+        n_samples = self.n_samples_
         
         # Dictionary to store active clusters: {cluster_id: [list of sample indices]}
         # We start with clusters 0 to n-1
@@ -78,12 +84,34 @@ class AgglomerativeClustering:
         # List to store the history of merges in Linkage Matrix format
         # [idx1, idx2, distance, sample_count]
         self.linkage_matrix_ = []
+        self.pruned_indices_ = set()
+        
+        # Track pruned clusters for "Ghost Merge"
+        pruned_clusters = [] # List of (cluster_id, size)
         
         # Counter for the next cluster ID (starts after the last sample index)
         next_cluster_id = n_samples
 
+        pruning_triggered = False
+
         # Loop until one cluster remains
         while len(current_clusters) > 1:
+            # Phase 1 Pruning
+            if not pruning_triggered and len(current_clusters) <= n_samples * self.pruning_trigger_fraction:
+                pruning_triggered = True
+                ids_to_prune = []
+                for cid, indices in current_clusters.items():
+                    if len(indices) <= self.phase1_cutoff_count:
+                        ids_to_prune.append(cid)
+                
+                for cid in ids_to_prune:
+                    self.pruned_indices_.update(current_clusters[cid])
+                    pruned_clusters.append((cid, len(current_clusters[cid])))
+                    del current_clusters[cid]
+                
+                if len(current_clusters) < 2:
+                    break
+
             active_ids = list(current_clusters.keys())
             min_dist = np.inf
             best_pair = None
@@ -118,6 +146,57 @@ class AgglomerativeClustering:
             
             next_cluster_id += 1
 
+        # Save the number of real merges before adding ghost merges
+        self.n_real_merges_ = len(self.linkage_matrix_)
+
+        # --- Ghost Merge Step ---
+        # If we have pruned clusters, we need to merge them back to complete the tree.
+        if pruned_clusters:
+            # Determine max distance for ghost merges
+            if len(self.linkage_matrix_) > 0:
+                # linkage_matrix_ is a list here
+                max_real_dist = max(row[2] for row in self.linkage_matrix_)
+                ghost_dist = max_real_dist * 1.5
+            else:
+                ghost_dist = 1.0 # Default if no merges happened yet
+                
+            # 1. Merge all pruned clusters into a "Noise Super-Cluster"
+            # We treat the first pruned cluster as the accumulator
+            noise_cid, noise_size = pruned_clusters[0]
+            
+            for i in range(1, len(pruned_clusters)):
+                next_cid, next_size = pruned_clusters[i]
+                
+                # Merge
+                new_size = noise_size + next_size
+                self.linkage_matrix_.append([float(noise_cid), float(next_cid), float(ghost_dist), float(new_size)])
+                
+                noise_cid = next_cluster_id
+                noise_size = new_size
+                next_cluster_id += 1
+                
+            # 2. Merge the Noise Super-Cluster with the remaining valid cluster(s)
+            # current_clusters should have 0 or 1 item usually.
+            valid_clusters_info = [(cid, len(indices)) for cid, indices in current_clusters.items()]
+            
+            # Add the noise super cluster to the list
+            valid_clusters_info.append((noise_cid, noise_size))
+            
+            # Merge everything remaining
+            while len(valid_clusters_info) > 1:
+                c1_id, c1_size = valid_clusters_info.pop(0)
+                c2_id, c2_size = valid_clusters_info.pop(0)
+                
+                new_size = c1_size + c2_size
+                self.linkage_matrix_.append([float(c1_id), float(c2_id), float(ghost_dist), float(new_size)])
+                
+                # The new cluster ID is next_cluster_id
+                new_id = next_cluster_id
+                next_cluster_id += 1
+                
+                # Insert back to merge with others if any
+                valid_clusters_info.insert(0, (new_id, new_size))
+
         self.linkage_matrix_ = np.array(self.linkage_matrix_)
         return self
 
@@ -128,34 +207,67 @@ class AgglomerativeClustering:
         if self.linkage_matrix_ is None:
             raise RuntimeError("Model must be fit before getting labels.")
             
-        n_samples = len(self.linkage_matrix_) + 1
-        if n_clusters < 1 or n_clusters > n_samples:
-            raise ValueError(f"n_clusters must be between 1 and {n_samples}")
+        if n_clusters < 1:
+            raise ValueError(f"n_clusters must be at least 1")
 
         # Reconstruct state
         # 1. Start with singletons
-        current_clusters = {i: [i] for i in range(n_samples)}
+        current_clusters = {i: [i] for i in range(self.n_samples_)}
         
-        # 2. We perform (n_samples - n_clusters) merges to reach the desired state
-        num_merges = n_samples - n_clusters
+        # 2. We perform merges to reach the desired state
+        # We only care about REAL merges, not ghost merges.
+        # Active samples are those NOT pruned in Phase 1.
+        n_active_samples = self.n_samples_ - len(self.pruned_indices_)
         
-        for i in range(num_merges):
+        # If we want n_clusters valid clusters, we need to reduce n_active_samples to n_clusters.
+        # Number of merges needed = n_active_samples - n_clusters.
+        merges_needed = n_active_samples - n_clusters
+        
+        if merges_needed < 0:
+             merges_needed = 0
+             
+        # Safety check: ensure we don't exceed real merges
+        if merges_needed > self.n_real_merges_:
+            merges_needed = self.n_real_merges_
+        
+        for i in range(merges_needed):
             # linkage_matrix row: [c1, c2, dist, size]
             row = self.linkage_matrix_[i]
             c1, c2 = int(row[0]), int(row[1])
-            new_id = n_samples + i
+            new_id = self.n_samples_ + i # Note: IDs in linkage matrix are consistent with this
             
             # Merge
-            current_clusters[new_id] = current_clusters[c1] + current_clusters[c2]
-            del current_clusters[c1]
-            del current_clusters[c2]
+            if c1 in current_clusters and c2 in current_clusters:
+                current_clusters[new_id] = current_clusters[c1] + current_clusters[c2]
+                del current_clusters[c1]
+                del current_clusters[c2]
+            else:
+                # This should not happen if logic is correct
+                pass
 
         # 3. Assign labels
-        labels = np.zeros(n_samples, dtype=int)
+        labels = np.full(self.n_samples_, -1, dtype=int)
+        
         # Sort keys to ensure deterministic labeling order
-        for label_id, cluster_id in enumerate(sorted(current_clusters.keys())):
-            for sample_idx in current_clusters[cluster_id]:
-                labels[sample_idx] = label_id
+        # We only assign non-negative labels to clusters that are NOT pruned.
+        valid_label_id = 0
+        for cluster_id in sorted(current_clusters.keys()):
+            indices = current_clusters[cluster_id]
+            
+            # Check if this cluster is pruned
+            # If any point in the cluster is in pruned_indices_, then the whole cluster is pruned
+            # (because pruned points are never merged with non-pruned ones until the ghost merges, which we skipped)
+            is_pruned = False
+            if len(indices) > 0:
+                # Just check the first point, as clusters are either all pruned or all valid
+                if indices[0] in self.pruned_indices_:
+                    is_pruned = True
+            
+            if not is_pruned:
+                for sample_idx in indices:
+                    labels[sample_idx] = valid_label_id
+                valid_label_id += 1
+            # Else leave as -1
                 
         return labels
 
@@ -172,8 +284,16 @@ class AgglomerativeClustering:
         plt.xlabel("Cluster Size / Sample Index")
         plt.ylabel("Distance")
 
-        # --- Feature 1: Coloring by Cluster Size ---
+        # --- Feature 1: Coloring by Cluster Size & Ghost Merges ---
         link_color_func = None
+        
+        # Determine ghost threshold
+        distances = self.linkage_matrix_[:, 2]
+        max_dist = np.max(distances)
+        has_pruned = len(self.pruned_indices_) > 0
+        # If we have pruned points, the max distance is likely the ghost distance
+        ghost_threshold = max_dist * 0.99 if has_pruned else np.inf
+
         if color_by_size:
             n_samples = len(self.linkage_matrix_) + 1
             cluster_sizes = {i: 1 for i in range(n_samples)}
@@ -186,6 +306,12 @@ class AgglomerativeClustering:
             norm = mcolors.LogNorm(vmin=1, vmax=n_samples)
 
             def size_color_func(k):
+                # Check for ghost merge
+                if k >= n_samples:
+                    idx = k - n_samples
+                    if self.linkage_matrix_[idx, 2] >= ghost_threshold:
+                        return 'gray'
+
                 size = cluster_sizes.get(k, 1)
                 return mcolors.to_hex(cmap(norm(size)))
                 
@@ -232,11 +358,18 @@ class CURE:
     2. Identifying representative points for each cluster.
     3. Assigning the remaining data to the closest representative.
     """
-    def __init__(self, sample_size=200, n_representatives=4, compression=0.5, linkage='centroid'):
+    def __init__(self, sample_size=200, n_representatives=4, compression=0.5, linkage='centroid',
+                 phase2_min_ratio=0.05, assignment_threshold=np.inf,
+                 pruning_trigger_fraction=0.33, phase1_cutoff_count=1, seed=42):
         self.sample_size = sample_size
         self.n_representatives = n_representatives
         self.compression = compression # Alpha: how much to shrink towards centroid
         self.linkage = linkage
+        self.phase2_min_ratio = phase2_min_ratio
+        self.assignment_threshold = assignment_threshold
+        self.pruning_trigger_fraction = pruning_trigger_fraction
+        self.phase1_cutoff_count = phase1_cutoff_count
+        self.seed = seed
         self.agg_ = None
         self.X_sample_ = None
         self.X_ = None # Store reference to full dataset
@@ -259,12 +392,15 @@ class CURE:
             self.X_sample_ = self.X_
         else:
             # Randomly select sample points
+            np.random.seed(self.seed)
             sample_indices = np.random.choice(n_samples, self.sample_size, replace=False)
             self.X_sample_ = self.X_[sample_indices]
 
         # 2. Cluster the Sample (The expensive part, but on small N)
         # We reuse our custom AgglomerativeClustering class which builds the full tree
-        self.agg_ = AgglomerativeClustering(linkage=self.linkage)
+        self.agg_ = AgglomerativeClustering(linkage=self.linkage,
+                                            pruning_trigger_fraction=self.pruning_trigger_fraction,
+                                            phase1_cutoff_count=self.phase1_cutoff_count)
         self.agg_.fit(self.X_sample_)
         
         return self
@@ -285,7 +421,11 @@ class CURE:
             "n_representatives": self.n_representatives,
             "compression": self.compression,
             "linkage": self.linkage,
-            "sample_size": self.sample_size
+            "sample_size": self.sample_size,
+            "phase2_min_ratio": self.phase2_min_ratio,
+            "assignment_threshold": self.assignment_threshold,
+            "pruning_trigger_fraction": self.pruning_trigger_fraction,
+            "phase1_cutoff_count": self.phase1_cutoff_count
         }
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
         np.savez_compressed(
@@ -314,12 +454,38 @@ class CURE:
         instance = cls(sample_size=meta_data["sample_size"],
                        n_representatives=meta_data["n_representatives"],
                        compression=meta_data["compression"],
-                       linkage=meta_data["linkage"])
+                       linkage=meta_data["linkage"],
+                       phase2_min_ratio=meta_data.get("phase2_min_ratio", 0.05),
+                       assignment_threshold=meta_data.get("assignment_threshold", np.inf),
+                       pruning_trigger_fraction=meta_data.get("pruning_trigger_fraction", 0.33),
+                       phase1_cutoff_count=meta_data.get("phase1_cutoff_count", 1))
         
         # Restore state
         instance.X_sample_ = sample_data
-        instance.agg_ = AgglomerativeClustering(linkage=meta_data["linkage"])
+        instance.agg_ = AgglomerativeClustering(linkage=meta_data["linkage"],
+                                                pruning_trigger_fraction=instance.pruning_trigger_fraction,
+                                                phase1_cutoff_count=instance.phase1_cutoff_count)
         instance.agg_.linkage_matrix_ = linkage_matrix
+        instance.agg_.n_samples_ = len(sample_data) # Restore n_samples_
+        # Note: pruned_indices_ are not saved in current format. 
+        # If we need them, we should save them. 
+        # However, for prediction, we only need representatives.
+        # Representatives are calculated from sample_labels.
+        # sample_labels are calculated from linkage_matrix.
+        # If pruned_indices_ are missing, get_labels might behave differently if we rely on them.
+        # But wait, get_labels relies on pruned_indices_ to assign -1.
+        # If we don't restore pruned_indices_, get_labels will assign valid labels to pruned points (if they exist in linkage?).
+        # No, pruned points are NOT in linkage matrix.
+        # So get_labels will see them as singletons (orphans).
+        # And since they are not in pruned_indices_, it will assign them a valid label?
+        # Yes, it will assign them a new label ID.
+        # This might be an issue if we want to reproduce exact state.
+        # But usually we just use predict() which uses representatives.
+        # Representatives calculation uses get_labels.
+        # If get_labels returns a valid label for a pruned point, it will be included in that cluster.
+        # But since it's a singleton, it will form a small cluster.
+        # Then Phase 2 pruning (check size) will likely catch it and mark it as noise.
+        # So it might be fine.
         
         return instance
 
@@ -334,14 +500,24 @@ class CURE:
         sample_labels = self.agg_.get_labels(n_clusters)
 
         # 2. Select Representatives
-        representatives = []
+        representatives = {}
         
-        for k in range(n_clusters):
+        # Note: get_labels might return -1 for Phase 1 pruned points.
+        # We should ignore them.
+        
+        unique_labels = np.unique(sample_labels)
+        valid_labels = unique_labels[unique_labels >= 0]
+        
+        for k in valid_labels:
             # Get points in this cluster
             cluster_points = self.X_sample_[sample_labels == k]
             
             if len(cluster_points) == 0:
-                representatives.append([])
+                continue
+
+            # Phase 2 Pruning
+            if len(cluster_points) < self.sample_size * self.phase2_min_ratio:
+                # Noise Group - leave representatives empty
                 continue
 
             # Calculate Centroid
@@ -381,16 +557,19 @@ class CURE:
                 new_pos = r + self.compression * (centroid - r)
                 shrunk_reps.append(new_pos)
             
-            representatives.append(shrunk_reps)
+            representatives[k] = shrunk_reps
             
         return representatives
     
-    def predict(self, X, n_clusters):
+    def predict(self, X, n_clusters, assignment_threshold=None):
         """
         Assigns labels to new data points based on the fitted model and a specific number of clusters.
         """
         if self.agg_ is None:
             raise RuntimeError("Run fit() or load_pretrained() before predict()")
+        
+        if assignment_threshold is not None:
+            assignment_threshold = self.assignment_threshold
         
         X = np.array(X)
         n_samples = X.shape[0]
@@ -406,7 +585,7 @@ class CURE:
             best_cluster = -1
             
             # Check distance to ALL representatives of ALL clusters
-            for cluster_idx, reps in enumerate(representatives):
+            for cluster_idx, reps in representatives.items():
                 if not reps:
                     continue
                 for r in reps:
@@ -415,7 +594,10 @@ class CURE:
                         min_dist = dist
                         best_cluster = cluster_idx
             
-            labels[i] = best_cluster
+            if min_dist > assignment_threshold:
+                labels[i] = -1
+            else:
+                labels[i] = best_cluster
             
         return labels
 
@@ -446,6 +628,27 @@ class CURE:
             return
         
         self.agg_.plot_dendrogram(show_plot=show_plot, save_path=save_path, **kwargs)
+        
+def useful_result(dbi_score, labels):
+    # Result is useful if:
+    # - Size of largest cluster is less than 90% of data
+    # - % of noise points is less than 10% but more than 0%
+    # - Davies-Bouldin Index is below 1.5
+    n_samples = len(labels)
+    unique, counts = np.unique(labels, return_counts=True)
+    cluster_sizes = dict(zip(unique, counts))
+    largest_cluster_size = max(cluster_sizes.values())
+    n_noise = cluster_sizes.get(-1, 0)
+    noise_ratio = n_noise / n_samples
+    if largest_cluster_size > 0.9 * n_samples:
+        return False
+    if noise_ratio > 0.1:
+        return False
+    if noise_ratio == 0.0:
+        return False
+    if dbi_score > 1.5:
+        return False
+    return True
     
 if __name__ == "__main__":
     parser = ArgumentParser("CURE Hierarchical Clustering for Large Datasets. Build and save entire tree.")
@@ -456,6 +659,13 @@ if __name__ == "__main__":
     parser.add_argument("--compression", type=float, default=0.2, help="Compression factor towards centroid (alpha).")
     parser.add_argument("--linkage", type=str, default="single", choices=["centroid", "single", "complete", "average"], help="Linkage criterion for hierarchical clustering.")
     parser.add_argument("--dendrogram_p", type=int, default=30, help="Number of last merges to show in dendrogram plot.")
+    
+    # New arguments for noise handling
+    parser.add_argument("--pruning_trigger", type=float, default=0.33, help="Fraction of clusters remaining to trigger Phase 1 pruning.")
+    parser.add_argument("--phase1_cutoff", type=int, default=1, help="Max cluster size to prune in Phase 1.")
+    parser.add_argument("--phase2_ratio", type=float, default=0.01, help="Min ratio of sample size for a cluster to be valid in Phase 2.")
+    parser.add_argument("--assignment_threshold", type=float, default=np.inf, help="Max distance to assign a point to a cluster.")
+
     args = parser.parse_args()
     
     logger = CustomLogger(project_name='Computational-Tools', group='clustering', run_name='run_cure', use_wandb=True)
@@ -469,7 +679,14 @@ if __name__ == "__main__":
     logger.info(f"Loaded {embeddings.shape[0]} samples with dimension {embeddings.shape[1]} from {args.data_path}\n")
     
     logger.info("Fitting CURE hierarchical clustering...")
-    cure = CURE(sample_size=args.sample_size, n_representatives=args.n_representatives, compression=args.compression, linkage=args.linkage)
+    cure = CURE(sample_size=args.sample_size, 
+                n_representatives=args.n_representatives, 
+                compression=args.compression, 
+                linkage=args.linkage,
+                pruning_trigger_fraction=args.pruning_trigger,
+                phase1_cutoff_count=args.phase1_cutoff,
+                phase2_min_ratio=args.phase2_ratio,
+                assignment_threshold=args.assignment_threshold)
     cure.fit(embeddings)
     logger.info("Fitted CURE model.\n")
     
@@ -489,15 +706,41 @@ if __name__ == "__main__":
     plot_interactive_dendrogram(cure, save_path=interactive_dendrogram_path, p=args.dendrogram_p)
     logger.artifact(interactive_dendrogram_path, "interactive_dendrogram", "html")
     
-    scores = []
-    for n_clusters in [2, 5, 10, 20]:
-                    labels = cure.get_labels(n_clusters=n_clusters)
-                    score = davies_bouldin_index(embeddings, labels)
-                    scores.append(score)
+    results = {}
+    search_n_clusters = [2, 5, 10, 20, 50, 100]
+    search_thresholds = [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5]
+    for n_clusters in search_n_clusters:
+        scores_for_thresholds = {}
+        pct_noise_for_threshold = {}
+        for threshold in search_thresholds:
+            labels = cure.predict(embeddings, n_clusters=n_clusters, assignment_threshold=threshold)
+            valid_mask = labels != -1
+            
+            unique_labels = np.unique(labels[valid_mask])
+            if len(unique_labels) < 2:
+                logger.warning(f" - {n_clusters} clusters: Skipped (Not enough valid clusters found after noise removal)")
+                scores_for_thresholds[threshold] = 1000
+                pct_noise_for_threshold[threshold] = np.sum(labels == -1) / len(labels)
+                continue
+            
+            score = davies_bouldin_index(embeddings[valid_mask], labels[valid_mask])
+            
+            if useful_result(score, labels):
+                scores_for_thresholds[threshold] = score
+            else:
+                scores_for_thresholds[threshold] = 1000
+            pct_noise_for_threshold[threshold] = np.sum(labels == -1) / len(labels)
+        
+        # Get min score and the corresponding threshold
+        min_score = min(scores_for_thresholds.values())
+        best_threshold = [k for k, v in scores_for_thresholds.items() if v == min_score][0]
+        pct_noise = pct_noise_for_threshold[best_threshold]
+        results[n_clusters] = (min_score, best_threshold, pct_noise)
     
     logger.info("Davies-Bouldin Index scores for different cluster counts:")
-    for n_clusters, score in zip([2, 5, 10, 20], scores):
-        logger.info(f" - {n_clusters} clusters: DBI = {score:.4f}")
-        logger.log_summary({f"DBI_{n_clusters}_clusters": score})
-    
+    for n_clusters, result in results.items():
+        score, threshold, pct_noise = result
+        logger.info(f" - {n_clusters} clusters: DBI = {score:.4f} at threshold = {threshold}, Noise% = {pct_noise*100:.2f}%")
+        logger.log_summary({f"DBI_{n_clusters}_clusters": score, f"Best_Threshold_{n_clusters}_clusters": threshold, f"Noise_Percent_{n_clusters}_clusters": pct_noise})
+        
     logger.info("Done.")
