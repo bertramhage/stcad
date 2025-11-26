@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#BSUB -J tune_cure
+#BSUB -J train_cure
 
 #BSUB -q hpc
 

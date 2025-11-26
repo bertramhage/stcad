@@ -1,0 +1,19 @@
+2025-11-26 17:10:16,092 - INFO - Loading embeddings...
+2025-11-26 17:10:19,736 - INFO - Loaded 362986 samples with dimension 256 from /zhome/ea/6/187439/computational-tools-project/data/embeddings.npz
+
+2025-11-26 17:10:19,737 - INFO - Fitting CURE hierarchical clustering...
+2025-11-26 18:07:04,045 - INFO - Fitted CURE model.
+
+2025-11-26 18:07:04,047 - INFO - Saving linkage matrix and sample data to /zhome/ea/6/187439/computational-tools-project/data/models/cure_model...
+2025-11-26 18:07:04,126 - INFO - Saving dendrogram plot...
+2025-11-26 18:07:09,102 - INFO - Saving interactive dendrogram plot...
+Saving interactive plot to /zhome/ea/6/187439/computational-tools-project/data/models/cure_model/interactive_dendrogram.html...
+2025-11-26 18:10:10,947 - INFO - Davies-Bouldin Index scores for different cluster counts:
+2025-11-26 18:10:10,949 - INFO -  - 2 clusters: DBI = 1.2146
+2025-11-26 18:10:12,793 - INFO -  - 5 clusters: DBI = 1.1603
+2025-11-26 18:10:12,794 - INFO -  - 10 clusters: DBI = 1.3047
+2025-11-26 18:10:12,795 - INFO -  - 20 clusters: DBI = 1.6603
+2025-11-26 18:10:12,796 - INFO - Done.
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mrun_cure[0m at: [34m[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251126_171014-oj14jjtr/logs[0m
