@@ -1,6 +1,11 @@
 import numpy as np
+from argparse import ArgumentParser
 from scipy.cluster.hierarchy import dendrogram
 import matplotlib.pyplot as plt
+from src.clustering.utils import davies_bouldin_index
+from src.utils.logging import CustomLogger
+import matplotlib.colors as mcolors
+import os
 
 class AgglomerativeClustering:
     """
@@ -153,27 +158,69 @@ class AgglomerativeClustering:
                 
         return labels
 
-    def plot_dendrogram(self, **kwargs):
+    def plot_dendrogram(self, show_plot=False, save_path=None, p=30, color_by_size=True, **kwargs):
         """
-        Plots the dendrogram using scipy and matplotlib.
-        
-        Parameters:
-        -----------
-        **kwargs : 
-            Arguments passed to scipy.cluster.hierarchy.dendrogram
+        Plots the dendrogram with truncation and size-based coloring.
         """
-
         if self.linkage_matrix_ is None:
             print("Error: Model is not fit yet.")
             return
 
-        plt.figure(figsize=(10, 5))
-        plt.title("Hierarchical Clustering Dendrogram")
-        plt.xlabel("Sample Index")
+        plt.figure(figsize=(12, 6))
+        plt.title(f"Hierarchical Clustering Dendrogram (Truncated to last {p} clusters)")
+        plt.xlabel("Cluster Size / Sample Index")
         plt.ylabel("Distance")
+
+        # --- Feature 1: Coloring by Cluster Size ---
+        link_color_func = None
+        if color_by_size:
+            n_samples = len(self.linkage_matrix_) + 1
+            cluster_sizes = {i: 1 for i in range(n_samples)}
+            
+            for i, row in enumerate(self.linkage_matrix_):
+                cluster_idx = n_samples + i
+                cluster_sizes[cluster_idx] = int(row[3])
+
+            cmap = plt.get_cmap('viridis') 
+            norm = mcolors.LogNorm(vmin=1, vmax=n_samples)
+
+            def size_color_func(k):
+                size = cluster_sizes.get(k, 1)
+                return mcolors.to_hex(cmap(norm(size)))
+                
+            link_color_func = size_color_func
+
+        # --- Feature 2: Truncation ---
+        dendrogram(
+            self.linkage_matrix_,
+            truncate_mode='lastp',
+            p=p,
+            show_contracted=True,
+            leaf_rotation=90.,
+            leaf_font_size=10.,
+            show_leaf_counts=True,
+            link_color_func=link_color_func,
+            **kwargs
+        )
         
-        dendrogram(self.linkage_matrix_, **kwargs)
-        plt.show()
+        # --- FIXED SECTION BELOW ---
+        if color_by_size:
+            sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
+            sm.set_array([])
+            
+            # Get the current Axes explicitly
+            ax = plt.gca()
+            
+            # Tell colorbar which axes to steal space from (ax=ax)
+            cbar = plt.colorbar(sm, ax=ax)
+            cbar.set_label('Number of Samples in Cluster (Log Scale)')
+
+        plt.tight_layout()
+        
+        if save_path is not None:
+            plt.savefig(save_path, dpi=300)
+        if show_plot:
+            plt.show()
 
 class CURE:
     """
@@ -302,3 +349,77 @@ class CURE:
             labels[i] = best_cluster
             
         return labels
+    
+    def plot_dendrogram(self, show_plot=False, save_path: str | None = None, **kwargs):
+        """
+        Plots the dendrogram of the sample clustering.
+        
+        Parameters:
+        -----------
+        show_plot : bool, default=False
+            Whether to display the plot.
+        save_path : str | None, default=None
+            If provided, saves the plot to this path.
+        **kwargs : 
+            Arguments passed to scipy.cluster.hierarchy.dendrogram
+        """
+        if self.agg_ is None:
+            print("Error: Model is not fit yet.")
+            return
+        
+        self.agg_.plot_dendrogram(show_plot=show_plot, save_path=save_path, **kwargs)
+    
+if __name__ == "__main__":
+    parser = ArgumentParser("CURE Hierarchical Clustering for Large Datasets. Build and save entire tree.")
+    parser.add_argument("--data_path", type=str, required=True, help="Path to the dataset (embeddings).")
+    parser.add_argument("--output_path", type=str, required=True, help="Path to save the linkage matrix (npz file).")
+    parser.add_argument("--sample_size", type=int, default=1000, help="Number of points to sample for clustering.")
+    parser.add_argument("--n_representatives", type=int, default=20, help="Number of representatives per cluster.")
+    parser.add_argument("--compression", type=float, default=0.2, help="Compression factor towards centroid (alpha).")
+    parser.add_argument("--linkage", type=str, default="single", choices=["centroid", "single", "complete", "average"], help="Linkage criterion for hierarchical clustering.")
+    parser.add_argument("--dendrogram_p", type=int, default=30, help="Number of last merges to show in dendrogram plot.")
+    args = parser.parse_args()
+    
+    logger = CustomLogger(project_name='Computational-Tools', group='clustering', run_name='run_cure', use_wandb=True)
+    
+    logger.log_config(vars(args))
+    
+    logger.info("Loading embeddings...")
+    data = np.load(args.data_path)
+    embeddings = data["embeddings"]
+    del data
+    logger.info(f"Loaded {embeddings.shape[0]} samples with dimension {embeddings.shape[1]} from {args.data_path}\n")
+    
+    logger.info("Fitting CURE hierarchical clustering...")
+    cure = CURE(sample_size=args.sample_size, n_representatives=args.n_representatives, compression=args.compression, linkage=args.linkage)
+    cure.fit(embeddings)
+    logger.info("Fitted CURE model.\n")
+    
+    logger.info(f"Saving linkage matrix and sample data to {args.output_path}...")
+    os.makedirs(args.output_path, exist_ok=True)
+    model_path = os.path.join(args.output_path, "cure_model.npz")
+    np.savez_compressed(
+        args.output_path, 
+        linkage_matrix=cure.agg_.linkage_matrix_,
+        sample_data=cure.X_sample_
+    )
+    
+    logger.info("Saving dendrogram plot...")
+    dendrogram_path = os.path.join(args.output_path, "dendrogram.png")
+    cure.plot_dendrogram(save_path=dendrogram_path, p=args.dendrogram_p)
+    
+    logger.artifact("dendrogram_plot", dendrogram_path, "image")
+    
+    scores = []
+    for n_clusters in [2, 5, 10, 20]:
+                    labels = cure.get_labels(n_clusters=n_clusters)
+                    score = davies_bouldin_index(embeddings, labels)
+                    scores.append(score)
+    
+    logger.info("Davies-Bouldin Index scores for different cluster counts:")
+    for n_clusters, score in zip([2, 5, 10, 20], scores):
+        logger.info(f" - {n_clusters} clusters: DBI = {score:.4f}")
+        
+    logger.log_summary({"davies_bouldin_index": {n: s for n, s in zip([2, 5, 10, 20], scores)}})
+    
+    logger.info("Done.")
