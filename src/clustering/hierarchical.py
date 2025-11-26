@@ -267,19 +267,72 @@ class CURE:
         self.agg_.fit(self.X_sample_)
         
         return self
-
-    def get_labels(self, n_clusters):
+    
+    def save(self, save_path: str):
         """
-        Generates labels for the full dataset by cutting the sample tree at n_clusters,
-        calculating representatives, and assigning all points.
+        Saves the CURE model to an .npz file.
+        
+        Parameters:
+        -----------
+        save_path : str
+            Path to save the .npz file containing 'linkage_matrix' and 'sample_data'.
+        """
+        if self.agg_ is None or self.X_sample_ is None:
+            raise RuntimeError("Model must be fit before saving.")
+        
+        meta_data = {
+            "n_representatives": self.n_representatives,
+            "compression": self.compression,
+            "linkage": self.linkage,
+            "sample_size": self.sample_size
+        }
+        os.makedirs(os.path.dirname(save_path), exist_ok=True)
+        np.savez_compressed(
+            save_path, 
+            linkage_matrix=self.agg_.linkage_matrix_,
+            sample_data=self.X_sample_,
+            meta_data=meta_data
+        )
+
+    @classmethod
+    def from_pretrained(cls, model_path):
+        """
+        Loads a pretrained CURE model from an .npz file.
+        
+        Parameters:
+        -----------
+        model_path : str
+            Path to the .npz file containing 'linkage_matrix' and 'sample_data'.
+        """
+        data = np.load(model_path, allow_pickle=True)
+        linkage_matrix = data['linkage_matrix']
+        sample_data = data['sample_data']
+        meta_data = data['meta_data'].item()
+        
+        # Create instance
+        instance = cls(sample_size=meta_data["sample_size"],
+                       n_representatives=meta_data["n_representatives"],
+                       compression=meta_data["compression"],
+                       linkage=meta_data["linkage"])
+        
+        # Restore state
+        instance.X_sample_ = sample_data
+        instance.agg_ = AgglomerativeClustering(linkage=meta_data["linkage"])
+        instance.agg_.linkage_matrix_ = linkage_matrix
+        
+        return instance
+
+    def _get_representatives(self, n_clusters):
+        """
+        Internal helper to calculate representatives for a specific number of clusters.
         """
         if self.agg_ is None:
-            raise RuntimeError("Run fit() before get_labels()")
+            raise RuntimeError("Model not fitted.")
 
-        # 1. Get sample labels from the hierarchical tree (fast tree cut)
+        # 1. Get sample labels from the hierarchical tree
         sample_labels = self.agg_.get_labels(n_clusters)
 
-        # 2. Select Representatives (Recalculated for this specific k)
+        # 2. Select Representatives
         representatives = []
         
         for k in range(n_clusters):
@@ -287,6 +340,7 @@ class CURE:
             cluster_points = self.X_sample_[sample_labels == k]
             
             if len(cluster_points) == 0:
+                representatives.append([])
                 continue
 
             # Calculate Centroid
@@ -327,19 +381,33 @@ class CURE:
                 shrunk_reps.append(new_pos)
             
             representatives.append(shrunk_reps)
-
-        # 3. Assign entire dataset (Linear Scan)
-        n_samples = self.X_.shape[0]
+            
+        return representatives
+    
+    def predict(self, X, n_clusters):
+        """
+        Assigns labels to new data points based on the fitted model and a specific number of clusters.
+        """
+        if self.agg_ is None:
+            raise RuntimeError("Run fit() or load_pretrained() before predict()")
+        
+        X = np.array(X)
+        n_samples = X.shape[0]
         labels = np.zeros(n_samples, dtype=int)
         
-        # This linear scan is O(N * k * n_reps), which is much faster than clustering
+        # Get representatives for the requested number of clusters
+        representatives = self._get_representatives(n_clusters)
+
+        # Assign entire dataset (Linear Scan)
         for i in range(n_samples):
-            point = self.X_[i]
+            point = X[i]
             min_dist = np.inf
             best_cluster = -1
             
             # Check distance to ALL representatives of ALL clusters
             for cluster_idx, reps in enumerate(representatives):
+                if not reps:
+                    continue
                 for r in reps:
                     dist = self._euclidean_distance(point, r)
                     if dist < min_dist:
@@ -349,6 +417,15 @@ class CURE:
             labels[i] = best_cluster
             
         return labels
+
+    def get_labels(self, n_clusters):
+        """
+        Generates labels for the full dataset used during fit().
+        """
+        if self.X_ is None:
+            raise RuntimeError("No training data available (model might be loaded from disk). Use predict(X, n_clusters) instead.")
+            
+        return self.predict(self.X_, n_clusters)
     
     def plot_dendrogram(self, show_plot=False, save_path: str | None = None, **kwargs):
         """
@@ -398,17 +475,13 @@ if __name__ == "__main__":
     logger.info(f"Saving linkage matrix and sample data to {args.output_path}...")
     os.makedirs(args.output_path, exist_ok=True)
     model_path = os.path.join(args.output_path, "cure_model.npz")
-    np.savez_compressed(
-        args.output_path, 
-        linkage_matrix=cure.agg_.linkage_matrix_,
-        sample_data=cure.X_sample_
-    )
+    cure.save(model_path)
     
     logger.info("Saving dendrogram plot...")
     dendrogram_path = os.path.join(args.output_path, "dendrogram.png")
     cure.plot_dendrogram(save_path=dendrogram_path, p=args.dendrogram_p)
     
-    logger.artifact("dendrogram_plot", dendrogram_path, "image")
+    logger.artifact(dendrogram_path, "dendrogram", "image")
     
     scores = []
     for n_clusters in [2, 5, 10, 20]:
@@ -419,7 +492,6 @@ if __name__ == "__main__":
     logger.info("Davies-Bouldin Index scores for different cluster counts:")
     for n_clusters, score in zip([2, 5, 10, 20], scores):
         logger.info(f" - {n_clusters} clusters: DBI = {score:.4f}")
-        
-    logger.log_summary({"davies_bouldin_index": {n: s for n, s in zip([2, 5, 10, 20], scores)}})
+        logger.log_summary({f"DBI_{n_clusters}_clusters": score})
     
     logger.info("Done.")
