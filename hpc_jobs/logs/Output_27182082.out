@@ -1,2 +1,4 @@
 2025-11-26 12:15:17,929 - INFO - Output directory for final results: /dtu/blackhole/10/178320/preprocessed_2024_2/final/
 2025-11-26 12:15:20,007 - INFO - Starting reduce phase on 38026 MMSI folders
+2025-11-26 15:32:29,503 - INFO - Combining vessel type information from all chunks...
+2025-11-26 15:32:31,062 - INFO - Combined vessel type map saved to /dtu/blackhole/10/178320/preprocessed_2024_2/final/vessel_types.pkl
