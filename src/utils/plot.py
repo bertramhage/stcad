@@ -7,6 +7,15 @@ from src.preprocessing.preprocessing import de_normalize_track
 from src.preprocessing.preprocessing import (LAT_MIN, LAT_MAX, LON_MIN, LON_MAX,
                                              LAT, LON) # Indeces
 
+def plot_scatter(data: np.ndarray, title: str = None, xlab: str = None, ylab: str = None, color: str = 'blue'):
+    plt.figure(figsize=(10, 8))
+    scatter = plt.scatter(data[:, 0], data[:, 1], c=color, alpha=0.5)
+    plt.title(title)
+    plt.xlabel(xlab)
+    plt.ylabel(ylab)
+    plt.grid(True)
+    plt.show()
+
 def plot_trajectories(track_list: list[dict]):
     """
     Plots multiple trajectories on the same plot.
