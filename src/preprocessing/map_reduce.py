@@ -179,7 +179,7 @@ if __name__ == "__main__":
         "num_workers": num_workers
     })
     
-    map_and_shuffle(input_dir=args.input_dir, temp_dir=temp_dir, logger=logger)
+    #map_and_shuffle(input_dir=args.input_dir, temp_dir=temp_dir, logger=logger)
     
     # Reduce in parallel
     reduce(final_dir=args.output_dir, temp_dir=temp_dir, n_workers=num_workers, logger=logger)

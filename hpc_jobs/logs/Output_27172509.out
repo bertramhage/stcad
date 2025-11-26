@@ -1,0 +1,10 @@
+2025-11-25 14:58:33,523 - INFO - Found 366 CSV files in /dtu/blackhole/10/178320/ais_2024/.
+2025-11-25 20:57:46,290 - INFO - Conversion completed.
+2025-11-25 20:57:46,317 - INFO - Total messages processed: 6887578891
+2025-11-25 20:57:46,317 - INFO - Total messages after filtering: 5383009610
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mpipeline_2024_csv2pkl[0m at: [34m[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251125_145827-aeyo9yf4/logs[0m
+2025-11-25 20:59:03,340 - INFO - Starting map and shuffle phase on 366 files...
+2025-11-25 22:40:38,763 - INFO - Output directory for final results: /dtu/blackhole/10/178320/preprocessed_2024_2/final/
+2025-11-25 22:40:39,062 - INFO - Starting reduce phase on 38026 MMSI folders

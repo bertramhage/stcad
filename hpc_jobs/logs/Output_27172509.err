@@ -1,0 +1,2267 @@
+wandb: Currently logged in as: bertram-hage (bertram-hage-danmarks-tekniske-universitet-dtu) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.23.0
+wandb: Run data is saved locally in /zhome/ea/6/187439/computational-tools-project/wandb/run-20251125_145827-aeyo9yf4
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run pipeline_2024_csv2pkl
+wandb: ⭐️ View project at https://wandb.ai/bertram-hage-danmarks-tekniske-universitet-dtu/Computational-Tools
+wandb: 🚀 View run at https://wandb.ai/bertram-hage-danmarks-tekniske-universitet-dtu/Computational-Tools/runs/aeyo9yf4
+wandb: Currently logged in as: bertram-hage (bertram-hage-danmarks-tekniske-universitet-dtu) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: setting up run e9xc2mhy
+wandb: Tracking run with wandb version 0.23.0
+wandb: Run data is saved locally in /zhome/ea/6/187439/computational-tools-project/wandb/run-20251125_205900-e9xc2mhy
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run pipeline_2024_map_reduce
+wandb: ⭐️ View project at https://wandb.ai/bertram-hage-danmarks-tekniske-universitet-dtu/Computational-Tools
+wandb: 🚀 View run at https://wandb.ai/bertram-hage-danmarks-tekniske-universitet-dtu/Computational-Tools/runs/e9xc2mhy
+Process ForkPoolWorker-18:
+Process ForkPoolWorker-61:
+Process ForkPoolWorker-27:
+Process ForkPoolWorker-62:
+Process ForkPoolWorker-49:
+Process ForkPoolWorker-42:
+Process ForkPoolWorker-16:
+Process ForkPoolWorker-9:
+Process ForkPoolWorker-60:
+Process ForkPoolWorker-14:
+Process ForkPoolWorker-22:
+Process ForkPoolWorker-64:
+Process ForkPoolWorker-29:
+Process ForkPoolWorker-38:
+Process ForkPoolWorker-24:
+Process ForkPoolWorker-33:
+Process ForkPoolWorker-2:
+Process ForkPoolWorker-30:
+Process ForkPoolWorker-32:
+Process ForkPoolWorker-47:
+Process ForkPoolWorker-31:
+Process ForkPoolWorker-51:
+Process ForkPoolWorker-7:
+Process ForkPoolWorker-50:
+Process ForkPoolWorker-1:
+Process ForkPoolWorker-39:
+Process ForkPoolWorker-45:
+Process ForkPoolWorker-21:
+Process ForkPoolWorker-8:
+Process ForkPoolWorker-48:
+Process ForkPoolWorker-23:
+Process ForkPoolWorker-55:
+Process ForkPoolWorker-59:
+Process ForkPoolWorker-58:
+Process ForkPoolWorker-5:
+Process ForkPoolWorker-53:
+Process ForkPoolWorker-3:
+Process ForkPoolWorker-44:
+Process ForkPoolWorker-34:
+Process ForkPoolWorker-52:
+Process ForkPoolWorker-6:
+Process ForkPoolWorker-43:
+Process ForkPoolWorker-40:
+Process ForkPoolWorker-54:
+Process ForkPoolWorker-57:
+Process ForkPoolWorker-46:
+Process ForkPoolWorker-66:
+Process ForkPoolWorker-4:
+Process ForkPoolWorker-10:
+Process ForkPoolWorker-35:
+Process ForkPoolWorker-36:
+Process ForkPoolWorker-11:
+Process ForkPoolWorker-12:
+Process ForkPoolWorker-63:
+Process ForkPoolWorker-37:
+Process ForkPoolWorker-65:
+Process ForkPoolWorker-15:
+Process ForkPoolWorker-26:
+Process ForkPoolWorker-20:
+Process ForkPoolWorker-19:
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 107, in preprocess_mmsi_track
+    if sampling_track is not None:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 78, in preprocess_mmsi_track
+    o_report, o_calcul = utils.detectOutlier(track, speed_max = SPEED_MAX)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 102, in detectOutlier
+    _, _, d = geod.inv(track_filtered[:-i, 2], track_filtered[:-i, 1],
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 78, in preprocess_mmsi_track
+    o_report, o_calcul = utils.detectOutlier(track, speed_max = SPEED_MAX)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 78, in preprocess_mmsi_track
+    o_report, o_calcul = utils.detectOutlier(track, speed_max = SPEED_MAX)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 78, in preprocess_mmsi_track
+    o_report, o_calcul = utils.detectOutlier(track, speed_max = SPEED_MAX)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/pyproj/geod.py", line 414, in inv
+    self._inv(
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 78, in preprocess_mmsi_track
+    o_report, o_calcul = utils.detectOutlier(track, speed_max = SPEED_MAX)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 102, in detectOutlier
+    _, _, d = geod.inv(track_filtered[:-i, 2], track_filtered[:-i, 1],
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 91, in detectOutlier
+    A = sparse.lil_matrix((N, N), dtype=np.int8)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 102, in detectOutlier
+    _, _, d = geod.inv(track_filtered[:-i, 2], track_filtered[:-i, 1],
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 102, in detectOutlier
+    _, _, d = geod.inv(track_filtered[:-i, 2], track_filtered[:-i, 1],
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/pyproj/geod.py", line 414, in inv
+    self._inv(
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/pyproj/geod.py", line 414, in inv
+    self._inv(
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/scipy/sparse/_lil.py", line 52, in __init__
+    self.data[i] = []
+    ~~~~~~~~~^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/pyproj/geod.py", line 414, in inv
+    self._inv(
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+KeyboardInterrupt
+KeyboardInterrupt
+KeyboardInterrupt
+KeyboardInterrupt
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 102, in preprocess_mmsi_track
+    sampling_track = np.vstack([sampling_track, tmp])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/shape_base.py", line 292, in vstack
+    return _nx.concatenate(arrs, 0, dtype=dtype, casting=casting)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 856, in next
+    item = self._items.popleft()
+           ^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+IndexError: pop from an empty deque
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 53, in process_single_mmsi
+    track_segment = joblib.load(segment_path)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/joblib/numpy_pickle.py", line 736, in load
+    with _validate_fileobject_and_memmap(f, filename, mmap_mode) as (
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/contextlib.py", line 141, in __exit__
+    def __exit__(self, typ, value, traceback):
+    
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 317, in _bootstrap
+    util._exit_function()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/util.py", line 323, in _exit_function
+    def _exit_function(info=info, debug=debug, _run_finalizers=_run_finalizers,
+    
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 119, in reduce
+    for i, result in enumerate(pool.imap_unordered(process_single_mmsi, mmsi_tasks, chunksize=chunk_size), 1):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 451, in <genexpr>
+    return (item for chunk in result for item in chunk)
+                              ^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 861, in next
+    self._cond.wait(timeout)
+  File "/appl9/python/3.12.11/lib/python3.12/threading.py", line 355, in wait
+    waiter.acquire()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 185, in <module>
+    reduce(final_dir=args.output_dir, temp_dir=temp_dir, n_workers=num_workers, logger=logger)
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 118, in reduce
+    with Pool(processes=n_workers, maxtasksperchild=max(1,1000//chunk_size)) as pool:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 739, in __exit__
+    self.terminate()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 657, in terminate
+    self._terminate()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/util.py", line 225, in __call__
+    sub_debug('finalizer calling %s with args %s and kwargs %s',
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/util.py", line 44, in sub_debug
+    def sub_debug(msg, *args):
+    
+KeyboardInterrupt
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+Traceback (most recent call last):
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+KeyboardInterrupt
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2111, in nonzero
+    return _wrapfunc(a, 'nonzero')
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 57, in _wrapfunc
+    return bound(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2111, in nonzero
+    return _wrapfunc(a, 'nonzero')
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 57, in _wrapfunc
+    return bound(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+KeyboardInterrupt
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2111, in nonzero
+    return _wrapfunc(a, 'nonzero')
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 57, in _wrapfunc
+    return bound(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+KeyboardInterrupt
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+KeyboardInterrupt
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2111, in nonzero
+    return _wrapfunc(a, 'nonzero')
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 57, in _wrapfunc
+    return bound(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+KeyboardInterrupt
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+
+During handling of the above exception, another exception occurred:
+
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 317, in _bootstrap
+    util._exit_function()
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/util.py", line 323, in _exit_function
+    def _exit_function(info=info, debug=debug, _run_finalizers=_run_finalizers,
+    
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+KeyboardInterrupt
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2111, in nonzero
+    return _wrapfunc(a, 'nonzero')
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 57, in _wrapfunc
+    return bound(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+Traceback (most recent call last):
+KeyboardInterrupt
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+KeyboardInterrupt
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+KeyboardInterrupt
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+KeyboardInterrupt
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2111, in nonzero
+    return _wrapfunc(a, 'nonzero')
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 57, in _wrapfunc
+    return bound(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+KeyboardInterrupt
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+KeyboardInterrupt
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+Traceback (most recent call last):
+Process ForkPoolWorker-13:
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+Process ForkPoolWorker-41:
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2111, in nonzero
+    return _wrapfunc(a, 'nonzero')
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 57, in _wrapfunc
+    return bound(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Process ForkPoolWorker-25:
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 147, in interpolate
+    after_p = np.nonzero(t < track[:,TIMESTAMP])[0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 100, in preprocess_mmsi_track
+    tmp = utils.interpolate(t,v)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 146, in interpolate
+    before_p = np.nonzero(t >= track[:,TIMESTAMP])[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py", line 2014, in _nonzero_dispatcher
+    def _nonzero_dispatcher(a):
+    
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 78, in preprocess_mmsi_track
+    o_report, o_calcul = utils.detectOutlier(track, speed_max = SPEED_MAX)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 102, in detectOutlier
+    _, _, d = geod.inv(track_filtered[:-i, 2], track_filtered[:-i, 1],
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/pyproj/geod.py", line 414, in inv
+    self._inv(
+KeyboardInterrupt
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 78, in preprocess_mmsi_track
+    o_report, o_calcul = utils.detectOutlier(track, speed_max = SPEED_MAX)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 91, in detectOutlier
+    A = sparse.lil_matrix((N, N), dtype=np.int8)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/scipy/sparse/_lil.py", line 52, in __init__
+    self.data[i] = []
+    ~~~~~~~~~^^^
+KeyboardInterrupt
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 78, in preprocess_mmsi_track
+    o_report, o_calcul = utils.detectOutlier(track, speed_max = SPEED_MAX)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 91, in detectOutlier
+    A = sparse.lil_matrix((N, N), dtype=np.int8)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/scipy/sparse/_lil.py", line 52, in __init__
+    self.data[i] = []
+    ~~~~~~~~~^^^
+KeyboardInterrupt
+Process ForkPoolWorker-17:
+Traceback (most recent call last):
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/multiprocessing/pool.py", line 48, in mapstar
+    return list(map(*args))
+           ^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/map_reduce.py", line 69, in process_single_mmsi
+    processed_data, preprocessing_results = preprocess_mmsi_track(full_track)
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/preprocessing.py", line 78, in preprocess_mmsi_track
+    o_report, o_calcul = utils.detectOutlier(track, speed_max = SPEED_MAX)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/src/preprocessing/utils.py", line 102, in detectOutlier
+    _, _, d = geod.inv(track_filtered[:-i, 2], track_filtered[:-i, 1],
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/pyproj/geod.py", line 414, in inv
+    self._inv(
+KeyboardInterrupt
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+Exception ignored in atexit callback: <function _start_and_connect_service.<locals>.teardown_atexit at 0x7fccfd930400>
+Traceback (most recent call last):
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 61, in teardown_atexit
+    conn.teardown(hooks.exit_code)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 236, in teardown
+socket.send() raised exception.
+socket.send() raised exception.
+    self._asyncer.run(publish_teardown_and_close)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 136, in run
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/appl9/python/3.12.11/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+socket.send() raised exception.
+socket.send() raised exception.
+    raise self._exception
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    socket.send() raised exception.
+socket.send() raised exception.
+await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 219, in _wrap
+    return await fn()
+           ^^^^^^^^^^
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_connection.py", line 227, in publish_teardown_and_close
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._client.publish(
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)socket.send() raised exception.
+socket.send() raised exception.
+
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    socket.send() raised exception.
+socket.send() raised exception.
+await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    socket.send() raised exception.
+await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    socket.send() raised exception.
+socket.send() raised exception.
+raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+socket.send() raised exception.
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+socket.send() raised exception.
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+socket.send() raised exception.
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+    raise exc
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/asyncio_manager.py", line 181, in fn_wrap_exceptions
+socket.send() raised exception.
+    await fn()
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 38, in publish
+    await self._send_server_request(request)
+  File "/zhome/ea/6/187439/computational-tools-project/.venv/lib/python3.12/site-packages/wandb/sdk/lib/service/service_client.py", line 64, in _send_server_request
+    await self._writer.drain()
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/streams.py", line 380, in drain
+socket.send() raised exception.
+    raise exc
+  File "/appl9/python/3.12.11/lib/python3.12/asyncio/selector_events.py", line 1075, in write
+socket.send() raised exception.
+    n = self._sock.send(data)
+        ^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [Errno 32] Broken pipe
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
+socket.send() raised exception.
