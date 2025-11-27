@@ -6,6 +6,7 @@ from src.clustering.utils import davies_bouldin_index
 from src.utils.logging import CustomLogger
 import matplotlib.colors as mcolors
 from src.clustering.interactive_plot import plot_interactive_dendrogram
+from src.clustering.utils import euclidean_distance, cluster_distance
 import os
 
 class AgglomerativeClustering:
@@ -21,97 +22,68 @@ class AgglomerativeClustering:
         - 'complete': Maximum distance between any single point in one cluster and any point in the other.
         - 'average': Average distance between all points in one cluster and all points in the other.
     """
-    def __init__(self, linkage='centroid'):
+    def __init__(self, linkage='centroid', pruning_fraction=0.1, pruning_min_size=1):
         self.linkage = linkage
-        self.linkage_matrix_ = None # Stores the (n-1) x 4 linkage matrix for dendrograms
-
-    def _euclidean_distance(self, a, b):
-        return np.linalg.norm(a - b)
-
-    def _compute_distance(self, cluster1_indices, cluster2_indices, X):
-        points1 = X[cluster1_indices]
-        points2 = X[cluster2_indices]
-
-        if self.linkage == 'centroid':
-            centroid1 = np.mean(points1, axis=0)
-            centroid2 = np.mean(points2, axis=0)
-            return self._euclidean_distance(centroid1, centroid2)
-
-        elif self.linkage == 'single':
-            min_dist = np.inf
-            for p1 in points1:
-                for p2 in points2:
-                    dist = self._euclidean_distance(p1, p2)
-                    if dist < min_dist:
-                        min_dist = dist
-            return min_dist
-
-        elif self.linkage == 'complete':
-            max_dist = -1
-            for p1 in points1:
-                for p2 in points2:
-                    dist = self._euclidean_distance(p1, p2)
-                    if dist > max_dist:
-                        max_dist = dist
-            return max_dist
-
-        elif self.linkage == 'average':
-            distances = []
-            for p1 in points1:
-                for p2 in points2:
-                    distances.append(self._euclidean_distance(p1, p2))
-            return np.mean(distances)
-        else:
-            raise ValueError(f"Unknown linkage type: {self.linkage}")
+        self.linkage_matrix_ = None
+        self.pruning_fraction = pruning_fraction
+        self.pruning_min_size = pruning_min_size
+        self.noise_points_ = []
 
     def fit(self, X):
-        """
-        Fit the model and build the Linkage Matrix.
-        """
+        """ Fit the model and build the Linkage Matrix. """
         X = np.array(X)
         n_samples = X.shape[0]
+        self.n_samples_ = n_samples
         
-        # Dictionary to store active clusters: {cluster_id: [list of sample indices]}
-        # We start with clusters 0 to n-1
+        # Initialize clusters
         current_clusters = {i: [i] for i in range(n_samples)}
         
-        # List to store the history of merges in Linkage Matrix format
-        # [idx1, idx2, distance, sample_count]
         self.linkage_matrix_ = []
         
-        # Counter for the next cluster ID (starts after the last sample index)
+        # Create a id new clusters
         next_cluster_id = n_samples
+        
+        pruning_triggered = False
 
         # Loop until one cluster remains
         while len(current_clusters) > 1:
+            if not pruning_triggered and len(current_clusters) <= n_samples * self.pruning_fraction:
+                pruning_triggered = True
+                
+                ids_to_prune = []
+                for cid, indices in current_clusters.items():
+                    if len(indices) <= self.pruning_min_size:
+                        ids_to_prune.append(cid)
+                        self.noise_points_.extend(indices)
+                
+                for cid in ids_to_prune:
+                    del current_clusters[cid]
+            
             active_ids = list(current_clusters.keys())
             min_dist = np.inf
             best_pair = None
 
             # Find closest pair of active clusters
-            # O(N^3) naive implementation
             for i in range(len(active_ids)):
                 for j in range(i + 1, len(active_ids)):
                     id1 = active_ids[i]
                     id2 = active_ids[j]
                     
-                    dist = self._compute_distance(current_clusters[id1], current_clusters[id2], X)
+                    dist = cluster_distance(X, current_clusters[id1], current_clusters[id2], linkage=self.linkage)
                     
                     if dist < min_dist:
                         min_dist = dist
                         best_pair = (id1, id2)
-
-            # Perform the merge
+                        
             c1, c2 = best_pair
             
             # Create new cluster
             new_indices = current_clusters[c1] + current_clusters[c2]
             
-            # Record merge in standard Linkage Matrix format
-            # We cast to float for consistency with scipy
+            # Store [c1, c2, distance, size]
             self.linkage_matrix_.append([float(c1), float(c2), float(min_dist), len(new_indices)])
             
-            # Update active clusters
+            # Update clusters
             del current_clusters[c1]
             del current_clusters[c2]
             current_clusters[next_cluster_id] = new_indices
@@ -122,78 +94,121 @@ class AgglomerativeClustering:
         return self
 
     def get_labels(self, n_clusters):
-        """
-        Replays the clustering history to return labels for a specific number of clusters.
-        """
+        """ Replays the clustering history to return labels for a specific number of clusters. """
         if self.linkage_matrix_ is None:
             raise RuntimeError("Model must be fit before getting labels.")
             
-        n_samples = len(self.linkage_matrix_) + 1
-        if n_clusters < 1 or n_clusters > n_samples:
-            raise ValueError(f"n_clusters must be between 1 and {n_samples}")
+        n_samples = self.n_samples_ - len(self.noise_points_)
 
-        # Reconstruct state
-        # 1. Start with singletons
-        current_clusters = {i: [i] for i in range(n_samples)}
+        # Reconstruct state at desired number of clusters
+        current_clusters = {i: [i] for i in range(self.n_samples_)}
         
-        # 2. We perform (n_samples - n_clusters) merges to reach the desired state
         num_merges = n_samples - n_clusters
-        
         for i in range(num_merges):
-            # linkage_matrix row: [c1, c2, dist, size]
             row = self.linkage_matrix_[i]
             c1, c2 = int(row[0]), int(row[1])
-            new_id = n_samples + i
+            new_id = self.n_samples_ + i
             
-            # Merge
             current_clusters[new_id] = current_clusters[c1] + current_clusters[c2]
             del current_clusters[c1]
             del current_clusters[c2]
 
-        # 3. Assign labels
-        labels = np.zeros(n_samples, dtype=int)
-        # Sort keys to ensure deterministic labeling order
-        for label_id, cluster_id in enumerate(sorted(current_clusters.keys())):
-            for sample_idx in current_clusters[cluster_id]:
-                labels[sample_idx] = label_id
+        # Assign labels
+        noise_set = set(self.noise_points_)
+        labels = np.full(self.n_samples_, -1, dtype=int) # Initialize as noise
+        valid_label_id = 0
+        for cluster_id in sorted(current_clusters.keys()):
+            indices = current_clusters[cluster_id]
+            if indices[0] in noise_set:
+                continue
+            for sample_idx in indices:
+                labels[sample_idx] = valid_label_id
+            valid_label_id += 1
                 
         return labels
 
-    def plot_dendrogram(self, show_plot=False, save_path=None, p=30, color_by_size=True, **kwargs):
-        """
-        Plots the dendrogram with truncation and size-based coloring.
-        """
+    def plot_dendrogram(self, show_plot=False, save_path=None, p=30, **kwargs):
+        """ Plots the dendrogram with truncation and size-based coloring. """
         if self.linkage_matrix_ is None:
-            print("Error: Model is not fit yet.")
-            return
+            raise RuntimeError("Model must be fit before plotting dendrogram.")
 
         plt.figure(figsize=(12, 6))
         plt.title(f"Hierarchical Clustering Dendrogram (Truncated to last {p} clusters)")
         plt.xlabel("Cluster Size / Sample Index")
         plt.ylabel("Distance")
+        
+        # Add noise points
+        # 1. Identify Survivors
+        # We need the set of noise indices. 
+        # Ensure you populated self.noise_points_ in fit() as discussed previously!
+        all_indices = set(range(self.n_samples_))
+        noise_set = set(self.noise_points_) if hasattr(self, 'noise_points_') else set()
+        
+        # Sort survivors to maintain relative order
+        survivors = sorted(list(all_indices - noise_set))
+        n_survivors = len(survivors)
+        
+        if n_survivors < 2:
+            print("Not enough points survived pruning to plot a dendrogram.")
+            return
 
-        # --- Feature 1: Coloring by Cluster Size ---
-        link_color_func = None
-        if color_by_size:
-            n_samples = len(self.linkage_matrix_) + 1
-            cluster_sizes = {i: 1 for i in range(n_samples)}
+        # 2. Create the Mapping
+        # Map: Old_Leaf_ID -> New_Leaf_ID (0 to M-1)
+        id_map = {old_idx: new_idx for new_idx, old_idx in enumerate(survivors)}
+
+        # 3. Translate the Linkage Matrix
+        # We need to map the inputs of every row in the matrix.
+        clean_Z = []
+        
+        # The 'fit' method generates cluster IDs starting at n_samples.
+        # We need to map those Old_Cluster_IDs to New_Cluster_IDs starting at n_survivors.
+        
+        # Iterating through the existing valid matrix
+        for i, row in enumerate(self.linkage_matrix_):
+            old_c1, old_c2, dist, size = row
+            old_c1, old_c2 = int(old_c1), int(old_c2)
             
-            for i, row in enumerate(self.linkage_matrix_):
-                cluster_idx = n_samples + i
-                cluster_sizes[cluster_idx] = int(row[3])
+            # Map the inputs
+            # If input is not in map, it means we have a logic error or it's a pruned point 
+            # (but pruned points shouldn't be in linkage_matrix_ in your code)
+            if old_c1 not in id_map or old_c2 not in id_map:
+                continue # Skip rows that somehow reference noise (safety check)
 
-            cmap = plt.get_cmap('viridis') 
-            norm = mcolors.LogNorm(vmin=1, vmax=n_samples)
+            new_c1 = id_map[old_c1]
+            new_c2 = id_map[old_c2]
+            
+            clean_Z.append([float(new_c1), float(new_c2), dist, size])
+            
+            # The result of this row creates a new cluster.
+            # Old ID: self.n_samples_ + i
+            # New ID: n_survivors + len(clean_Z) - 1
+            old_result_id = self.n_samples_ + i
+            new_result_id = n_survivors + len(clean_Z) - 1
+            
+            # Update map for future rows that might reference this cluster
+            id_map[old_result_id] = new_result_id
 
-            def size_color_func(k):
-                size = cluster_sizes.get(k, 1)
-                return mcolors.to_hex(cmap(norm(size)))
-                
-            link_color_func = size_color_func
+        clean_Z = np.array(clean_Z)
+        # Coloring by Cluster Size
+        link_color_func = None
+        n_samples = len(clean_Z) + 1
+        cluster_sizes = {i: 1 for i in range(n_samples)}
+        
+        for i, row in enumerate(clean_Z):
+            cluster_idx = n_samples + i
+            cluster_sizes[cluster_idx] = int(row[3])
 
-        # --- Feature 2: Truncation ---
+        cmap = plt.get_cmap('viridis') 
+        norm = mcolors.LogNorm(vmin=1, vmax=n_samples)
+
+        def size_color_func(k):
+            size = cluster_sizes.get(k, 1)
+            return mcolors.to_hex(cmap(norm(size)))
+            
+        link_color_func = size_color_func
+
         dendrogram(
-            self.linkage_matrix_,
+            clean_Z,
             truncate_mode='lastp',
             p=p,
             show_contracted=True,
@@ -203,18 +218,14 @@ class AgglomerativeClustering:
             link_color_func=link_color_func,
             **kwargs
         )
+
+        # Create colorbar for cluster sizes
+        sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
+        sm.set_array([])
         
-        # --- FIXED SECTION BELOW ---
-        if color_by_size:
-            sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
-            sm.set_array([])
-            
-            # Get the current Axes explicitly
-            ax = plt.gca()
-            
-            # Tell colorbar which axes to steal space from (ax=ax)
-            cbar = plt.colorbar(sm, ax=ax)
-            cbar.set_label('Number of Samples in Cluster (Log Scale)')
+        ax = plt.gca()
+        cbar = plt.colorbar(sm, ax=ax)
+        cbar.set_label('Number of Samples in Cluster (Log Scale)')
 
         plt.tight_layout()
         
@@ -232,17 +243,25 @@ class CURE:
     2. Identifying representative points for each cluster.
     3. Assigning the remaining data to the closest representative.
     """
-    def __init__(self, sample_size=200, n_representatives=4, compression=0.5, linkage='centroid'):
+    def __init__(self, sample_size=200,
+                 n_representatives=4,
+                 compression=0.5,
+                 linkage='centroid',
+                 pruning_fraction=0.1,
+                 pruning_min_size=1,
+                 assignment_threshold=None,
+                 seed=42):
         self.sample_size = sample_size
         self.n_representatives = n_representatives
         self.compression = compression # Alpha: how much to shrink towards centroid
         self.linkage = linkage
+        self.pruning_fraction = pruning_fraction
+        self.pruning_min_size = pruning_min_size
+        self.assignment_threshold = assignment_threshold if assignment_threshold is not None else np.inf
+        self.seed = seed
         self.agg_ = None
         self.X_sample_ = None
         self.X_ = None # Store reference to full dataset
-
-    def _euclidean_distance(self, a, b):
-        return np.linalg.norm(a - b)
 
     def fit(self, X):
         """
@@ -259,12 +278,13 @@ class CURE:
             self.X_sample_ = self.X_
         else:
             # Randomly select sample points
+            np.random.seed(self.seed)
             sample_indices = np.random.choice(n_samples, self.sample_size, replace=False)
             self.X_sample_ = self.X_[sample_indices]
 
         # 2. Cluster the Sample (The expensive part, but on small N)
         # We reuse our custom AgglomerativeClustering class which builds the full tree
-        self.agg_ = AgglomerativeClustering(linkage=self.linkage)
+        self.agg_ = AgglomerativeClustering(linkage=self.linkage, pruning_fraction=self.pruning_fraction, pruning_min_size=self.pruning_min_size)
         self.agg_.fit(self.X_sample_)
         
         return self
@@ -285,7 +305,11 @@ class CURE:
             "n_representatives": self.n_representatives,
             "compression": self.compression,
             "linkage": self.linkage,
-            "sample_size": self.sample_size
+            "sample_size": self.sample_size,
+            "seed": self.seed,
+            "pruning_fraction": self.pruning_fraction,
+            "pruning_min_size": self.pruning_min_size,
+            "assignment_threshold": self.assignment_threshold
         }
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
         np.savez_compressed(
@@ -314,11 +338,15 @@ class CURE:
         instance = cls(sample_size=meta_data["sample_size"],
                        n_representatives=meta_data["n_representatives"],
                        compression=meta_data["compression"],
-                       linkage=meta_data["linkage"])
+                       linkage=meta_data["linkage"],
+                       pruning_fraction=meta_data["pruning_fraction"],
+                       pruning_min_size=meta_data["pruning_min_size"],
+                       assignment_threshold=meta_data["assignment_threshold"],
+                       seed=meta_data["seed"])
         
         # Restore state
         instance.X_sample_ = sample_data
-        instance.agg_ = AgglomerativeClustering(linkage=meta_data["linkage"])
+        instance.agg_ = AgglomerativeClustering(linkage=meta_data["linkage"], pruning_fraction=meta_data["pruning_fraction"], pruning_min_size=meta_data["pruning_min_size"])
         instance.agg_.linkage_matrix_ = linkage_matrix
         
         return instance
@@ -354,7 +382,7 @@ class CURE:
             else:
                 # Standard CURE selection:
                 # 1. First point is farthest from centroid
-                dists = [self._euclidean_distance(p, centroid) for p in cluster_points]
+                dists = [euclidean_distance(p, centroid) for p in cluster_points]
                 first_idx = np.argmax(dists)
                 reps.append(cluster_points[first_idx])
                 
@@ -365,7 +393,7 @@ class CURE:
                     
                     for p in cluster_points:
                         # Find min distance to any existing rep
-                        min_dist_to_reps = min([self._euclidean_distance(p, r) for r in reps])
+                        min_dist_to_reps = min([euclidean_distance(p, r) for r in reps])
                         
                         if min_dist_to_reps > max_min_dist:
                             max_min_dist = min_dist_to_reps
@@ -410,12 +438,15 @@ class CURE:
                 if not reps:
                     continue
                 for r in reps:
-                    dist = self._euclidean_distance(point, r)
+                    dist = euclidean_distance(point, r)
                     if dist < min_dist:
                         min_dist = dist
                         best_cluster = cluster_idx
             
-            labels[i] = best_cluster
+            if min_dist > self.assignment_threshold:
+                labels[i] = -1
+            else:
+                labels[i] = best_cluster
             
         return labels
 
@@ -428,7 +459,7 @@ class CURE:
             
         return self.predict(self.X_, n_clusters)
     
-    def plot_dendrogram(self, show_plot=False, save_path: str | None = None, **kwargs):
+    def plot_dendrogram(self, p=100, show_plot=False, save_path: str | None = None, **kwargs):
         """
         Plots the dendrogram of the sample clustering.
         
@@ -445,7 +476,7 @@ class CURE:
             print("Error: Model is not fit yet.")
             return
         
-        self.agg_.plot_dendrogram(show_plot=show_plot, save_path=save_path, **kwargs)
+        self.agg_.plot_dendrogram(p=p, show_plot=show_plot, save_path=save_path, **kwargs)
     
 if __name__ == "__main__":
     parser = ArgumentParser("CURE Hierarchical Clustering for Large Datasets. Build and save entire tree.")
@@ -454,11 +485,15 @@ if __name__ == "__main__":
     parser.add_argument("--sample_size", type=int, default=1000, help="Number of points to sample for clustering.")
     parser.add_argument("--n_representatives", type=int, default=20, help="Number of representatives per cluster.")
     parser.add_argument("--compression", type=float, default=0.2, help="Compression factor towards centroid (alpha).")
-    parser.add_argument("--linkage", type=str, default="single", choices=["centroid", "single", "complete", "average"], help="Linkage criterion for hierarchical clustering.")
-    parser.add_argument("--dendrogram_p", type=int, default=30, help="Number of last merges to show in dendrogram plot.")
+    parser.add_argument("--linkage", type=str, default="single", choices=["single", "average", "ward"], help="Linkage criterion for hierarchical clustering.")
+    parser.add_argument("--seed", type=int, default=42, help="Random seed for sampling.")
+    parser.add_argument("--pruning_fraction", type=float, default=0.1, help="Fraction of clusters to prune as noise during fitting.")
+    parser.add_argument("--pruning_min_size", type=int, default=1, help=" Minimum cluster size to avoid being pruned as noise.")
+    parser.add_argument("--assignment_threshold", type=float, default=None, help="Maximum distance to assign a point to a cluster.")
+    parser.add_argument("--dendrogram_p", type=int, default=100, help="Number of last merges to show in dendrogram plot.")
     args = parser.parse_args()
     
-    logger = CustomLogger(project_name='Computational-Tools', group='clustering', run_name='run_cure', use_wandb=True)
+    logger = CustomLogger(project_name='Computational-Tools', group='clustering', run_name='tune_cure', use_wandb=True)
     
     logger.log_config(vars(args))
     
@@ -469,7 +504,7 @@ if __name__ == "__main__":
     logger.info(f"Loaded {embeddings.shape[0]} samples with dimension {embeddings.shape[1]} from {args.data_path}\n")
     
     logger.info("Fitting CURE hierarchical clustering...")
-    cure = CURE(sample_size=args.sample_size, n_representatives=args.n_representatives, compression=args.compression, linkage=args.linkage)
+    cure = CURE(sample_size=args.sample_size, n_representatives=args.n_representatives, compression=args.compression, linkage=args.linkage, assignment_threshold=args.assignment_threshold)
     cure.fit(embeddings)
     logger.info("Fitted CURE model.\n")
     
@@ -484,20 +519,29 @@ if __name__ == "__main__":
     logger.artifact(dendrogram_path, "dendrogram", "image")
     
     # Interactive dendrogram
-    logger.info("Saving interactive dendrogram plot...")
-    interactive_dendrogram_path = os.path.join(args.output_path, "interactive_dendrogram.html")
-    plot_interactive_dendrogram(cure, save_path=interactive_dendrogram_path, p=args.dendrogram_p)
-    logger.artifact(interactive_dendrogram_path, "interactive_dendrogram", "html")
+    #logger.info("Saving interactive dendrogram plot...")
+    #interactive_dendrogram_path = os.path.join(args.output_path, "interactive_dendrogram.html")
+    #plot_interactive_dendrogram(cure, save_path=interactive_dendrogram_path, p=args.dendrogram_p)
+    #logger.artifact(interactive_dendrogram_path, "interactive_dendrogram", "html")
     
     scores = []
+    pct_noise = []
     for n_clusters in [2, 5, 10, 20]:
-                    labels = cure.get_labels(n_clusters=n_clusters)
-                    score = davies_bouldin_index(embeddings, labels)
-                    scores.append(score)
+        try:
+            labels = cure.predict(embeddings, n_clusters=n_clusters)
+            non_noise_indeces = labels != -1
+            score = davies_bouldin_index(embeddings[non_noise_indeces], labels[non_noise_indeces])
+            scores.append(score)
+            pct_noise.append(len(labels[labels == -1]) / len(labels) * 100)
+        except Exception as e:
+            logger.warning(f"Could not compute DBI for {n_clusters} clusters: {e}")
+            scores.append(float('nan'))
+            pct_noise.append(float('nan'))
     
     logger.info("Davies-Bouldin Index scores for different cluster counts:")
     for n_clusters, score in zip([2, 5, 10, 20], scores):
-        logger.info(f" - {n_clusters} clusters: DBI = {score:.4f}")
-        logger.log_summary({f"DBI_{n_clusters}_clusters": score})
+        pct_noise_for_n_clusters = pct_noise[[2,5,10,20].index(n_clusters)]
+        logger.info(f" - {n_clusters} clusters: DBI = {score:.4f}, Noise% = {pct_noise_for_n_clusters:.2f}%")
+        logger.log_summary({f"DBI_{n_clusters}_clusters": score, f"PCT_Noise_{n_clusters}_clusters": pct_noise_for_n_clusters})
     
     logger.info("Done.")
