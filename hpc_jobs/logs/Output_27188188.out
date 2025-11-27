@@ -1,0 +1,102 @@
+2025-11-26 21:35:25,835 - INFO - Loading embeddings...
+2025-11-26 21:35:28,608 - INFO - Loaded 362986 samples with dimension 256 from /zhome/ea/6/187439/computational-tools-project/data/embeddings.npz
+
+2025-11-26 21:35:28,609 - INFO - Fitting CURE hierarchical clustering...
+2025-11-26 21:36:57,572 - INFO - Fitted CURE model.
+
+2025-11-26 21:36:57,573 - INFO - Saving linkage matrix and sample data to /zhome/ea/6/187439/computational-tools-project/locals/test_cure_3...
+2025-11-26 21:36:57,601 - INFO - Saving dendrogram plot...
+2025-11-26 21:37:01,174 - INFO - Saving interactive dendrogram plot...
+Saving interactive plot to /zhome/ea/6/187439/computational-tools-project/locals/test_cure_3/interactive_dendrogram.html...
+2025-11-26 21:37:31,319 - WARNING -  - 2 clusters: Skipped (Not enough valid clusters found after noise removal)
+2025-11-26 21:37:59,841 - WARNING -  - 2 clusters: Skipped (Not enough valid clusters found after noise removal)
+2025-11-26 21:38:28,177 - WARNING -  - 2 clusters: Skipped (Not enough valid clusters found after noise removal)
+2025-11-26 21:38:56,634 - WARNING -  - 2 clusters: Skipped (Not enough valid clusters found after noise removal)
+2025-11-26 21:39:25,087 - WARNING -  - 2 clusters: Skipped (Not enough valid clusters found after noise removal)
+2025-11-26 21:39:53,546 - WARNING -  - 2 clusters: Skipped (Not enough valid clusters found after noise removal)
+2025-11-26 21:40:21,990 - WARNING -  - 2 clusters: Skipped (Not enough valid clusters found after noise removal)
+2025-11-26 21:40:50,685 - WARNING -  - 2 clusters: Skipped (Not enough valid clusters found after noise removal)
+2025-11-26 21:41:18,959 - WARNING -  - 2 clusters: Skipped (Not enough valid clusters found after noise removal)
+2025-11-26 21:41:47,371 - WARNING -  - 2 clusters: Skipped (Not enough valid clusters found after noise removal)
+2025-11-26 21:42:15,736 - WARNING -  - 5 clusters: Skipped (Not enough valid clusters found after noise removal)
+2025-11-26 21:42:44,193 - WARNING -  - 5 clusters: Skipped (Not enough valid clusters found after noise removal)
+2025-11-26 21:43:12,556 - WARNING -  - 5 clusters: Skipped (Not enough valid clusters found after noise removal)
+2025-11-26 21:43:41,123 - WARNING -  - 5 clusters: Skipped (Not enough valid clusters found after noise removal)
+2025-11-26 21:44:09,446 - WARNING -  - 5 clusters: Skipped (Not enough valid clusters found after noise removal)
+2025-11-26 21:44:37,713 - WARNING -  - 5 clusters: Skipped (Not enough valid clusters found after noise removal)
+2025-11-26 21:45:06,305 - WARNING -  - 5 clusters: Skipped (Not enough valid clusters found after noise removal)
+2025-11-26 21:45:34,716 - WARNING -  - 5 clusters: Skipped (Not enough valid clusters found after noise removal)
+2025-11-26 21:46:03,156 - WARNING -  - 5 clusters: Skipped (Not enough valid clusters found after noise removal)
+2025-11-26 21:46:31,698 - WARNING -  - 5 clusters: Skipped (Not enough valid clusters found after noise removal)
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 27188188: <tune_cure_coarse_3> in cluster <dcc> Exited
+
+Job <tune_cure_coarse_3> was submitted from host <hpclogin1> by user <s224918> in cluster <dcc> at Wed Nov 26 21:35:14 2025
+Job was executed on host(s) <2*n-62-30-25>, in queue <hpc>, as user <s224918> in cluster <dcc> at Wed Nov 26 21:35:16 2025
+</zhome/ea/6/187439> was used as the home directory.
+</zhome/ea/6/187439/computational-tools-project> was used as the working directory.
+Started at Wed Nov 26 21:35:16 2025
+Terminated at Wed Nov 26 21:59:35 2025
+Results reported at Wed Nov 26 21:59:35 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+#BSUB -J tune_cure_coarse_3
+#BSUB -q hpc
+#BSUB -n 2
+#BSUB -R "rusage[mem=2GB]"
+#BSUB -W 0:30
+#BSUB -o hpc_jobs/logs/Output_%J.out
+#BSUB -e hpc_jobs/logs/Output_%J.err
+
+cd ~/computational-tools-project
+. .venv/bin/activate
+
+### [0.05, 0.15, 0.25] pruning_trigger
+### [0.2, 0.4, 0.6] compression
+
+python -m src.clustering.hierarchical \
+    --data_path /zhome/ea/6/187439/computational-tools-project/data/embeddings.npz \
+    --output_path /zhome/ea/6/187439/computational-tools-project/locals/test_cure_3 \
+    --compression 0.6 --pruning_trigger 0.05 --assignment_threshold 0.15
+
+python -m src.clustering.hierarchical \
+    --data_path /zhome/ea/6/187439/computational-tools-project/data/embeddings.npz \
+    --output_path /zhome/ea/6/187439/computational-tools-project/locals/test_cure_3 \
+    --compression 0.6 --pruning_trigger 0.15 --assignment_threshold 0.15
+
+python -m src.clustering.hierarchical \
+    --data_path /zhome/ea/6/187439/computational-tools-project/data/embeddings.npz \
+    --output_path /zhome/ea/6/187439/computational-tools-project/locals/test_cure_3 \
+    --compression 0.6 --pruning_trigger 0.25 --assignment_threshold 0.15
+------------------------------------------------------------
+
+TERM_OWNER: job killed by owner.
+Exited with exit code 143.
+
+Resource usage summary:
+
+    CPU time :                                   1458.00 sec.
+    Max Memory :                                 1531 MB
+    Average Memory :                             1462.55 MB
+    Total Requested Memory :                     4096.00 MB
+    Delta Memory :                               2565.00 MB
+    Max Swap :                                   -
+    Max Processes :                              6
+    Max Threads :                                21
+    Run time :                                   1530 sec.
+    Turnaround time :                            1461 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <hpc_jobs/logs/Output_27188188.err> for stderr output of this job.
+

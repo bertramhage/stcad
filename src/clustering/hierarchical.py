@@ -568,7 +568,7 @@ class CURE:
         if self.agg_ is None:
             raise RuntimeError("Run fit() or load_pretrained() before predict()")
         
-        if assignment_threshold is not None:
+        if assignment_threshold is None:
             assignment_threshold = self.assignment_threshold
         
         X = np.array(X)
@@ -628,27 +628,6 @@ class CURE:
             return
         
         self.agg_.plot_dendrogram(show_plot=show_plot, save_path=save_path, **kwargs)
-        
-def useful_result(dbi_score, labels):
-    # Result is useful if:
-    # - Size of largest cluster is less than 90% of data
-    # - % of noise points is less than 10% but more than 0%
-    # - Davies-Bouldin Index is below 1.5
-    n_samples = len(labels)
-    unique, counts = np.unique(labels, return_counts=True)
-    cluster_sizes = dict(zip(unique, counts))
-    largest_cluster_size = max(cluster_sizes.values())
-    n_noise = cluster_sizes.get(-1, 0)
-    noise_ratio = n_noise / n_samples
-    if largest_cluster_size > 0.9 * n_samples:
-        return False
-    if noise_ratio > 0.1:
-        return False
-    if noise_ratio == 0.0:
-        return False
-    if dbi_score > 1.5:
-        return False
-    return True
     
 if __name__ == "__main__":
     parser = ArgumentParser("CURE Hierarchical Clustering for Large Datasets. Build and save entire tree.")
@@ -656,19 +635,19 @@ if __name__ == "__main__":
     parser.add_argument("--output_path", type=str, required=True, help="Path to save the CURE model and plots.")
     parser.add_argument("--sample_size", type=int, default=1000, help="Number of points to sample for clustering.")
     parser.add_argument("--n_representatives", type=int, default=20, help="Number of representatives per cluster.")
-    parser.add_argument("--compression", type=float, default=0.2, help="Compression factor towards centroid (alpha).")
+    parser.add_argument("--compression", type=float, default=0.4, help="Compression factor towards centroid (alpha).")
     parser.add_argument("--linkage", type=str, default="single", choices=["centroid", "single", "complete", "average"], help="Linkage criterion for hierarchical clustering.")
-    parser.add_argument("--dendrogram_p", type=int, default=30, help="Number of last merges to show in dendrogram plot.")
+    parser.add_argument("--dendrogram_p", type=int, default=100, help="Number of last merges to show in dendrogram plot.")
     
     # New arguments for noise handling
-    parser.add_argument("--pruning_trigger", type=float, default=0.33, help="Fraction of clusters remaining to trigger Phase 1 pruning.")
+    parser.add_argument("--pruning_trigger", type=float, default=0.05, help="Fraction of clusters remaining to trigger Phase 1 pruning.")
     parser.add_argument("--phase1_cutoff", type=int, default=1, help="Max cluster size to prune in Phase 1.")
     parser.add_argument("--phase2_ratio", type=float, default=0.01, help="Min ratio of sample size for a cluster to be valid in Phase 2.")
     parser.add_argument("--assignment_threshold", type=float, default=np.inf, help="Max distance to assign a point to a cluster.")
 
     args = parser.parse_args()
     
-    logger = CustomLogger(project_name='Computational-Tools', group='clustering', run_name='run_cure', use_wandb=True)
+    logger = CustomLogger(project_name='Computational-Tools', group='clustering', run_name='tune_cure_fine', use_wandb=True)
     
     logger.log_config(vars(args))
     
@@ -694,6 +673,7 @@ if __name__ == "__main__":
     os.makedirs(args.output_path, exist_ok=True)
     model_path = os.path.join(args.output_path, "cure_model.npz")
     cure.save(model_path)
+    logger.artifact(model_path, "cure_model", "model")
     
     logger.info("Saving dendrogram plot...")
     dendrogram_path = os.path.join(args.output_path, "dendrogram.png")
@@ -708,39 +688,25 @@ if __name__ == "__main__":
     
     results = {}
     search_n_clusters = [2, 5, 10, 20, 50, 100]
-    search_thresholds = [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5]
     for n_clusters in search_n_clusters:
-        scores_for_thresholds = {}
-        pct_noise_for_threshold = {}
-        for threshold in search_thresholds:
-            labels = cure.predict(embeddings, n_clusters=n_clusters, assignment_threshold=threshold)
-            valid_mask = labels != -1
-            
-            unique_labels = np.unique(labels[valid_mask])
-            if len(unique_labels) < 2:
-                logger.warning(f" - {n_clusters} clusters: Skipped (Not enough valid clusters found after noise removal)")
-                scores_for_thresholds[threshold] = 1000
-                pct_noise_for_threshold[threshold] = np.sum(labels == -1) / len(labels)
-                continue
-            
-            score = davies_bouldin_index(embeddings[valid_mask], labels[valid_mask])
-            
-            if useful_result(score, labels):
-                scores_for_thresholds[threshold] = score
-            else:
-                scores_for_thresholds[threshold] = 1000
-            pct_noise_for_threshold[threshold] = np.sum(labels == -1) / len(labels)
+        logger.info(f"Evaluating for {n_clusters} clusters...")
+        labels = cure.predict(embeddings, n_clusters=n_clusters)
+        valid_mask = labels != -1
         
-        # Get min score and the corresponding threshold
-        min_score = min(scores_for_thresholds.values())
-        best_threshold = [k for k, v in scores_for_thresholds.items() if v == min_score][0]
-        pct_noise = pct_noise_for_threshold[best_threshold]
-        results[n_clusters] = (min_score, best_threshold, pct_noise)
+        unique_labels = np.unique(labels[valid_mask])
+        if len(unique_labels) < 2:
+            logger.warning(f" - {n_clusters} clusters: Skipped (Not enough valid clusters found after noise removal)")
+            continue
+        
+        score = davies_bouldin_index(embeddings[valid_mask], labels[valid_mask])
+        
+        pct_noise = 1.0 - (np.sum(valid_mask) / len(labels))
+        results[n_clusters] = (score, pct_noise)
     
     logger.info("Davies-Bouldin Index scores for different cluster counts:")
     for n_clusters, result in results.items():
-        score, threshold, pct_noise = result
-        logger.info(f" - {n_clusters} clusters: DBI = {score:.4f} at threshold = {threshold}, Noise% = {pct_noise*100:.2f}%")
-        logger.log_summary({f"DBI_{n_clusters}_clusters": score, f"Best_Threshold_{n_clusters}_clusters": threshold, f"Noise_Percent_{n_clusters}_clusters": pct_noise})
+        score, pct_noise = result
+        logger.info(f" - {n_clusters} clusters: DBI = {score:.4f}, Noise% = {pct_noise*100:.2f}%")
+        logger.log_summary({f"DBI_{n_clusters}_clusters": score, f"Noise_Percent_{n_clusters}_clusters": pct_noise})
         
     logger.info("Done.")
