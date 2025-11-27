@@ -309,7 +309,9 @@ class CURE:
             "seed": self.seed,
             "pruning_fraction": self.pruning_fraction,
             "pruning_min_size": self.pruning_min_size,
-            "assignment_threshold": self.assignment_threshold
+            "assignment_threshold": self.assignment_threshold,
+            "n_samples": self.agg_.n_samples_,
+            "noise_points": self.agg_.noise_points_
         }
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
         np.savez_compressed(
@@ -348,6 +350,8 @@ class CURE:
         instance.X_sample_ = sample_data
         instance.agg_ = AgglomerativeClustering(linkage=meta_data["linkage"], pruning_fraction=meta_data["pruning_fraction"], pruning_min_size=meta_data["pruning_min_size"])
         instance.agg_.linkage_matrix_ = linkage_matrix
+        instance.agg_.n_samples_ = meta_data["n_samples"]
+        instance.agg_.noise_points_ = meta_data["noise_points"]
         
         return instance
 
