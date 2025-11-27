@@ -1,0 +1,8 @@
+wandb: Currently logged in as: bertram-hage (bertram-hage-danmarks-tekniske-universitet-dtu) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: setting up run ztndz7u6
+wandb: Tracking run with wandb version 0.23.0
+wandb: Run data is saved locally in /zhome/ea/6/187439/computational-tools-project/wandb/run-20251127_130839-ztndz7u6
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run train_cure_final
+wandb: ⭐️ View project at https://wandb.ai/bertram-hage-danmarks-tekniske-universitet-dtu/Computational-Tools
+wandb: 🚀 View run at https://wandb.ai/bertram-hage-danmarks-tekniske-universitet-dtu/Computational-Tools/runs/ztndz7u6
