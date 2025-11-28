@@ -1,17 +1,16 @@
 #!/bin/sh
 
-#BSUB -J train_cure
+#BSUB -J train_cure_1
 
 #BSUB -q hpc
 
-#BSUB -n 4
+#BSUB -n 8
 
-#BSUB -R "rusage[mem=8GB]"
+#BSUB -R "rusage[mem=4GB]"
 
-#BSUB -W 2:00
+#BSUB -W 6:00
 
 #BSUB -N
-#BSUB -B
 
 #BSUB -o hpc_jobs/logs/Output_%J.out
 #BSUB -e hpc_jobs/logs/Output_%J.err
@@ -22,9 +21,10 @@ cd ~/computational-tools-project
 
 python -m src.clustering.hierarchical \
     --data_path /zhome/ea/6/187439/computational-tools-project/data/embeddings.npz \
-    --output_path /zhome/ea/6/187439/computational-tools-project/data/models/cure_model \
-    --sample_size 1000 \
-    --n_representatives 20 \
-    --compression 0.2 \
-    --linkage single \
-    --dendrogram_p 100
+    --output_path /zhome/ea/6/187439/computational-tools-project/locals/train_cure \
+    --compression 0.6 --pruning_fraction 0.05 --assignment_threshold 0.24 --linkage ward --sample_size 1000
+
+python -m src.clustering.hierarchical \
+    --data_path /zhome/ea/6/187439/computational-tools-project/data/embeddings.npz \
+    --output_path /zhome/ea/6/187439/computational-tools-project/locals/train_cure \
+    --compression 0.8 --pruning_fraction 0.05 --assignment_threshold 0.28 --linkage ward --sample_size 1000
