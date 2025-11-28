@@ -22,9 +22,9 @@ cd ~/computational-tools-project
 python -m src.clustering.hierarchical \
     --data_path /zhome/ea/6/187439/computational-tools-project/data/embeddings.npz \
     --output_path /zhome/ea/6/187439/computational-tools-project/locals/train_cure \
-    --compression 0.6 --pruning_fraction 0.05 --assignment_threshold 0.24 --linkage average --sample_size 1000
+    --compression 0.6 --pruning_fraction 0.05 --assignment_threshold 0.24 --linkage ward --sample_size 1000
 
 python -m src.clustering.hierarchical \
     --data_path /zhome/ea/6/187439/computational-tools-project/data/embeddings.npz \
     --output_path /zhome/ea/6/187439/computational-tools-project/locals/train_cure \
-    --compression 0.8 --pruning_fraction 0.05 --assignment_threshold 0.28 --linkage average --sample_size 1000
+    --compression 0.8 --pruning_fraction 0.05 --assignment_threshold 0.28 --linkage ward --sample_size 1000
