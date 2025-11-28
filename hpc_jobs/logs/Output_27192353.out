@@ -1,0 +1,204 @@
+2025-11-27 10:56:54,806 - INFO - Loading embeddings...
+2025-11-27 10:56:54,842 - INFO - Loaded 4026 samples with dimension 256 from /zhome/ea/6/187439/computational-tools-project/data/embeddings_small.npz
+
+2025-11-27 10:56:54,843 - INFO - Fitting CURE hierarchical clustering...
+2025-11-27 10:59:51,084 - INFO - Fitted CURE model.
+
+2025-11-27 10:59:51,087 - INFO - Saving linkage matrix and sample data to /zhome/ea/6/187439/computational-tools-project/locals/test_cure_5...
+2025-11-27 10:59:52,857 - INFO - Saving dendrogram plot...
+2025-11-27 11:00:06,894 - INFO - Davies-Bouldin Index scores for different cluster counts:
+2025-11-27 11:00:06,895 - INFO -  - 2 clusters: DBI = 1.5865, Noise% = 11.55%
+2025-11-27 11:00:07,303 - INFO -  - 5 clusters: DBI = 1.4033, Noise% = 6.09%
+2025-11-27 11:00:07,304 - INFO -  - 10 clusters: DBI = 1.4271, Noise% = 3.53%
+2025-11-27 11:00:07,305 - INFO -  - 20 clusters: DBI = 1.4295, Noise% = 2.81%
+2025-11-27 11:00:07,306 - INFO - Done.
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mtune_cure_coarse_5[0m at: [34m[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251127_105653-faemogcz/logs[0m
+2025-11-27 11:00:18,426 - INFO - Loading embeddings...
+2025-11-27 11:00:18,461 - INFO - Loaded 4026 samples with dimension 256 from /zhome/ea/6/187439/computational-tools-project/data/embeddings_small.npz
+
+2025-11-27 11:00:18,461 - INFO - Fitting CURE hierarchical clustering...
+2025-11-27 11:03:10,390 - INFO - Fitted CURE model.
+
+2025-11-27 11:03:10,392 - INFO - Saving linkage matrix and sample data to /zhome/ea/6/187439/computational-tools-project/locals/test_cure_5...
+2025-11-27 11:03:12,147 - INFO - Saving dendrogram plot...
+2025-11-27 11:03:25,970 - INFO - Davies-Bouldin Index scores for different cluster counts:
+2025-11-27 11:03:25,971 - INFO -  - 2 clusters: DBI = 1.5860, Noise% = 1.91%
+2025-11-27 11:03:26,436 - INFO -  - 5 clusters: DBI = 1.4494, Noise% = 1.29%
+2025-11-27 11:03:26,437 - INFO -  - 10 clusters: DBI = 1.4504, Noise% = 1.02%
+2025-11-27 11:03:26,438 - INFO -  - 20 clusters: DBI = 1.4518, Noise% = 0.79%
+2025-11-27 11:03:26,439 - INFO - Done.
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mtune_cure_coarse_5[0m at: [34m[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251127_110017-330fszav/logs[0m
+2025-11-27 11:03:37,860 - INFO - Loading embeddings...
+2025-11-27 11:03:37,898 - INFO - Loaded 4026 samples with dimension 256 from /zhome/ea/6/187439/computational-tools-project/data/embeddings_small.npz
+
+2025-11-27 11:03:37,898 - INFO - Fitting CURE hierarchical clustering...
+2025-11-27 11:06:29,344 - INFO - Fitted CURE model.
+
+2025-11-27 11:06:29,345 - INFO - Saving linkage matrix and sample data to /zhome/ea/6/187439/computational-tools-project/locals/test_cure_5...
+2025-11-27 11:06:31,055 - INFO - Saving dendrogram plot...
+2025-11-27 11:06:45,054 - INFO - Davies-Bouldin Index scores for different cluster counts:
+2025-11-27 11:06:45,056 - INFO -  - 2 clusters: DBI = 1.5886, Noise% = 0.40%
+2025-11-27 11:06:45,453 - INFO -  - 5 clusters: DBI = 1.4656, Noise% = 0.30%
+2025-11-27 11:06:45,455 - INFO -  - 10 clusters: DBI = 1.4582, Noise% = 0.27%
+2025-11-27 11:06:45,456 - INFO -  - 20 clusters: DBI = 1.4627, Noise% = 0.27%
+2025-11-27 11:06:45,458 - INFO - Done.
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mtune_cure_coarse_5[0m at: [34m[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251127_110336-uumsm6o9/logs[0m
+2025-11-27 11:06:56,281 - INFO - Loading embeddings...
+2025-11-27 11:06:56,322 - INFO - Loaded 4026 samples with dimension 256 from /zhome/ea/6/187439/computational-tools-project/data/embeddings_small.npz
+
+2025-11-27 11:06:56,322 - INFO - Fitting CURE hierarchical clustering...
+2025-11-27 11:09:28,796 - INFO - Fitted CURE model.
+
+2025-11-27 11:09:28,803 - INFO - Saving linkage matrix and sample data to /zhome/ea/6/187439/computational-tools-project/locals/test_cure_5...
+2025-11-27 11:09:30,563 - INFO - Saving dendrogram plot...
+2025-11-27 11:09:46,566 - INFO - Davies-Bouldin Index scores for different cluster counts:
+2025-11-27 11:09:46,568 - INFO -  - 2 clusters: DBI = 1.7364, Noise% = 11.53%
+2025-11-27 11:09:46,978 - INFO -  - 5 clusters: DBI = 1.5564, Noise% = 3.85%
+2025-11-27 11:09:46,979 - INFO -  - 10 clusters: DBI = 1.5064, Noise% = 2.81%
+2025-11-27 11:09:46,980 - INFO -  - 20 clusters: DBI = 1.5646, Noise% = 2.43%
+2025-11-27 11:09:46,981 - INFO - Done.
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mtune_cure_coarse_5[0m at: [34m[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251127_110655-afo9y8zw/logs[0m
+2025-11-27 11:09:58,205 - INFO - Loading embeddings...
+2025-11-27 11:09:58,242 - INFO - Loaded 4026 samples with dimension 256 from /zhome/ea/6/187439/computational-tools-project/data/embeddings_small.npz
+
+2025-11-27 11:09:58,242 - INFO - Fitting CURE hierarchical clustering...
+2025-11-27 11:12:50,311 - INFO - Fitted CURE model.
+
+2025-11-27 11:12:50,313 - INFO - Saving linkage matrix and sample data to /zhome/ea/6/187439/computational-tools-project/locals/test_cure_5...
+2025-11-27 11:12:52,120 - INFO - Saving dendrogram plot...
+2025-11-27 11:13:05,861 - INFO - Davies-Bouldin Index scores for different cluster counts:
+2025-11-27 11:13:05,863 - INFO -  - 2 clusters: DBI = 1.5860, Noise% = 1.91%
+2025-11-27 11:13:06,285 - INFO -  - 5 clusters: DBI = 1.4494, Noise% = 1.29%
+2025-11-27 11:13:06,286 - INFO -  - 10 clusters: DBI = 1.4504, Noise% = 1.02%
+2025-11-27 11:13:06,287 - INFO -  - 20 clusters: DBI = 1.4518, Noise% = 0.79%
+2025-11-27 11:13:06,288 - INFO - Done.
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mtune_cure_coarse_5[0m at: [34m[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251127_110957-h4r99svu/logs[0m
+2025-11-27 11:13:17,336 - INFO - Loading embeddings...
+2025-11-27 11:13:17,376 - INFO - Loaded 4026 samples with dimension 256 from /zhome/ea/6/187439/computational-tools-project/data/embeddings_small.npz
+
+2025-11-27 11:13:17,378 - INFO - Fitting CURE hierarchical clustering...
+2025-11-27 11:16:08,372 - INFO - Fitted CURE model.
+
+2025-11-27 11:16:08,375 - INFO - Saving linkage matrix and sample data to /zhome/ea/6/187439/computational-tools-project/locals/test_cure_5...
+2025-11-27 11:16:10,043 - INFO - Saving dendrogram plot...
+2025-11-27 11:16:23,430 - INFO - Davies-Bouldin Index scores for different cluster counts:
+2025-11-27 11:16:23,433 - INFO -  - 2 clusters: DBI = 1.5886, Noise% = 0.40%
+2025-11-27 11:16:23,806 - INFO -  - 5 clusters: DBI = 1.4656, Noise% = 0.30%
+2025-11-27 11:16:23,807 - INFO -  - 10 clusters: DBI = 1.4582, Noise% = 0.27%
+2025-11-27 11:16:23,808 - INFO -  - 20 clusters: DBI = 1.4627, Noise% = 0.27%
+2025-11-27 11:16:23,809 - INFO - Done.
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mtune_cure_coarse_5[0m at: [34m[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251127_111316-csm3ro2h/logs[0m
+2025-11-27 11:16:34,843 - INFO - Loading embeddings...
+2025-11-27 11:16:34,879 - INFO - Loaded 4026 samples with dimension 256 from /zhome/ea/6/187439/computational-tools-project/data/embeddings_small.npz
+
+2025-11-27 11:16:34,879 - INFO - Fitting CURE hierarchical clustering...
+2025-11-27 11:19:28,377 - INFO - Fitted CURE model.
+
+2025-11-27 11:19:28,379 - INFO - Saving linkage matrix and sample data to /zhome/ea/6/187439/computational-tools-project/locals/test_cure_5...
+2025-11-27 11:19:30,090 - INFO - Saving dendrogram plot...
+2025-11-27 11:19:44,189 - INFO - Davies-Bouldin Index scores for different cluster counts:
+2025-11-27 11:19:44,190 - INFO -  - 2 clusters: DBI = 1.4760, Noise% = 12.32%
+2025-11-27 11:19:44,634 - INFO -  - 5 clusters: DBI = 1.3289, Noise% = 7.50%
+2025-11-27 11:19:44,635 - INFO -  - 10 clusters: DBI = 1.3794, Noise% = 4.47%
+2025-11-27 11:19:44,635 - INFO -  - 20 clusters: DBI = 1.3963, Noise% = 3.20%
+2025-11-27 11:19:44,636 - INFO - Done.
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mtune_cure_coarse_5[0m at: [34m[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251127_111633-bkoqv5ur/logs[0m
+2025-11-27 11:19:56,022 - INFO - Loading embeddings...
+2025-11-27 11:19:56,057 - INFO - Loaded 4026 samples with dimension 256 from /zhome/ea/6/187439/computational-tools-project/data/embeddings_small.npz
+
+2025-11-27 11:19:56,057 - INFO - Fitting CURE hierarchical clustering...
+2025-11-27 11:22:46,050 - INFO - Fitted CURE model.
+
+2025-11-27 11:22:46,051 - INFO - Saving linkage matrix and sample data to /zhome/ea/6/187439/computational-tools-project/locals/test_cure_5...
+2025-11-27 11:22:47,754 - INFO - Saving dendrogram plot...
+2025-11-27 11:23:01,206 - INFO - Davies-Bouldin Index scores for different cluster counts:
+2025-11-27 11:23:01,206 - INFO -  - 2 clusters: DBI = 1.5142, Noise% = 2.29%
+2025-11-27 11:23:01,669 - INFO -  - 5 clusters: DBI = 1.3822, Noise% = 1.69%
+2025-11-27 11:23:01,670 - INFO -  - 10 clusters: DBI = 1.4096, Noise% = 1.29%
+2025-11-27 11:23:01,671 - INFO -  - 20 clusters: DBI = 1.4170, Noise% = 1.09%
+2025-11-27 11:23:01,672 - INFO - Done.
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mtune_cure_coarse_5[0m at: [34m[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251127_111954-7ultv4b1/logs[0m
+2025-11-27 11:23:12,607 - INFO - Loading embeddings...
+2025-11-27 11:23:12,645 - INFO - Loaded 4026 samples with dimension 256 from /zhome/ea/6/187439/computational-tools-project/data/embeddings_small.npz
+
+2025-11-27 11:23:12,645 - INFO - Fitting CURE hierarchical clustering...
+2025-11-27 11:26:06,735 - INFO - Fitted CURE model.
+
+2025-11-27 11:26:06,737 - INFO - Saving linkage matrix and sample data to /zhome/ea/6/187439/computational-tools-project/locals/test_cure_5...
+2025-11-27 11:26:08,589 - INFO - Saving dendrogram plot...
+2025-11-27 11:26:22,341 - INFO - Davies-Bouldin Index scores for different cluster counts:
+2025-11-27 11:26:22,342 - INFO -  - 2 clusters: DBI = 1.5245, Noise% = 0.50%
+2025-11-27 11:26:22,769 - INFO -  - 5 clusters: DBI = 1.3995, Noise% = 0.47%
+2025-11-27 11:26:22,771 - INFO -  - 10 clusters: DBI = 1.4180, Noise% = 0.40%
+2025-11-27 11:26:22,772 - INFO -  - 20 clusters: DBI = 1.4321, Noise% = 0.37%
+2025-11-27 11:26:22,774 - INFO - Done.
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mtune_cure_coarse_5[0m at: [34m[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251127_112311-3sxncyky/logs[0m
+2025-11-27 11:26:33,783 - INFO - Loading embeddings...
+2025-11-27 11:26:33,819 - INFO - Loaded 4026 samples with dimension 256 from /zhome/ea/6/187439/computational-tools-project/data/embeddings_small.npz
+
+2025-11-27 11:26:33,820 - INFO - Fitting CURE hierarchical clustering...
+2025-11-27 11:29:23,359 - INFO - Fitted CURE model.
+
+2025-11-27 11:29:23,361 - INFO - Saving linkage matrix and sample data to /zhome/ea/6/187439/computational-tools-project/locals/test_cure_5...
+2025-11-27 11:29:25,139 - INFO - Saving dendrogram plot...
+2025-11-27 11:29:38,703 - INFO - Davies-Bouldin Index scores for different cluster counts:
+2025-11-27 11:29:38,705 - INFO -  - 2 clusters: DBI = 1.4760, Noise% = 12.32%
+2025-11-27 11:29:39,114 - INFO -  - 5 clusters: DBI = 1.3289, Noise% = 7.50%
+2025-11-27 11:29:39,115 - INFO -  - 10 clusters: DBI = 1.3794, Noise% = 4.47%
+2025-11-27 11:29:39,116 - INFO -  - 20 clusters: DBI = 1.3963, Noise% = 3.20%
+2025-11-27 11:29:39,117 - INFO - Done.
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mtune_cure_coarse_5[0m at: [34m[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251127_112632-rcot3mw4/logs[0m
+2025-11-27 11:29:50,217 - INFO - Loading embeddings...
+2025-11-27 11:29:50,255 - INFO - Loaded 4026 samples with dimension 256 from /zhome/ea/6/187439/computational-tools-project/data/embeddings_small.npz
+
+2025-11-27 11:29:50,255 - INFO - Fitting CURE hierarchical clustering...
+2025-11-27 11:32:42,661 - INFO - Fitted CURE model.
+
+2025-11-27 11:32:42,663 - INFO - Saving linkage matrix and sample data to /zhome/ea/6/187439/computational-tools-project/locals/test_cure_5...
+2025-11-27 11:32:44,433 - INFO - Saving dendrogram plot...
+2025-11-27 11:32:58,378 - INFO - Davies-Bouldin Index scores for different cluster counts:
+2025-11-27 11:32:58,378 - INFO -  - 2 clusters: DBI = 1.5142, Noise% = 2.29%
+2025-11-27 11:32:58,772 - INFO -  - 5 clusters: DBI = 1.3822, Noise% = 1.69%
+2025-11-27 11:32:58,773 - INFO -  - 10 clusters: DBI = 1.4096, Noise% = 1.29%
+2025-11-27 11:32:58,774 - INFO -  - 20 clusters: DBI = 1.4170, Noise% = 1.09%
+2025-11-27 11:32:58,775 - INFO - Done.
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mtune_cure_coarse_5[0m at: [34m[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251127_112948-4qllvr0u/logs[0m
+2025-11-27 11:33:10,091 - INFO - Loading embeddings...
+2025-11-27 11:33:10,127 - INFO - Loaded 4026 samples with dimension 256 from /zhome/ea/6/187439/computational-tools-project/data/embeddings_small.npz
+
+2025-11-27 11:33:10,127 - INFO - Fitting CURE hierarchical clustering...
+2025-11-27 11:36:03,771 - INFO - Fitted CURE model.
+
+2025-11-27 11:36:03,772 - INFO - Saving linkage matrix and sample data to /zhome/ea/6/187439/computational-tools-project/locals/test_cure_5...
+2025-11-27 11:36:05,441 - INFO - Saving dendrogram plot...
+2025-11-27 11:36:19,062 - INFO - Davies-Bouldin Index scores for different cluster counts:
+2025-11-27 11:36:19,063 - INFO -  - 2 clusters: DBI = 1.5245, Noise% = 0.50%
+2025-11-27 11:36:19,508 - INFO -  - 5 clusters: DBI = 1.3995, Noise% = 0.47%
+2025-11-27 11:36:19,509 - INFO -  - 10 clusters: DBI = 1.4180, Noise% = 0.40%
+2025-11-27 11:36:19,510 - INFO -  - 20 clusters: DBI = 1.4321, Noise% = 0.37%
+2025-11-27 11:36:19,510 - INFO - Done.
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mtune_cure_coarse_5[0m at: [34m[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251127_113308-diri70bp/logs[0m

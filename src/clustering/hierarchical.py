@@ -489,15 +489,15 @@ if __name__ == "__main__":
     parser.add_argument("--sample_size", type=int, default=1000, help="Number of points to sample for clustering.")
     parser.add_argument("--n_representatives", type=int, default=20, help="Number of representatives per cluster.")
     parser.add_argument("--compression", type=float, default=0.2, help="Compression factor towards centroid (alpha).")
-    parser.add_argument("--linkage", type=str, default="single", choices=["single", "average", "ward"], help="Linkage criterion for hierarchical clustering.")
+    parser.add_argument("--linkage", type=str, default="average", choices=["single", "average", "ward"], help="Linkage criterion for hierarchical clustering.")
     parser.add_argument("--seed", type=int, default=42, help="Random seed for sampling.")
-    parser.add_argument("--pruning_fraction", type=float, default=0.1, help="Fraction of clusters to prune as noise during fitting.")
+    parser.add_argument("--pruning_fraction", type=float, default=0.05, help="Fraction of clusters to prune as noise during fitting.")
     parser.add_argument("--pruning_min_size", type=int, default=1, help=" Minimum cluster size to avoid being pruned as noise.")
     parser.add_argument("--assignment_threshold", type=float, default=None, help="Maximum distance to assign a point to a cluster.")
     parser.add_argument("--dendrogram_p", type=int, default=100, help="Number of last merges to show in dendrogram plot.")
     args = parser.parse_args()
     
-    logger = CustomLogger(project_name='Computational-Tools', group='clustering', run_name='tune_cure', use_wandb=True)
+    logger = CustomLogger(project_name='Computational-Tools', group='clustering', run_name='train_cure_final', use_wandb=True)
     
     logger.log_config(vars(args))
     
@@ -516,6 +516,7 @@ if __name__ == "__main__":
     os.makedirs(args.output_path, exist_ok=True)
     model_path = os.path.join(args.output_path, "cure_model.npz")
     cure.save(model_path)
+    logger.artifact(model_path, "cure_model_test", "model")
     
     logger.info("Saving dendrogram plot...")
     dendrogram_path = os.path.join(args.output_path, "dendrogram.png")

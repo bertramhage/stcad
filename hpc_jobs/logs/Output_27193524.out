@@ -1,0 +1,34 @@
+2025-11-27 13:08:41,046 - INFO - Loading embeddings...
+2025-11-27 13:08:44,990 - INFO - Loaded 362986 samples with dimension 256 from /zhome/ea/6/187439/computational-tools-project/data/embeddings.npz
+
+2025-11-27 13:08:44,992 - INFO - Fitting CURE hierarchical clustering...
+2025-11-27 15:05:20,994 - INFO - Fitted CURE model.
+
+2025-11-27 15:05:20,996 - INFO - Saving linkage matrix and sample data to /zhome/ea/6/187439/computational-tools-project/locals/train_cure...
+2025-11-27 15:05:22,948 - INFO - Saving dendrogram plot...
+2025-11-27 15:26:23,332 - INFO - Davies-Bouldin Index scores for different cluster counts:
+2025-11-27 15:26:23,334 - INFO -  - 2 clusters: DBI = 0.9090, Noise% = 24.33%
+2025-11-27 15:26:23,772 - INFO -  - 5 clusters: DBI = 1.2359, Noise% = 3.68%
+2025-11-27 15:26:23,772 - INFO -  - 10 clusters: DBI = 1.4283, Noise% = 1.33%
+2025-11-27 15:26:23,773 - INFO -  - 20 clusters: DBI = 1.3479, Noise% = 0.51%
+2025-11-27 15:26:23,774 - INFO - Done.
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mtrain_cure_final[0m at: [34m[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251127_130839-ztndz7u6/logs[0m
+2025-11-27 15:26:37,512 - INFO - Loading embeddings...
+2025-11-27 15:26:40,288 - INFO - Loaded 362986 samples with dimension 256 from /zhome/ea/6/187439/computational-tools-project/data/embeddings.npz
+
+2025-11-27 15:26:40,290 - INFO - Fitting CURE hierarchical clustering...
+2025-11-27 17:17:31,628 - INFO - Fitted CURE model.
+
+2025-11-27 17:17:31,630 - INFO - Saving linkage matrix and sample data to /zhome/ea/6/187439/computational-tools-project/locals/train_cure...
+2025-11-27 17:17:33,401 - INFO - Saving dendrogram plot...
+2025-11-27 17:36:44,571 - INFO - Davies-Bouldin Index scores for different cluster counts:
+2025-11-27 17:36:44,572 - INFO -  - 2 clusters: DBI = 1.0900, Noise% = 29.76%
+2025-11-27 17:36:45,025 - INFO -  - 5 clusters: DBI = 1.2530, Noise% = 4.15%
+2025-11-27 17:36:45,026 - INFO -  - 10 clusters: DBI = 1.4236, Noise% = 1.14%
+2025-11-27 17:36:45,027 - INFO -  - 20 clusters: DBI = 1.3556, Noise% = 0.29%
+2025-11-27 17:36:45,028 - INFO - Done.
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mtrain_cure_final[0m at: [34m[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251127_152636-991v7se0/logs[0m

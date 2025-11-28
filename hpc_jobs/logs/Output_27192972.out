@@ -1,0 +1,17 @@
+2025-11-27 11:55:50,410 - INFO - Loading embeddings...
+2025-11-27 11:55:50,445 - INFO - Loaded 4026 samples with dimension 256 from /zhome/ea/6/187439/computational-tools-project/data/embeddings_small.npz
+
+2025-11-27 11:55:50,445 - INFO - Fitting CURE hierarchical clustering...
+2025-11-27 13:41:39,530 - INFO - Fitted CURE model.
+
+2025-11-27 13:41:39,532 - INFO - Saving linkage matrix and sample data to /zhome/ea/6/187439/computational-tools-project/locals/train_cure...
+2025-11-27 13:41:41,239 - INFO - Saving dendrogram plot...
+2025-11-27 13:41:59,279 - INFO - Davies-Bouldin Index scores for different cluster counts:
+2025-11-27 13:41:59,280 - INFO -  - 2 clusters: DBI = 1.4648, Noise% = 5.69%
+2025-11-27 13:42:00,084 - INFO -  - 5 clusters: DBI = 1.4584, Noise% = 2.16%
+2025-11-27 13:42:00,085 - INFO -  - 10 clusters: DBI = 1.2306, Noise% = 0.84%
+2025-11-27 13:42:00,086 - INFO -  - 20 clusters: DBI = 1.2623, Noise% = 0.62%
+2025-11-27 13:42:00,088 - INFO - Done.
+[1;34mwandb[0m: 
+[1;34mwandb[0m: 🚀 View run [33mtune_cure_coarse_5[0m at: [34m[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/run-20251127_115549-qqoel2g4/logs[0m
