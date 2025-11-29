@@ -85,7 +85,7 @@ class AISDataset(Dataset):
            - Speed: speed_avg, speed_max, speed_std
            - Navigational status: nav_status
            - Temporal: duration, hour_start, month, season
-           - Spatial: lat_max, lat_min, lon_max, lon_min, displacement, length_over_displacement, cog_std
+           - Spatial: lat_max, lat_min, lon_max, lon_min, displacement, length, length_over_displacement, cog_std
         """
         filepath = os.path.join(self.data_dir, self.file_list[idx])
         V = self._load_file(filepath)
@@ -137,6 +137,7 @@ class AISDataset(Dataset):
 
         path = list(zip(latitudes, longitudes))
         length = sum(geodesic(p1, p2).meters for p1, p2 in zip(path, path[1:]))
+        features['length'] = length
         
         if displacement > 0:
             features['length_over_displacement'] = length / displacement
