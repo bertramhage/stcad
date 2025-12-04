@@ -41,7 +41,7 @@ If you are unable to use `uv` and you have conda installed you may follow this.
 
 1.  **Create and Activate Environment:**
     ```bash
-    conda create --name stcad-project python=">=3.11"
+    conda create --name stcad-project "python>=3.11"
     conda activate stcad-project
     ```
 
