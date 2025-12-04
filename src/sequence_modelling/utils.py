@@ -1,10 +1,6 @@
 import torch
 import numpy as np
 from torch.utils.data import DataLoader
-from transformers import Trainer
-from torchinfo import summary
-from src.preprocessing.train_test_split import train_test_split_tracks
-from src.sequence_modelling.configs import get_training_args, get_bert_config
 from src.sequence_modelling.models import AISBERT, DataCollator
 from src.utils.datasets import AISDataset
 from tqdm import tqdm
@@ -32,12 +28,12 @@ def get_embeddings(data: AISDataset, model: AISBERT, l2_normalize: bool = False,
     start_idx = 0
     if verbose > 0:
         dataloader = tqdm(dataloader, total=len(dataloader), desc="Computing Embeddings")
-    with torch.no_grad(): # No gradient computation
-        for batch in dataloader: # Batch is size 32
-            input_features = batch["input_features"].to(device) # Shape (batch_size, seq_len, feature_dim)
+    with torch.no_grad():
+        for batch in dataloader:
+            input_features = batch["input_features"].to(device)
             attention_mask = batch["attention_mask"].to(device)
-            mmsis = batch["mmsi"] # List of MMSIs in the batch
-            start_times = batch["time_start"] # List of start times in the batch
+            mmsis = batch["mmsi"]
+            start_times = batch["time_start"]
             
             # This is the output from the model
             outputs = model(

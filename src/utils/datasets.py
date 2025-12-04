@@ -20,7 +20,7 @@ class AISDataset(Dataset):
             data_dir: path to directory containing data files
             max_seqlen: max sequence length
             file_extension: file extension to look for
-        """    
+        """
             
         self.data_dir = data_dir
         
@@ -96,7 +96,7 @@ class AISDataset(Dataset):
         return features
         
     def _calculate_sample_metadata(self, traj):
-        """ Calculate metadata features for a given trajectory. """
+        """ Calculate physical features for a given trajectory. """
         
         features = {}
         
@@ -131,6 +131,10 @@ class AISDataset(Dataset):
         features['lat_min'] = np.min(latitudes)
         features['lon_max'] = np.max(longitudes)
         features['lon_min'] = np.min(longitudes)
+        features['lat_mean'] = np.mean(latitudes)
+        features['lon_mean'] = np.mean(longitudes)
+        features['lat_median'] = np.median(latitudes)
+        features['lon_median'] = np.median(longitudes)
         
         displacement = geodesic((latitudes[0], longitudes[0]),(latitudes[-1], longitudes[-1])).meters
         features['displacement'] = displacement

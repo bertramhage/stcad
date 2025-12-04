@@ -1,3 +1,5 @@
+""" Batch download script for AIS data """
+
 import os
 import requests
 import zipfile

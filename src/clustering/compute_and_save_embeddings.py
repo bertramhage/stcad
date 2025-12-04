@@ -1,3 +1,5 @@
+""" Batch script to compute and save embeddings as a .npz file. """
+
 from argparse import ArgumentParser
 import os
 from src.sequence_modelling.utils import get_embeddings

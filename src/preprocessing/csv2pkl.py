@@ -1,3 +1,5 @@
+# Inspiration from https://github.com/CIA-Oceanix/TrAISformer, although heavily modified for computational efficiency
+
 import numpy as np
 import os
 import pickle
@@ -18,7 +20,7 @@ SHIP_TYPE_MAP = {
     "Tanker": 80,
     "Fishing": 30,
 
-    # Other standard types ---
+    # Other standard types
     "Passenger": 60,
     "HSC": 40,
     "Tug": 52,

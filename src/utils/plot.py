@@ -9,7 +9,7 @@ from src.preprocessing.preprocessing import (LAT_MIN, LAT_MAX, LON_MIN, LON_MAX,
 
 def plot_scatter(data: np.ndarray, title: str = None, xlab: str = None, ylab: str = None, color: str = 'blue'):
     plt.figure(figsize=(10, 8))
-    scatter = plt.scatter(data[:, 0], data[:, 1], c=color, alpha=0.5)
+    _ = plt.scatter(data[:, 0], data[:, 1], c=color, alpha=0.5)
     plt.title(title)
     plt.xlabel(xlab)
     plt.ylabel(ylab)
@@ -69,7 +69,6 @@ def plot_trajectories(track_list: list[dict], title: str | None = None, show_plo
     
     ax.set_xlabel('Longitude', fontsize=12)
     ax.set_ylabel('Latitude', fontsize=12)
-    ax.set_title('Vessel Trajectories', fontsize=16, fontweight='bold')
     
     ax.set_xlim(LON_MIN, LON_MAX)
     ax.set_ylim(LAT_MIN, LAT_MAX)
@@ -82,7 +81,10 @@ def plot_trajectories(track_list: list[dict], title: str | None = None, show_plo
     else:
         ax.set_aspect('equal')
     
-    cx.add_basemap(ax, crs='EPSG:4326', source=cx.providers.CartoDB.Positron, zorder=1)
+    try:
+        cx.add_basemap(ax, crs='EPSG:4326', source=cx.providers.CartoDB.Positron, zorder=1)
+    except Exception as e:
+        print(f"Warning: Could not add basemap due to: {e}")
     
     if title:
         plt.suptitle(title, fontsize=18, fontweight='bold')

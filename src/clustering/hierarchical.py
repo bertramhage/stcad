@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 from src.clustering.utils import davies_bouldin_index
 from src.utils.logging import CustomLogger
 import matplotlib.colors as mcolors
-from src.clustering.interactive_plot import plot_interactive_dendrogram
 from src.clustering.utils import euclidean_distance, cluster_distance
 import os
 
@@ -14,15 +13,9 @@ class AgglomerativeClustering:
     A custom implementation of Agglomerative Hierarchical Clustering.
     
     Parameters:
-    -----------
-    linkage : str, default='centroid'
-        The linkage criterion to use.
-        - 'centroid': Distance between the centroids of two clusters.
-        - 'single': Minimum distance between any single point in one cluster and any point in the other.
-        - 'complete': Maximum distance between any single point in one cluster and any point in the other.
-        - 'average': Average distance between all points in one cluster and all points in the other.
+        linkage : str, default='ward'
     """
-    def __init__(self, linkage='centroid', pruning_fraction=0.1, pruning_min_size=1):
+    def __init__(self, linkage='ward', pruning_fraction=0.05, pruning_min_size=1):
         self.linkage = linkage
         self.linkage_matrix_ = None
         self.pruning_fraction = pruning_fraction
@@ -127,24 +120,19 @@ class AgglomerativeClustering:
                 
         return labels
 
-    def plot_dendrogram(self, show_plot=False, save_path=None, p=30, **kwargs):
+    def plot_dendrogram(self, show_plot=False, save_path=None, p=75, **kwargs):
         """ Plots the dendrogram with truncation and size-based coloring. """
         if self.linkage_matrix_ is None:
             raise RuntimeError("Model must be fit before plotting dendrogram.")
 
         plt.figure(figsize=(12, 6))
         plt.title(f"Hierarchical Clustering Dendrogram (Truncated to last {p} clusters)")
-        plt.xlabel("Cluster Size / Sample Index")
         plt.ylabel("Distance")
         
-        # Add noise points
-        # 1. Identify Survivors
-        # We need the set of noise indices. 
-        # Ensure you populated self.noise_points_ in fit() as discussed previously!
+        # Handle noise
         all_indices = set(range(self.n_samples_))
         noise_set = set(self.noise_points_) if hasattr(self, 'noise_points_') else set()
-        
-        # Sort survivors to maintain relative order
+
         survivors = sorted(list(all_indices - noise_set))
         n_survivors = len(survivors)
         
@@ -152,44 +140,30 @@ class AgglomerativeClustering:
             print("Not enough points survived pruning to plot a dendrogram.")
             return
 
-        # 2. Create the Mapping
-        # Map: Old_Leaf_ID -> New_Leaf_ID (0 to M-1)
         id_map = {old_idx: new_idx for new_idx, old_idx in enumerate(survivors)}
 
-        # 3. Translate the Linkage Matrix
-        # We need to map the inputs of every row in the matrix.
         clean_Z = []
         
-        # The 'fit' method generates cluster IDs starting at n_samples.
-        # We need to map those Old_Cluster_IDs to New_Cluster_IDs starting at n_survivors.
-        
-        # Iterating through the existing valid matrix
         for i, row in enumerate(self.linkage_matrix_):
             old_c1, old_c2, dist, size = row
             old_c1, old_c2 = int(old_c1), int(old_c2)
-            
-            # Map the inputs
-            # If input is not in map, it means we have a logic error or it's a pruned point 
-            # (but pruned points shouldn't be in linkage_matrix_ in your code)
+
             if old_c1 not in id_map or old_c2 not in id_map:
-                continue # Skip rows that somehow reference noise (safety check)
+                continue
 
             new_c1 = id_map[old_c1]
             new_c2 = id_map[old_c2]
             
             clean_Z.append([float(new_c1), float(new_c2), dist, size])
             
-            # The result of this row creates a new cluster.
-            # Old ID: self.n_samples_ + i
-            # New ID: n_survivors + len(clean_Z) - 1
             old_result_id = self.n_samples_ + i
             new_result_id = n_survivors + len(clean_Z) - 1
             
-            # Update map for future rows that might reference this cluster
             id_map[old_result_id] = new_result_id
 
         clean_Z = np.array(clean_Z)
-        # Coloring by Cluster Size
+        
+        # Color by cluster size
         link_color_func = None
         n_samples = len(clean_Z) + 1
         cluster_sizes = {i: 1 for i in range(n_samples)}
@@ -233,6 +207,9 @@ class AgglomerativeClustering:
             plt.savefig(save_path, dpi=300)
         if show_plot:
             plt.show()
+        
+        # Return figure
+        return plt.gcf()
 
 class CURE:
     """
@@ -243,17 +220,17 @@ class CURE:
     2. Identifying representative points for each cluster.
     3. Assigning the remaining data to the closest representative.
     """
-    def __init__(self, sample_size=200,
+    def __init__(self, sample_size=300,
                  n_representatives=4,
-                 compression=0.5,
-                 linkage='centroid',
-                 pruning_fraction=0.1,
+                 compression=0.6,
+                 linkage='ward',
+                 pruning_fraction=0.05,
                  pruning_min_size=1,
                  assignment_threshold=None,
                  seed=42):
         self.sample_size = sample_size
         self.n_representatives = n_representatives
-        self.compression = compression # Alpha: how much to shrink towards centroid
+        self.compression = compression
         self.linkage = linkage
         self.pruning_fraction = pruning_fraction
         self.pruning_min_size = pruning_min_size
@@ -264,26 +241,18 @@ class CURE:
         self.X_ = None # Store reference to full dataset
 
     def fit(self, X):
-        """
-        Samples the data and builds the hierarchical cluster tree on the sample.
-        Does NOT assign labels to the full dataset yet. Use get_labels(k) for that.
-        """
+        """Samples the data and builds the hierarchical cluster tree on the sample. """
         self.X_ = np.array(X)
         n_samples = self.X_.shape[0]
 
-        # 1. Sampling Step
-        # If data is smaller than sample size, just use all data
         if n_samples <= self.sample_size:
             sample_indices = np.arange(n_samples)
             self.X_sample_ = self.X_
         else:
-            # Randomly select sample points
             np.random.seed(self.seed)
             sample_indices = np.random.choice(n_samples, self.sample_size, replace=False)
             self.X_sample_ = self.X_[sample_indices]
 
-        # 2. Cluster the Sample (The expensive part, but on small N)
-        # We reuse our custom AgglomerativeClustering class which builds the full tree
         self.agg_ = AgglomerativeClustering(linkage=self.linkage, pruning_fraction=self.pruning_fraction, pruning_min_size=self.pruning_min_size)
         self.agg_.fit(self.X_sample_)
         
@@ -292,11 +261,6 @@ class CURE:
     def save(self, save_path: str):
         """
         Saves the CURE model to an .npz file.
-        
-        Parameters:
-        -----------
-        save_path : str
-            Path to save the .npz file containing 'linkage_matrix' and 'sample_data'.
         """
         if self.agg_ is None or self.X_sample_ is None:
             raise RuntimeError("Model must be fit before saving.")
@@ -325,11 +289,6 @@ class CURE:
     def from_pretrained(cls, model_path):
         """
         Loads a pretrained CURE model from an .npz file.
-        
-        Parameters:
-        -----------
-        model_path : str
-            Path to the .npz file containing 'linkage_matrix' and 'sample_data'.
         """
         data = np.load(model_path, allow_pickle=True)
         linkage_matrix = data['linkage_matrix']
@@ -355,42 +314,36 @@ class CURE:
         
         return instance
 
-    def _get_representatives(self, n_clusters):
+    def _get_representatives(self, n_clusters, compression=None):
         """
         Internal helper to calculate representatives for a specific number of clusters.
         """
         if self.agg_ is None:
             raise RuntimeError("Model not fitted.")
+        
+        if compression is None:
+            compression = self.compression
 
-        # 1. Get sample labels from the hierarchical tree
         sample_labels = self.agg_.get_labels(n_clusters)
 
-        # 2. Select Representatives
         representatives = []
-        
         for k in range(n_clusters):
-            # Get points in this cluster
             cluster_points = self.X_sample_[sample_labels == k]
             
             if len(cluster_points) == 0:
                 representatives.append([])
                 continue
 
-            # Calculate Centroid
             centroid = np.mean(cluster_points, axis=0)
 
-            # Select Representatives
             reps = []
             if len(cluster_points) <= self.n_representatives:
                  reps = [p for p in cluster_points]
             else:
-                # Standard CURE selection:
-                # 1. First point is farthest from centroid
                 dists = [euclidean_distance(p, centroid) for p in cluster_points]
                 first_idx = np.argmax(dists)
                 reps.append(cluster_points[first_idx])
                 
-                # 2. Subsequent points farthest from existing reps
                 for _ in range(self.n_representatives - 1):
                     max_min_dist = -1
                     best_candidate = None
@@ -406,38 +359,38 @@ class CURE:
                     if best_candidate is not None:
                         reps.append(best_candidate)
 
-            # Shrink representatives towards centroid
+            # Shrink towards centroid
             shrunk_reps = []
             for r in reps:
-                # Move r towards centroid by compression factor
-                new_pos = r + self.compression * (centroid - r)
+                new_pos = r + compression * (centroid - r)
                 shrunk_reps.append(new_pos)
             
             representatives.append(shrunk_reps)
             
         return representatives
     
-    def predict(self, X, n_clusters):
+    def predict(self, X, n_clusters, assignment_threshold=None):
         """
         Assigns labels to new data points based on the fitted model and a specific number of clusters.
         """
         if self.agg_ is None:
             raise RuntimeError("Run fit() or load_pretrained() before predict()")
         
+        if assignment_threshold is None:
+            assignment_threshold = self.assignment_threshold
+        
         X = np.array(X)
         n_samples = X.shape[0]
         labels = np.zeros(n_samples, dtype=int)
         
-        # Get representatives for the requested number of clusters
         representatives = self._get_representatives(n_clusters)
 
-        # Assign entire dataset (Linear Scan)
         for i in range(n_samples):
             point = X[i]
             min_dist = np.inf
             best_cluster = -1
             
-            # Check distance to ALL representatives of ALL clusters
+            # Check distance to all representatives of all clusters
             for cluster_idx, reps in enumerate(representatives):
                 if not reps:
                     continue
@@ -447,7 +400,7 @@ class CURE:
                         min_dist = dist
                         best_cluster = cluster_idx
             
-            if min_dist > self.assignment_threshold:
+            if min_dist > assignment_threshold:
                 labels[i] = -1
             else:
                 labels[i] = best_cluster
@@ -459,7 +412,7 @@ class CURE:
         Generates labels for the full dataset used during fit().
         """
         if self.X_ is None:
-            raise RuntimeError("No training data available (model might be loaded from disk). Use predict(X, n_clusters) instead.")
+            raise RuntimeError("No training data available.")
             
         return self.predict(self.X_, n_clusters)
     
@@ -468,13 +421,8 @@ class CURE:
         Plots the dendrogram of the sample clustering.
         
         Parameters:
-        -----------
-        show_plot : bool, default=False
-            Whether to display the plot.
-        save_path : str | None, default=None
-            If provided, saves the plot to this path.
-        **kwargs : 
-            Arguments passed to scipy.cluster.hierarchy.dendrogram
+            show_plot : bool, Whether to display the plot.
+            save_path : str | None, If provided, saves the plot to this path.
         """
         if self.agg_ is None:
             print("Error: Model is not fit yet.")
@@ -483,6 +431,7 @@ class CURE:
         self.agg_.plot_dendrogram(p=p, show_plot=show_plot, save_path=save_path, **kwargs)
     
 if __name__ == "__main__":
+    # Fit CURE model and evaluate with Davies-Bouldin Index
     parser = ArgumentParser("CURE Hierarchical Clustering for Large Datasets. Build and save entire tree.")
     parser.add_argument("--data_path", type=str, required=True, help="Path to the dataset (embeddings).")
     parser.add_argument("--output_path", type=str, required=True, help="Path to save the CURE model and plots.")
@@ -522,12 +471,6 @@ if __name__ == "__main__":
     dendrogram_path = os.path.join(args.output_path, "dendrogram.png")
     cure.plot_dendrogram(save_path=dendrogram_path, p=args.dendrogram_p)
     logger.artifact(dendrogram_path, "dendrogram", "image")
-    
-    # Interactive dendrogram
-    #logger.info("Saving interactive dendrogram plot...")
-    #interactive_dendrogram_path = os.path.join(args.output_path, "interactive_dendrogram.html")
-    #plot_interactive_dendrogram(cure, save_path=interactive_dendrogram_path, p=args.dendrogram_p)
-    #logger.artifact(interactive_dendrogram_path, "interactive_dendrogram", "html")
     
     scores = []
     pct_noise = []

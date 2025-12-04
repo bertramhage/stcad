@@ -1,6 +1,5 @@
-import torch
-import torch.nn as nn
-import numpy as np
+""" Train pipeline for the BERT model """
+
 import os
 import warnings
 from argparse import ArgumentParser
