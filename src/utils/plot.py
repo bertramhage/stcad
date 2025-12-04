@@ -1,4 +1,4 @@
-# For plotting trajectories
+# Various plotting helpers
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -95,3 +95,26 @@ def plot_trajectories(track_list: list[dict], title: str | None = None, show_plo
         return None
     else:
         return fig
+    
+def plot_lollipop(ax, data, title):
+    colors = ['#d62728' if x < 0 else '#2ca02c' for x in data['Score']]
+    
+    ax.hlines(y=data['Feature'], xmin=0, xmax=data['Score'], 
+              color=colors, alpha=0.4, linewidth=2)
+    
+    ax.scatter(x=data['Score'], y=data['Feature'], 
+               color=colors, s=80, alpha=1, zorder=3)
+    
+    ax.axvline(x=0, color='grey', alpha=0.5, linestyle='--', linewidth=1)
+    ax.grid(axis='x', color='grey', alpha=0.2)
+    ax.set_axisbelow(True)
+    
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.spines['left'].set_color('#DDDDDD')
+    ax.spines['bottom'].set_color('#DDDDDD')
+    
+    ax.tick_params(axis='both', which='major', labelsize=14)
+    ax.set_xlim(left=-1.7, right=1.2)
+    
+    ax.set_title(title, x=-0.23, y=1.0, loc='left', fontsize=16, fontweight='bold', color='#000', pad=20, fontfamily='times new roman')

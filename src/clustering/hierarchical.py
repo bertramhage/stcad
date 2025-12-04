@@ -221,7 +221,7 @@ class CURE:
     3. Assigning the remaining data to the closest representative.
     """
     def __init__(self, sample_size=300,
-                 n_representatives=4,
+                 n_representatives=20,
                  compression=0.6,
                  linkage='ward',
                  pruning_fraction=0.05,
@@ -428,7 +428,8 @@ class CURE:
             print("Error: Model is not fit yet.")
             return
         
-        self.agg_.plot_dendrogram(p=p, show_plot=show_plot, save_path=save_path, **kwargs)
+        fig = self.agg_.plot_dendrogram(p=p, show_plot=show_plot, save_path=save_path, **kwargs)
+        return fig
     
 if __name__ == "__main__":
     # Fit CURE model and evaluate with Davies-Bouldin Index
