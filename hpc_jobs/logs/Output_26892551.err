@@ -1,3 +1,0 @@
-usage: download.py [-h] --from_date FROM_DATE --to_date TO_DATE
-                   --destination_path DESTINATION_PATH
-download.py: error: the following arguments are required: --from_date, --to_date

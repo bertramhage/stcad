@@ -1,6 +1,0 @@
-Loaded dependency [python3/3.11.9]: sqlite3/3.45.3
-Loaded dependency [python3/3.11.9]: gcc/12.3.0-binutils-2.40
-Loaded module: python3/3.11.9
-
-Switching from python3/3.11.9 to python3/3.11.9
-  Loading requirement: sqlite3/3.45.3 gcc/12.3.0-binutils-2.40
