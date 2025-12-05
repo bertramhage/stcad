@@ -49,3 +49,6 @@ If you are unable to use `uv` and you have conda installed you may follow this.
     ```bash
     pip install -r requirements.txt
     ```
+
+### If experiencing problems with PyTorch
+PyTorch (`torch`) installation is highly system-dependent. If `torch>=2.9.1` fails to install you may remove the version requirements from `torch` and `torchvision`, although keep in mind the code might not all run as expected.
